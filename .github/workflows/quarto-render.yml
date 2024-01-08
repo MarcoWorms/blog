@@ -1,25 +1,45 @@
-name: Quarto Publish
+name: Render Quarto Website
 
 on:
-  workflow_dispatch:
   push:
-    branches: main
+    branches:
+      - main
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+      - name: Install Quarto
+        run: |
+          curl -LO https://github.com/quarto-dev/quarto-cli/releases/download/v1.1.149/quarto-1.1.149-linux-amd64.deb
+          sudo dpkg -i quarto-1.1.149-linux-amd64.deb
 
-      - name: Render and Publish
-        uses: quarto-dev/quarto-actions/publish@v2
+      - name: Install Extension sellorm/quarto-social-embeds
+        run: |
+          sudo apt-get install -y expect
+          expect -c '
+          spawn quarto install extension sellorm/quarto-social-embeds
+          expect "Do you trust the authors of this extension (Y/n)"
+          send "Yes\r"
+          expect "Would you like to continue (Y/n)"
+          send "Yes\r"
+          interact
+          '
+
+      - name: Render website into _site
+        run: quarto render
+
+      - name: Create .nojekyll file
+        run: touch _site/.nojekyll
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          target: gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
+          keep_files: false
