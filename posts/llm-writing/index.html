@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.149">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Marco Guaspari Worms">
+<meta name="dcterms.date" content="2022-12-27">
+
+<title>Worms Blog - The many use cases for Large Language Models in tech writing</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Worms Blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/MarcoWorms"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/MarcoWorms"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">The many use cases for Large Language Models in tech writing</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">english</div>
+                <div class="quarto-category">tech writing</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Marco Guaspari Worms </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 27, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/3072/1*nutg1mqLg9VD0W_uqFbCpw.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">robot friend helping you from inside a large language model</figcaption><p></p>
+</figure>
+</div>
+<p>I’ve been exploring <a href="https://openai.com/api/">GPT-3</a>, a robot made originally to predict the next text in a document, for my daily flows of writing documentation around code, and I wanted to register here the coolest cases for tech writing (yet!):</p>
+<ul>
+<li>Review text for copy</li>
+<li>Review a GIT DIFF</li>
+<li>Generate diagrams powered by MermaidJS</li>
+<li>Document existing code</li>
+<li>Generate complex Markdown structures (ie: Tables)</li>
+<li>Summarize text</li>
+<li>Find alternative words (synonyms, antonyms)</li>
+</ul>
+<p>I personally don’t care if LLMs (Large Language Models) don’t generate good results 100% of the time. You will have to roll it again and again and experiment with prompts, but for brainstorming and content bootstrapping it is already much better than any other tool we had.</p>
+<p>Before diving into GPT prompts and use cases a small warning: today the text produced by LLMs is hardly usable in production without any sort of human post-production. I personally use more tools than just GPT, but it has proven to be an ally for my job. My entire flow is open here:</p>
+<p></p><div id="tweet-94861"></div><script>tweet={"url":"https:\/\/twitter.com\/MarcoWorms\/status\/1581997917023281152","author_name":"Worms","author_url":"https:\/\/twitter.com\/MarcoWorms","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EA thread with all tools I use to make written content and why I use them, featuring:\u003Ca href=\"https:\/\/twitter.com\/Grammarly?ref_src=twsrc%5Etfw\"\u003E@Grammarly\u003C\/a\u003E\u003Ca href=\"https:\/\/twitter.com\/code?ref_src=twsrc%5Etfw\"\u003E@code\u003C\/a\u003E and \u003Ca href=\"https:\/\/twitter.com\/hackmdio?ref_src=twsrc%5Etfw\"\u003E@hackmdio\u003C\/a\u003E\u003Cbr\u003EGPT-3 by \u003Ca href=\"https:\/\/twitter.com\/OpenAI?ref_src=twsrc%5Etfw\"\u003E@OpenAI\u003C\/a\u003E\u003Ca href=\"https:\/\/twitter.com\/excalidraw?ref_src=twsrc%5Etfw\"\u003E@excalidraw\u003C\/a\u003E\u003Ca href=\"https:\/\/twitter.com\/StableDiffusion?ref_src=twsrc%5Etfw\"\u003E@StableDiffusion\u003C\/a\u003E and\/or \u003Ca href=\"https:\/\/twitter.com\/midjourney?ref_src=twsrc%5Etfw\"\u003E@midjourney\u003C\/a\u003E\u003Ca href=\"https:\/\/twitter.com\/photopeacom?ref_src=twsrc%5Etfw\"\u003E@photopeacom\u003C\/a\u003E\u003Cbr\u003E\u003Cbr\u003E\uD83E\uDDF5\u003C\/p\u003E&mdash; Worms (@MarcoWorms) \u003Ca href=\"https:\/\/twitter.com\/MarcoWorms\/status\/1581997917023281152?ref_src=twsrc%5Etfw\"\u003EOctober 17, 2022\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-94861").innerHTML = tweet["html"];</script><p></p>
+<p>I recommend passing GPT text through <a href="https://app.grammarly.com/">Grammarly</a> to remove all typos and useless words. Also, you will hardly be able to make GPT generate a huge text that is useful, it is recommended to generate a macrostructure of sections first and then generate each individual part separately. For large text/code you will have to come up with creative ways to stay within the GPT API token limit (about 3k words on input+output per request)</p>
+<p>I made this article because I’m contemplating all these use cases in an Open Source UI I’m making for people that need to either generate docs or understand undocumented code. So while I work on the UI that will take a bit longer to be ready I want to open the process and prompts so anyone can iterate them, I would love to hear back from anyone experimenting with LLMs + tech writing!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/4644/1*RA21P9huJHXXr8xevmzQqg.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">DocuDroid UI preview</figcaption><p></p>
+</figure>
+</div>
+<section id="use-cases" class="level2">
+<h2 class="anchored" data-anchor-id="use-cases">Use cases</h2>
+<p>You can try it yourself by using GPT on:</p>
+<ul>
+<li><a href="https://chat.openai.com/chat">ChatGPT</a>: free, but no API and many downtimes</li>
+<li><a href="https://beta.openai.com/playground">GPT-3 Playground</a>: paid, but best option for manual exploration</li>
+<li><a href="https://beta.openai.com/docs/api-reference/introduction">GPT-3 API</a>: paid, but best option for automations</li>
+</ul>
+<section id="review-text-for-copy" class="level3">
+<h3 class="anchored" data-anchor-id="review-text-for-copy">Review text for copy</h3>
+<p>When I first started DocuDroid I wanted it to be simple automation on GitHub that reviewed text being added. I worked out fine, but I realized there are some issues with this flow:</p>
+<ul>
+<li>Asking GPT to review for copy errors would sometimes return that there are no errors in text with obvious errors</li>
+<li>GPT can take bias in a random reviewing direction, so if you specify the bias it helps with consistency</li>
+</ul>
+<p>turns out that reviewing text can be done from many points of view, so I incorporated this in DocuDroid as “reviewers personalities”. Each text is sent to many reviewers, and you get back many times of different reviews, plus this helps catch the obvious error that would sometimes pass by making only 1 request since each reviewer has a separate request for their review.</p>
+<p>A quick example of 2 different personalities reviewing the same text</p>
+<p><img src="https://cdn-images-1.medium.com/max/3300/1*hOaB87YH7U_9miq9ERcs8g.png" class="img-fluid"></p>
+<p>My prompt to review a text is the one below, and for each personality, you send a separate request: (the new line at the end is intended)</p>
+<pre><code>######## REVIEW INSTRUCTIONS
+
+personality text description goes here
+
+########  TEXT TO REVIEW, IGNORE LINKS AND CODE BLOCKS, PRESENTED AS A GIT DIFF, FOCUS ON THE ADDITIONS
+
+text to be reviewed goes here
+
+########  YOUR REVIEW, AS A - MARKDOWN LIST</code></pre>
+<p>Here are some example personality texts for review instructions, I generated them using GPT too!</p>
+<p><strong>😐 Balanced Ben:</strong> &gt; You are a professional copywriter with a balanced and objective approach. Review the following text for both strengths and weaknesses, and provide a list of specific suggestions for improvement. The goal is to produce a well-rounded and high-quality document, so consider all aspects of the text in your review.</p>
+<p><strong>📜 Linear Linda</strong> &gt; You are a professional copywriter who values smooth transitions and a logical progression of ideas. Review the following text for opportunities to improve the top-to-bottom linearization, and provide a list of specific suggestions for improvement. The goal is to create a clear and rational flow of ideas from one concept to the next, so consider ways to improve the transition between ideas.</p>
+<p>You can find an example with many personalities reviewing it <a href="https://github.com/MarcoWorms/DocuDroid/pull/110#issuecomment-1361372106">here</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/3344/1*ZDPxWI9IRoL_q2P6dUZNCw.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Docudroid Showcase: <a href="https://github.com/MarcoWorms/DocuDroid/pull/110#issuecomment-1361372106">https://github.com/MarcoWorms/DocuDroid/pull/110#issuecomment-1361372106</a></figcaption><p></p>
+</figure>
+</div>
+<p>You can also just ask GPT to fix an existing text:</p>
+<pre><code>paste text here
+
+######## remake the above fixing any copy errors</code></pre>
+<p>Here is an example improvement made like the above: <a href="https://github.com/yearn/yearn-devdocs/pull/298/files">https://github.com/yearn/yearn-devdocs/pull/298/files</a></p>
+</section>
+<section id="review-a-git-diff" class="level3">
+<h3 class="anchored" data-anchor-id="review-a-git-diff">Review a GIT DIFF</h3>
+<p>Much like reviewing a text, you can use it to review a diff (file representing the difference between 2 files). Since a diff contains all lines removed and added in a Github Pull Request it can make for interesting reviews taking into context what was removed, this is especially useful for code reviews.</p>
+<ul>
+<li>Checkout ChatGPT Action project that sends the full diff to ChatGPT for review: <a href="https://github.com/kxxt/chatgpt-action">https://github.com/kxxt/chatgpt-action</a></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/3780/1*uxZ2zDCAiskNnNnffQYgnw.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Showcase: <a href="https://github.com/kxxt/chatgpt-action/pull/12#issuecomment-1340991620">https://github.com/kxxt/chatgpt-action/pull/12#issuecomment-1340991620</a></figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="generate-diagrams-powered-by-mermaidjs" class="level3">
+<h3 class="anchored" data-anchor-id="generate-diagrams-powered-by-mermaidjs">Generate diagrams powered by MermaidJS</h3>
+<p>I am a huge fan of drawing diagrams and flows for people to understand concepts, I want DocuDroid to give you a handy UI for generating diagrams and previewing in real-time, but today you can generate on the GPT playground and use HackMD for preview. To do that paste the mermaid code in HackMD using this block:</p>
+<pre><code>```mermaid
+CODE_GOES_HERE
+```</code></pre>
+<p>There are a couple of ways you can do GPT make the diagrams:</p>
+<ul>
+<li><p>Just ask for a diagram with no examples at all</p></li>
+<li><p>Send it a text/code and ask for a diagram of it</p></li>
+</ul>
+<p>The most important thing is asking it to somehow <strong>“Output as code for a MermaidJS diagram”</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/4116/1*yrha3qRL_11PZDo3f78nHA.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">A finite state machine behavior for a NPC that stands idle and attacks if player is in range. Output as code for a MermaidJS diagram:</figcaption><p></p>
+</figure>
+</div>
+<p><img src="https://cdn-images-1.medium.com/max/5724/1*ukP9eB2s8oeRf4TvQapfkg.png" class="img-fluid"></p>
+<p>The above was an example that did not send initial code or text and relied on GPT internal knowledge, but you can also do it for your own text/code:</p>
+<pre><code>######## Explain briefly what your code/text does here or just remove this line
+
+text or code goes here
+
+######## The following is hackmd MermaidJS code for a diagram explaining the above:</code></pre>
+<p>Here is an example I just did:</p>
+<pre><code>######## The following is a smart contract template for creating a new yield strategy at Yearn Finance:
+
+pasted a huge code here that is a template to make a strategy at yearn, taken from here: https://raw.githubusercontent.com/yearn/brownie-strategy-mix/master/contracts/Strategy.sol
+
+######## The following is hackmd MermaidJS code for a diagram explaining the above:</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2740/1*Kobd_EhviZz9Lb4ZS1Qx6Q.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">pasting huge code + asking for diagram</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/5060/1*nOWgJ6C9fGFUwtjlxzcOYg.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">this example output is not very useful but just to showcase that you can try it</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="document-existing-code" class="level3">
+<h3 class="anchored" data-anchor-id="document-existing-code">Document existing code</h3>
+<p>Just like generating MermaidJS diagrams you can ask it to kickstart the actual documentation for existing code. This is extremely useful if you don’t know how to read the code because GPT is very capable of dealing with existing code and will linearize for you a story of exactly what happens step-by-step.</p>
+<pre><code>######## The following is a piece of code that does EXPLAIN_HERE_USEFUL_CONTEXT
+
+paste code here
+
+######## Write technical documentation that explains the above code funcionality, usage, and examples</code></pre>
+<p>I tested this flow and it has helped me a lot to generate docs for a task I wanted to do last week. Basically, I had a new piece of code that Yearn was gonna deploy and needed documentation, so I pasted the contract’s code + readme on the template above and asked it to generate docs.</p>
+<p>I will update this part with the production links when it’s live, but here is an impressive part GPT made almost by itself I just had to pass it on Grammarly to improve the text. This is WAY clearer than reading the code IMO to get a quick grasp of what’s going on, even if I can’t guarantee all details are right it helps me get closer to understanding it overall.</p>
+<p><img src="https://cdn-images-1.medium.com/max/3952/1*13LT2ouIIEJFQoMCjyVggA.png" class="img-fluid"></p>
+</section>
+<section id="generate-complex-markdown-structures-ie-tables" class="level3">
+<h3 class="anchored" data-anchor-id="generate-complex-markdown-structures-ie-tables">Generate complex Markdown structures (ie: Tables)</h3>
+<p>Making manual Markdown tables is one of the most awful experiences ever for a writer, LLMs are a godsend here because they are very consistent in getting this right and it’s a very flexible feature since you can ask it to structure the table however you like. For example, I will blatantly steal the GPT-3 default “parse unstructured data” example and make it output a markdown table to be previewed in HackMD</p>
+<pre><code>paste text here
+
+######### a Markdown table of the text above EXPLAIN_DETAILS_HERE</code></pre>
+<p><img src="https://cdn-images-1.medium.com/max/4520/1*Vh8AH-QUuDbQmb05I4NYLA.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2520/1*NmYr0jB_no2Pk542gMMefA.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">preview on HackMD</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="summarize-text" class="level3">
+<h3 class="anchored" data-anchor-id="summarize-text">Summarize text</h3>
+<p>I’ve used this more to learn than to generate content, it’s useful to grasp the macro concepts of a huge wall of text before diving into it. This can actually go very far because you can not only summarize text but also mold the output form like “summarize for a tweet” for something short or “summarize like a bible passage” for something fun</p>
+<pre><code>paste text here
+
+######## Summarize the above text for a tweet</code></pre>
+<p>With this exact flow, I came up with this test project where I summarized crypto-related news as if it were biblical passages in the size of tweets. there is a lot you can do with the prompt here, experiment around!</p>
+<p><img src="https://cdn-images-1.medium.com/max/2376/1*LGZlty15Vrj04ugf6OqFdA.png" class="img-fluid"></p>
+</section>
+<section id="find-alternative-words-synonyms-antonyms" class="level3">
+<h3 class="anchored" data-anchor-id="find-alternative-words-synonyms-antonyms">Find alternative words (synonyms, antonyms)</h3>
+<p>Sometimes you want to avoid repeating words, or you want to find one that can sound better. LLMs are your ally, there are useful google websites, but things like GPT can go beyond and understand the context you want to use it.</p>
+<p>Here is an example where I pasted text from Yearn’s documentation and asked it for suggestions to replace a word, then I made a second request asking it to pick one and explain why:</p>
+<p><img src="https://cdn-images-1.medium.com/max/3356/1*9J99u7w1y0R0Gbukj_7-Nw.png" class="img-fluid"> &gt; # Have fun writing in the age of the machines!</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+<script src="https://platform.twitter.com/widgets.js"></script>
+</body></html>
