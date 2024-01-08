@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.149">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,7 +19,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -57,7 +57,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -76,23 +77,25 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">Worms Blog</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/MarcoWorms"><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/MarcoWorms" rel="" target=""><i class="bi bi-twitter" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/MarcoWorms"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/MarcoWorms" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -125,6 +128,7 @@ ul.task-list li input[type="checkbox"] {
         <p class="date">December 27, 2022</p>
       </div>
     </div>
+    
       
     </div>
     
@@ -142,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://cdn-images-1.medium.com/max/3072/1*nutg1mqLg9VD0W_uqFbCpw.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">robot friend helping you from inside a large language model</figcaption><p></p>
+<figcaption class="figure-caption">robot friend helping you from inside a large language model</figcaption>
 </figure>
 </div>
 <p>I’ve been exploring <a href="https://openai.com/api/">GPT-3</a>, a robot made originally to predict the next text in a document, for my daily flows of writing documentation around code, and I wanted to register here the coolest cases for tech writing (yet!):</p>
@@ -157,13 +161,13 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>I personally don’t care if LLMs (Large Language Models) don’t generate good results 100% of the time. You will have to roll it again and again and experiment with prompts, but for brainstorming and content bootstrapping it is already much better than any other tool we had.</p>
 <p>Before diving into GPT prompts and use cases a small warning: today the text produced by LLMs is hardly usable in production without any sort of human post-production. I personally use more tools than just GPT, but it has proven to be an ally for my job. My entire flow is open here:</p>
-<p></p><div id="tweet-13244"></div><script>tweet={"url":"https:\/\/twitter.com\/MarcoWorms\/status\/1581997917023281152","author_name":"Worms","author_url":"https:\/\/twitter.com\/MarcoWorms","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EA thread with all tools I use to make written content and why I use them, featuring:\u003Ca href=\"https:\/\/twitter.com\/Grammarly?ref_src=twsrc%5Etfw\"\u003E@Grammarly\u003C\/a\u003E\u003Ca href=\"https:\/\/twitter.com\/code?ref_src=twsrc%5Etfw\"\u003E@code\u003C\/a\u003E and \u003Ca href=\"https:\/\/twitter.com\/hackmdio?ref_src=twsrc%5Etfw\"\u003E@hackmdio\u003C\/a\u003E\u003Cbr\u003EGPT-3 by \u003Ca href=\"https:\/\/twitter.com\/OpenAI?ref_src=twsrc%5Etfw\"\u003E@OpenAI\u003C\/a\u003E\u003Ca href=\"https:\/\/twitter.com\/excalidraw?ref_src=twsrc%5Etfw\"\u003E@excalidraw\u003C\/a\u003E\u003Ca href=\"https:\/\/twitter.com\/StableDiffusion?ref_src=twsrc%5Etfw\"\u003E@StableDiffusion\u003C\/a\u003E and\/or \u003Ca href=\"https:\/\/twitter.com\/midjourney?ref_src=twsrc%5Etfw\"\u003E@midjourney\u003C\/a\u003E\u003Ca href=\"https:\/\/twitter.com\/photopeacom?ref_src=twsrc%5Etfw\"\u003E@photopeacom\u003C\/a\u003E\u003Cbr\u003E\u003Cbr\u003E\uD83E\uDDF5\u003C\/p\u003E&mdash; Worms (@MarcoWorms) \u003Ca href=\"https:\/\/twitter.com\/MarcoWorms\/status\/1581997917023281152?ref_src=twsrc%5Etfw\"\u003EOctober 17, 2022\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-13244").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-91687"></div><script>tweet={"url":"https:\/\/twitter.com\/MarcoWorms\/status\/1581997917023281152","author_name":"Worms","author_url":"https:\/\/twitter.com\/MarcoWorms","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EA thread with all tools I use to make written content and why I use them, featuring:\u003Ca href=\"https:\/\/twitter.com\/Grammarly?ref_src=twsrc%5Etfw\"\u003E@Grammarly\u003C\/a\u003E\u003Ca href=\"https:\/\/twitter.com\/code?ref_src=twsrc%5Etfw\"\u003E@code\u003C\/a\u003E and \u003Ca href=\"https:\/\/twitter.com\/hackmdio?ref_src=twsrc%5Etfw\"\u003E@hackmdio\u003C\/a\u003E\u003Cbr\u003EGPT-3 by \u003Ca href=\"https:\/\/twitter.com\/OpenAI?ref_src=twsrc%5Etfw\"\u003E@OpenAI\u003C\/a\u003E\u003Ca href=\"https:\/\/twitter.com\/excalidraw?ref_src=twsrc%5Etfw\"\u003E@excalidraw\u003C\/a\u003E\u003Ca href=\"https:\/\/twitter.com\/StableDiffusion?ref_src=twsrc%5Etfw\"\u003E@StableDiffusion\u003C\/a\u003E and\/or \u003Ca href=\"https:\/\/twitter.com\/midjourney?ref_src=twsrc%5Etfw\"\u003E@midjourney\u003C\/a\u003E\u003Ca href=\"https:\/\/twitter.com\/photopeacom?ref_src=twsrc%5Etfw\"\u003E@photopeacom\u003C\/a\u003E\u003Cbr\u003E\u003Cbr\u003E\uD83E\uDDF5\u003C\/p\u003E&mdash; Worms (@MarcoWorms) \u003Ca href=\"https:\/\/twitter.com\/MarcoWorms\/status\/1581997917023281152?ref_src=twsrc%5Etfw\"\u003EOctober 17, 2022\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-91687").innerHTML = tweet["html"];</script><p></p>
 <p>I recommend passing GPT text through <a href="https://app.grammarly.com/">Grammarly</a> to remove all typos and useless words. Also, you will hardly be able to make GPT generate a huge text that is useful, it is recommended to generate a macrostructure of sections first and then generate each individual part separately. For large text/code you will have to come up with creative ways to stay within the GPT API token limit (about 3k words on input+output per request)</p>
 <p>I made this article because I’m contemplating all these use cases in an Open Source UI I’m making for people that need to either generate docs or understand undocumented code. So while I work on the UI that will take a bit longer to be ready I want to open the process and prompts so anyone can iterate them, I would love to hear back from anyone experimenting with LLMs + tech writing!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://cdn-images-1.medium.com/max/4644/1*RA21P9huJHXXr8xevmzQqg.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">DocuDroid UI preview</figcaption><p></p>
+<figcaption class="figure-caption">DocuDroid UI preview</figcaption>
 </figure>
 </div>
 <section id="use-cases" class="level2">
@@ -201,7 +205,7 @@ text to be reviewed goes here
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://cdn-images-1.medium.com/max/3344/1*ZDPxWI9IRoL_q2P6dUZNCw.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Docudroid Showcase: <a href="https://github.com/MarcoWorms/DocuDroid/pull/110#issuecomment-1361372106">https://github.com/MarcoWorms/DocuDroid/pull/110#issuecomment-1361372106</a></figcaption><p></p>
+<figcaption class="figure-caption">Docudroid Showcase: <a href="https://github.com/MarcoWorms/DocuDroid/pull/110#issuecomment-1361372106">https://github.com/MarcoWorms/DocuDroid/pull/110#issuecomment-1361372106</a></figcaption>
 </figure>
 </div>
 <p>You can also just ask GPT to fix an existing text:</p>
@@ -219,7 +223,7 @@ text to be reviewed goes here
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://cdn-images-1.medium.com/max/3780/1*uxZ2zDCAiskNnNnffQYgnw.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Showcase: <a href="https://github.com/kxxt/chatgpt-action/pull/12#issuecomment-1340991620">https://github.com/kxxt/chatgpt-action/pull/12#issuecomment-1340991620</a></figcaption><p></p>
+<figcaption class="figure-caption">Showcase: <a href="https://github.com/kxxt/chatgpt-action/pull/12#issuecomment-1340991620">https://github.com/kxxt/chatgpt-action/pull/12#issuecomment-1340991620</a></figcaption>
 </figure>
 </div>
 </section>
@@ -238,7 +242,7 @@ CODE_GOES_HERE
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://cdn-images-1.medium.com/max/4116/1*yrha3qRL_11PZDo3f78nHA.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">A finite state machine behavior for a NPC that stands idle and attacks if player is in range. Output as code for a MermaidJS diagram:</figcaption><p></p>
+<figcaption class="figure-caption">A finite state machine behavior for a NPC that stands idle and attacks if player is in range. Output as code for a MermaidJS diagram:</figcaption>
 </figure>
 </div>
 <p><img src="https://cdn-images-1.medium.com/max/5724/1*ukP9eB2s8oeRf4TvQapfkg.png" class="img-fluid"></p>
@@ -257,13 +261,13 @@ pasted a huge code here that is a template to make a strategy at yearn, taken fr
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://cdn-images-1.medium.com/max/2740/1*Kobd_EhviZz9Lb4ZS1Qx6Q.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">pasting huge code + asking for diagram</figcaption><p></p>
+<figcaption class="figure-caption">pasting huge code + asking for diagram</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://cdn-images-1.medium.com/max/5060/1*nOWgJ6C9fGFUwtjlxzcOYg.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">this example output is not very useful but just to showcase that you can try it</figcaption><p></p>
+<figcaption class="figure-caption">this example output is not very useful but just to showcase that you can try it</figcaption>
 </figure>
 </div>
 </section>
@@ -289,7 +293,7 @@ paste code here
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://cdn-images-1.medium.com/max/2520/1*NmYr0jB_no2Pk542gMMefA.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">preview on HackMD</figcaption><p></p>
+<figcaption class="figure-caption">preview on HackMD</figcaption>
 </figure>
 </div>
 </section>
@@ -340,9 +344,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -354,7 +372,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -390,24 +425,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
