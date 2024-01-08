@@ -19,7 +19,8 @@ jobs:
           sudo dpkg -i quarto-1.1.149-linux-amd64.deb
 
       - name: Install Quarto extension
-        run: quarto install extension sellorm/quarto-social-embeds
+        run: |
+          echo -e "Yes\nYes" | quarto install extension sellorm/quarto-social-embeds
 
       - name: Render website
         run: quarto render
