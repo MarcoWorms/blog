@@ -1,0 +1,79 @@
+---
+title: "Criando seu próprio render engine em JS com Single Source of Truth"
+author: "Marco Guaspari Worms"
+date: "2016-12-01"
+categories: [portuguese, javascript]
+---
+
+![](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*KYLUsvBiRYQM9zTHj3sKXA.jpeg)
+
+Nesse artigo nós criaremos um “micro react-redux” usando apenas o que o browser tem a nos oferecer. Vamos criar um objeto que conterá todo o estado da nossa aplicação (e entender o que é estado), depois vamos responder às alterações no estado, refletindo as mudanças no HTML.
+
+> *O intuito desse post não é ensinar react ou redux. O conteúdo que eu passarei aqui será um degrau antes de conhecer essas tecnologias. A minha motivação pra escrever esse artigo é que eu gostaria de ter visto algo que mostrasse isso antes de eu entrar no React e no Redux.*
+
+## Boilerplate
+
+Vamos começar criando um html para podermos renderizar tudo que fizermos nele. Crie uma pasta nova para nosso projeto e adicione um arquivo **index.html**
+
+{{< gist MarcoWorms 699477cd35f386f3a8e64ac4c2fac2c5 >}}
+
+Por que criamos uma div com id “root”? Na verdade o id pode ter qualquer nome, apenas precisamos dele para pegarmos no nosso js depois. Por falar nisso, crie agora um arquivo **main.js **vazio, no mesmo diretório do index.html. Daqui pra frente nós apenas editaremos o main.js
+
+## Single Source of Truth
+
+Nossa engine respeitará o conceito de Single Source of Truth. Não elaborarei essa técnica ou seus prós e contras, resumidamente isso significa que todas as informações suscetíveis a mudança da nossa aplicação ficarão apenas em **um** lugar, qual chamaremos de “state”, pois representa todo o estado do nosso programa, e sempre que precisarmos dessa informação, pegaremos do “state”.
+
+> Nós apenas confiaremos no “state” para nos dar informações. Não confie em estranhos.
+
+Nosso “state” ficará dentro de um lugar que chamaremos de “store”. Ela tem como responsabilidade guardar, alterar, e nos enviar o “state” sempre que precisarmos. Vamos colocar isso no nosso **main.js**:
+
+{{< gist MarcoWorms b770fa20adcaabcf83670412305c4ec4 >}}
+
+>  **Usarei ES5 em todos os snippets para não causar confusão, no final do artigo colocarei o código completo usando ES2015 pois fica muito mais bonito :)**
+
+Agora podemos testar nossa store colando essa função no console do chrome e brincando:
+```js
+    var store = createStore()
+    store.setState({a: 2})
+    store.getState() // => {a: 2}
+```
+
+**Mas temos um problema!** Nosso getState permite que a gente receba o objeto “state” que estava dentro da closure, e fazendo isso nós também podemos alterar ele. Para não fugir do escopo do artigo vamos criar uma regra: Não podemos usar o “getState” para alterar o “state”. Sempre usaremos o “setState” para isso.
+
+## Renderizando o state
+
+Agora nós temos nossa “store” que cuida do nosso “state”. O próximo passo é criar uma função que recebe o “state” e renderiza ele no html como quisermos. Vamos escrever apenas essa função por enquanto sem se preocupar em integrar com a “store”:
+
+{{< gist MarcoWorms ded098ed77e6f972451b591b22a5aa8b >}}
+
+Sua função “renderState” pode ser muito mais complexa e renderizar várias coisas que tivermos no state de maneira mirabolantes no html, mas por agora usaremos esse simples parágrafo apenas pra demonstração.
+
+## Ligando a “store” com o “renderState”
+
+Nesse ponto nosso main.js tem 2 funções: “createStore” e “renderState”. Agora nós faremos a ligação final da nossa engine: Toda vez que usarmos o “setState” da nossa “store” nós iremos chamar o “renderState” com nosso novo “state”. Vamos ver como isso ficará:
+
+{{< gist MarcoWorms 49b330321e13f77d8a66f76866e71c9c >}}
+
+A únicas coisas que adicionamos aqui foram as linhas 8, 10, e 18. Na linha 8 nós criamos “something”, que conterá o valor que usaremos no render. Na linha 10 nós renderizamos nosso state assim que ele for criado. Na linha 18 nós renderizaremos o “state” sempre que ele for alterado via “setState”. Agora vamos testar esse código adicionando as seguinte linhas (linha 23 para baixo), no **main.js**:
+
+{{< gist MarcoWorms 80a622b72122ddd04af1bb3fc18abc70 >}}
+
+Pronto! Ao abrir o **index.html **no navegador você verá a mensagem “olá mundo” por um segundo e depois trocará para “adeus mundo”.
+
+## **Mas por que fizemos tudo isso?**
+
+Bom, agora você pode abstrair uma série de coisas desse código e ir deixando ele bacana. Dá pra colocar o seu “state” inicial dentro de uma função “initialState”, dá pra fazer a store receber o “renderState” como parâmetro, ou fazer o “setState” utilizar algum “merge” para não precisar enviar o estado inteiro sempre, entre muitas outras coisas. Eu fiz ele bem simples pois queria destacar algumas coisas:
+
+* **Ao escrever a lógica principal do seu programa, você não deve se preocupar com a parte que renderiza ele pra você. **Agora você pode alterar coisas do seu estado sem se preocupar em precisar avisar pra algum módulo que ele precisa renderizar seu programa.
+
+* **Você poderá trabalhar com funções que, dentro delas, não alteram o seu state, apenas retornam um state novo. **Isso trará maravilhas para a manutenção do seu código, e é um dos princípios da programação funcional. Recomendo ir atrás de como escrever código dessa maneira.
+
+## Lição de casa
+
+Como faço para criar um botão no html que altera o state? Tente resolver isso com seu código agora. A resposta (incompleta, porém quase pronta) está no link abaixo, mas recomendo tentar fazer sozinho.
+
+Aqui está o exemplo utilizando ES2015 que eu havia prometido no início do post: [https://github.com/MarcoWorms/oficina-redux/blob/master/main.js](https://github.com/MarcoWorms/oficina-redux/blob/master/main.js)
+
+Quem precisar de ajuda pra verificar a resposta do desafio acima é só me mandar!
+
+Qualquer dúvida, sugestão, ou crítica é só mandar nos comentários que a gente conversa. Abraços!

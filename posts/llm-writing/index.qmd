@@ -1,0 +1,186 @@
+---
+title: "The many use cases for Large Language Models in tech writing"
+author: "Marco Guaspari Worms"
+date: "2022-12-27"
+categories: [english, tech writing]
+---
+
+![robot friend helping you from inside a large language model](https://cdn-images-1.medium.com/max/3072/1*nutg1mqLg9VD0W_uqFbCpw.png)
+
+I’ve been exploring [GPT-3](https://openai.com/api/), a robot made originally to predict the next text in a document, for my daily flows of writing documentation around code, and I wanted to register here the coolest cases for tech writing (yet!):
+
+* Review text for copy
+* Review a GIT DIFF
+* Generate diagrams powered by MermaidJS
+* Document existing code
+* Generate complex Markdown structures (ie: Tables)
+* Summarize text
+* Find alternative words (synonyms, antonyms)
+
+I personally don’t care if LLMs (Large Language Models) don’t generate good results 100% of the time. You will have to roll it again and again and experiment with prompts, but for brainstorming and content bootstrapping it is already much better than any other tool we had.
+
+Before diving into GPT prompts and use cases a small warning: today the text produced by LLMs is hardly usable in production without any sort of human post-production. I personally use more tools than just GPT, but it has proven to be an ally for my job. My entire flow is open here:
+
+{{< tweet MarcoWorms 1581997917023281152 >}}
+
+I recommend passing GPT text through [Grammarly](https://app.grammarly.com/) to remove all typos and useless words. Also, you will hardly be able to make GPT generate a huge text that is useful, it is recommended to generate a macrostructure of sections first and then generate each individual part separately. For large text/code you will have to come up with creative ways to stay within the GPT API token limit (about 3k words on input+output per request)
+
+I made this article because I’m contemplating all these use cases in an Open Source UI I’m making for people that need to either generate docs or understand undocumented code. So while I work on the UI that will take a bit longer to be ready I want to open the process and prompts so anyone can iterate them, I would love to hear back from anyone experimenting with LLMs + tech writing!
+
+![DocuDroid UI preview](https://cdn-images-1.medium.com/max/4644/1*RA21P9huJHXXr8xevmzQqg.png)
+
+## Use cases
+
+You can try it yourself by using GPT on:
+
+* [ChatGPT](https://chat.openai.com/chat): free, but no API and many downtimes
+* [GPT-3 Playground](https://beta.openai.com/playground): paid, but best option for manual exploration
+* [GPT-3 API](https://beta.openai.com/docs/api-reference/introduction): paid, but best option for automations
+
+### Review text for copy
+
+When I first started DocuDroid I wanted it to be simple automation on GitHub that reviewed text being added. I worked out fine, but I realized there are some issues with this flow:
+
+* Asking GPT to review for copy errors would sometimes return that there are no errors in text with obvious errors
+* GPT can take bias in a random reviewing direction, so if you specify the bias it helps with consistency
+
+turns out that reviewing text can be done from many points of view, so I incorporated this in DocuDroid as “reviewers personalities”. Each text is sent to many reviewers, and you get back many times of different reviews, plus this helps catch the obvious error that would sometimes pass by making only 1 request since each reviewer has a separate request for their review.
+
+A quick example of 2 different personalities reviewing the same text
+
+![](https://cdn-images-1.medium.com/max/3300/1*hOaB87YH7U_9miq9ERcs8g.png)
+
+My prompt to review a text is the one below, and for each personality, you send a separate request: (the new line at the end is intended)
+
+    ######## REVIEW INSTRUCTIONS
+    
+    personality text description goes here
+    
+    ########  TEXT TO REVIEW, IGNORE LINKS AND CODE BLOCKS, PRESENTED AS A GIT DIFF, FOCUS ON THE ADDITIONS
+    
+    text to be reviewed goes here
+    
+    ########  YOUR REVIEW, AS A - MARKDOWN LIST
+    
+
+Here are some example personality texts for review instructions, I generated them using GPT too!
+
+**😐 Balanced Ben:**
+>  You are a professional copywriter with a balanced and objective approach. Review the following text for both strengths and weaknesses, and provide a list of specific suggestions for improvement. The goal is to produce a well-rounded and high-quality document, so consider all aspects of the text in your review.
+
+**📜 Linear Linda**
+>  You are a professional copywriter who values smooth transitions and a logical progression of ideas. Review the following text for opportunities to improve the top-to-bottom linearization, and provide a list of specific suggestions for improvement. The goal is to create a clear and rational flow of ideas from one concept to the next, so consider ways to improve the transition between ideas.
+
+You can find an example with many personalities reviewing it [here](https://github.com/MarcoWorms/DocuDroid/pull/110#issuecomment-1361372106)
+
+![Docudroid Showcase: [https://github.com/MarcoWorms/DocuDroid/pull/110#issuecomment-1361372106](https://github.com/MarcoWorms/DocuDroid/pull/110#issuecomment-1361372106)](https://cdn-images-1.medium.com/max/3344/1*ZDPxWI9IRoL_q2P6dUZNCw.png)
+
+You can also just ask GPT to fix an existing text:
+
+    paste text here
+    
+    ######## remake the above fixing any copy errors
+
+Here is an example improvement made like the above: [https://github.com/yearn/yearn-devdocs/pull/298/files](https://github.com/yearn/yearn-devdocs/pull/298/files)
+
+### Review a GIT DIFF
+
+Much like reviewing a text, you can use it to review a diff (file representing the difference between 2 files). Since a diff contains all lines removed and added in a Github Pull Request it can make for interesting reviews taking into context what was removed, this is especially useful for code reviews.
+
+* Checkout ChatGPT Action project that sends the full diff to ChatGPT for review: [https://github.com/kxxt/chatgpt-action](https://github.com/kxxt/chatgpt-action)
+
+![Showcase: [https://github.com/kxxt/chatgpt-action/pull/12#issuecomment-1340991620](https://github.com/kxxt/chatgpt-action/pull/12#issuecomment-1340991620)](https://cdn-images-1.medium.com/max/3780/1*uxZ2zDCAiskNnNnffQYgnw.png)
+
+### Generate diagrams powered by MermaidJS
+
+I am a huge fan of drawing diagrams and flows for people to understand concepts, I want DocuDroid to give you a handy UI for generating diagrams and previewing in real-time, but today you can generate on the GPT playground and use HackMD for preview. To do that paste the mermaid code in HackMD using this block:
+
+    ```mermaid
+    CODE_GOES_HERE
+    ```
+
+There are a couple of ways you can do GPT make the diagrams:
+
+* Just ask for a diagram with no examples at all
+
+* Send it a text/code and ask for a diagram of it
+
+The most important thing is asking it to somehow **“Output as code for a MermaidJS diagram”**
+
+![A finite state machine behavior for a NPC that stands idle and attacks if player is in range. Output as code for a MermaidJS diagram:](https://cdn-images-1.medium.com/max/4116/1*yrha3qRL_11PZDo3f78nHA.png)
+
+![](https://cdn-images-1.medium.com/max/5724/1*ukP9eB2s8oeRf4TvQapfkg.png)
+
+The above was an example that did not send initial code or text and relied on GPT internal knowledge, but you can also do it for your own text/code:
+
+    ######## Explain briefly what your code/text does here or just remove this line
+    
+    text or code goes here
+    
+    ######## The following is hackmd MermaidJS code for a diagram explaining the above:
+    
+
+Here is an example I just did:
+
+    ######## The following is a smart contract template for creating a new yield strategy at Yearn Finance:
+    
+    pasted a huge code here that is a template to make a strategy at yearn, taken from here: https://raw.githubusercontent.com/yearn/brownie-strategy-mix/master/contracts/Strategy.sol
+    
+    ######## The following is hackmd MermaidJS code for a diagram explaining the above:
+    
+
+![pasting huge code + asking for diagram](https://cdn-images-1.medium.com/max/2740/1*Kobd_EhviZz9Lb4ZS1Qx6Q.png)
+
+![this example output is not very useful but just to showcase that you can try it](https://cdn-images-1.medium.com/max/5060/1*nOWgJ6C9fGFUwtjlxzcOYg.png)
+
+### Document existing code
+
+Just like generating MermaidJS diagrams you can ask it to kickstart the actual documentation for existing code. This is extremely useful if you don’t know how to read the code because GPT is very capable of dealing with existing code and will linearize for you a story of exactly what happens step-by-step.
+
+    ######## The following is a piece of code that does EXPLAIN_HERE_USEFUL_CONTEXT
+    
+    paste code here
+    
+    ######## Write technical documentation that explains the above code funcionality, usage, and examples
+    
+
+I tested this flow and it has helped me a lot to generate docs for a task I wanted to do last week. Basically, I had a new piece of code that Yearn was gonna deploy and needed documentation, so I pasted the contract’s code + readme on the template above and asked it to generate docs.
+
+I will update this part with the production links when it’s live, but here is an impressive part GPT made almost by itself I just had to pass it on Grammarly to improve the text. This is WAY clearer than reading the code IMO to get a quick grasp of what’s going on, even if I can't guarantee all details are right it helps me get closer to understanding it overall.
+
+![](https://cdn-images-1.medium.com/max/3952/1*13LT2ouIIEJFQoMCjyVggA.png)
+
+### Generate complex Markdown structures (ie: Tables)
+
+Making manual Markdown tables is one of the most awful experiences ever for a writer, LLMs are a godsend here because they are very consistent in getting this right and it’s a very flexible feature since you can ask it to structure the table however you like. For example, I will blatantly steal the GPT-3 default “parse unstructured data” example and make it output a markdown table to be previewed in HackMD
+
+    paste text here
+    
+    ######### a Markdown table of the text above EXPLAIN_DETAILS_HERE
+    
+
+![](https://cdn-images-1.medium.com/max/4520/1*Vh8AH-QUuDbQmb05I4NYLA.png)
+
+![preview on HackMD](https://cdn-images-1.medium.com/max/2520/1*NmYr0jB_no2Pk542gMMefA.png)
+
+### Summarize text
+
+I’ve used this more to learn than to generate content, it’s useful to grasp the macro concepts of a huge wall of text before diving into it. This can actually go very far because you can not only summarize text but also mold the output form like “summarize for a tweet” for something short or “summarize like a bible passage” for something fun
+
+    paste text here
+    
+    ######## Summarize the above text for a tweet
+    
+
+With this exact flow, I came up with this test project where I summarized crypto-related news as if it were biblical passages in the size of tweets. there is a lot you can do with the prompt here, experiment around!
+
+![](https://cdn-images-1.medium.com/max/2376/1*LGZlty15Vrj04ugf6OqFdA.png)
+
+### Find alternative words (synonyms, antonyms)
+
+Sometimes you want to avoid repeating words, or you want to find one that can sound better. LLMs are your ally, there are useful google websites, but things like GPT can go beyond and understand the context you want to use it.
+
+Here is an example where I pasted text from Yearn’s documentation and asked it for suggestions to replace a word, then I made a second request asking it to pick one and explain why:
+
+![](https://cdn-images-1.medium.com/max/3356/1*9J99u7w1y0R0Gbukj_7-Nw.png)
+> # Have fun writing in the age of the machines!

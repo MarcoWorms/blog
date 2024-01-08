@@ -1,0 +1,58 @@
+---
+title: "Generating pixel art NFTs and link to my web generators with sources"
+author: "Marco Guaspari Worms"
+date: "2021-09-04"
+categories: [english, build in public]
+---
+
+![This logo was made by a friend of mine and evolved by another :)](https://cdn-images-1.medium.com/max/2000/1*uubFnnBqy2_JmqtPCYUf7A.png)
+
+When I learned about NFTs a couple of weeks ago and the possibilities of what can be done I quickly started tinkering and fiddling with the available tools for publishing and trading NFTs like [opensea.io](http://opensea.io)
+
+After publishing 2 full collections on OpenSea ([Wormy Worms](https://opensea.io/collection/wormy-worms) and [Bit Dancers](https://opensea.io/collection/bit-dancers)) and starting [a third one on PaintSwap (Fantom Kittens)](https://twitter.com/MarcoWorms/status/1433833893245952026) I’ve learned some lessons about the generation process and I want to register it in this post
+
+## [Wormy Worms](https://opensea.io/collection/wormy-worms)
+
+![Wormy Worms #9](https://cdn-images-1.medium.com/max/2000/1*nBdkwD0bGfgCoMWj8Zxkow.jpeg)
+
+[Click here to fiddle with the full generator. Press SPACE to generate a new worm.](https://marcoworms.github.io/WormyWormsGenerator)
+
+[Link to construct.net source file (MIT feel free to use)](https://github.com/MarcoWorms/marcoworms.github.io/blob/master/WormyWormsGenerator/WormyWormsGenerator.c3p)
+
+This was my first collection, I simply used my current “game studio” logo, created eyes and mouth randomly, fixed the same color for them +the outline + the frame, and the other 2 colors are randomized along with a random background and frame.
+
+This generator made some really cool color combinations, but sometimes the combinations were really bad when 2 colors are very similar or when the 3 colors are similar. I think because the worm outline is so expressive and simple the random background pattern choice was a good one and did not interfere with the worm image (a choice that in Fantom Kittens was revised due to it’s increased outline complexity and lower pixel density)
+
+## [Bit Dancers](https://opensea.io/collection/bit-dancers)
+
+![Bit Dancers #1](https://cdn-images-1.medium.com/max/2000/1*VkyFcBeDg_vGeHhMlzucqg.gif)
+
+[Click here to fiddle with the full generator. Press SPACE to randomize poses and colors and C to randomize poses only.](https://marcoworms.github.io/BitDancersGenerator)
+
+[Link to construct.net source file (MIT feel free to use)](https://github.com/MarcoWorms/marcoworms.github.io/blob/master/BitDancersGenerator/BitDancersGenerator.c3p)
+
+For my second collection, I really wanted to make something that moves. I didn’t want to dive into complex moving patterns so I stuck with generating random frames, but the pixels are so close to each other that it makes it feels like a movement rather than random. I really like this effect so I chose to frame 4 dancers in each image in order to better explore what comes out of these movements and make each individual image feel like an actual party instead of a crazy solo dancer :D
+
+Another thing I’ve learned was that since I don't have an outline for the dancers in this case the background couldn’t be bright so it doesn't compete with the dancer, but I really tried to add some kind of party light patterns in the background in order to make the party feel more alive
+
+## [Fantom Kittens](https://kittens.fakeworms.studio/)
+
+![[Fantom Kitten #1](https://paintswap.finance/nfts/assets/0xfd211f3b016a75bc8d73550ac5adc2f1cae780c0/1)](https://cdn-images-1.medium.com/max/2000/0*V0eLM2orSkfLP_3-.png)
+
+This collection is still being published and I’m using a really recent NFT platform called [PaintSwap](https://paintswap.finance/), it uses a cheap ethereum alternative that I like that’s called Fantom (FTM). I’ll also release it on [Artion ](https://artion.io/)whenever it opens since it also uses the Fantom chain.
+
+![[All Fantom Kittens at PaintSwap](https://paintswap.finance/nfts/collections/0xfd211f3b016a75bc8d73550ac5adc2f1cae780c0)](https://cdn-images-1.medium.com/max/2150/1*WHTEI8NIorb9EFuV951hTg.png)
+
+Since I’m (knowingly) using an early-stage platform and I didn’t craft the NFT contracts by coding (I used their frontend) this collection is still not aggregated and now I’ll have to wait for the collection feature to be implemented in this front, and that was a huge lesson here for me: for the next collection, I’ll be more careful with the minting process and probably use something like [OpenZeppelin Contracts Wizard](https://docs.openzeppelin.com/contracts/4.x/wizard).
+
+One key take from this collection was the ability to constrain the pieces in a way that the generator now only generates cool stuff. Unlike Wormy Worms where sometimes the contrast is bad, here I’ve learned better how to deal with the color constraints in order to preserve the fantom-cat-like image.
+
+This collection is monotone and with a solid background because this was a simple way for me to deal with most of the background contrast issues, the background was making the cat almost unreadable sometimes and now all cats generated are expressive and easily readable.
+
+Since I’m still releasing this collection I’ll keep the generator to myself for now :D it has many accessories and expressions I’d like to publish when they feel really polished.
+
+UPDATE: I’ve teamed up with a friend and together we’ve launched the Fantom Kittens collection (already liked in the images above). Check it out at [https://kittens.fakeworms.studio/](https://kittens.fakeworms.studio/) !!!
+
+## To the future!
+
+I’ve just scratched the surface of what’s possible with NFTs. I’ll learn more about the minting process and work on a collection where I can publish a gamified minting frontend and better understand this flow. I’ll also have to do some deeper research on how to code inside this web3. When I’m more proficient with solidity and the whole smart contracts environment I’d really like to start building games that use NFTs as artifacts to generate a player-oriented economy. Who knows? This web3 environment has so many unexplored grounds that I don’t really know what I might come up with next ;)

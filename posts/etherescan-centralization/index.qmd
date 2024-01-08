@@ -1,0 +1,133 @@
+---
+title: "Etherscan is awesome but is also a critical point of failure for Ethereum"
+author: "Marco Guaspari Worms"
+date: "2024-01-05"
+categories: [english, yearn]
+---
+
+>  That we can try to fix with open source and better incentives like we did with the other parts of crypto!
+
+![](https://cdn-images-1.medium.com/max/2912/1*QkmLO7vbmhxnYSkrjIY5Bg.png)
+
+Almost a decade ago, the Ethereum community set out to kill all the weak links in providing financial services that are globally accessible. We have succeeded in many ways, and our progress relies on our capability to do self-reflection on points of failure and deploy fixes for them that are open source and open to audit.
+
+This article reflects my thoughts on our reliance on Etherscan today, an incredibly convenient service for any Ethereum user or developer, a service that I use a lot and am thankful for the people who deployed it. Today, [Etherscan](https://etherscan.io/) is the biggest provider for exploring transactions in Ethereum. It is a very convenient website that allows you to:
+
+* Track any transaction in Ethereum.
+* Track any contract interaction and its events.
+* See a contract source code being used in production.
+* Interact with contracts read and write functions.
+
+One of the powers of Etherscan is that it suits both novice and advanced users:
+
+* If you are a novice you can easily see your own wallet transactions and navigate your interactions with smart contracts
+* If you know what you are doing you can do almost anything in Ethereum by using Etherscan and avoiding any other existing website
+
+Such fantastic power has brought so much convenience to users that it has become righteously one of the most used websites in the crypto ecosystem. Here is a quick comparison of the usage of Etherscan website and other popular DeFi websites in the last 3 months:
+
+![Side Note: Solscan was just [acquired](https://cointelegraph.com/news/etherscan-acquires-solana-blockchain-solscan) by Etherscan, which further concentrates their power over explorers and shows this is not an issue limited to Ethereum. All other chains have to deal with this too.](https://cdn-images-1.medium.com/max/2000/1*ec1QPc-gbPmItERW6V9w9w.png)
+
+![Etherscan has less organic search access and still has incredibly higher usage.](https://cdn-images-1.medium.com/max/2706/1*BGPvPPu4LzccURFN6KAFkw.png)
+
+*Data from [https://www.similarweb.com/](https://www.similarweb.com/)*
+
+## How does Etherscan's dominance put the Ethereum community at risk?
+
+The biggest risk associated with Etherscan today is that the source code is closed and therefore not reproducible by other users, which removes the “availability resilience by redundancy of servers” factor that we have in Ethereum and introduces “security by obscurity” controlled by a single entity.
+
+The availability and resilience of Ethereum services come from the decentralized network of nodes that can execute a transaction even if many of them are offline. Today, this is only achievable by providing people with open-source code that has financial incentives to be set up and maintained.
+
+If the users of Ethereum are constantly recurring to the same centralized entity for a service that most people use, we are walking on a path that compromises decentralization, the opposite of [making Ethereum cypherpunk](https://vitalik.eth.limo/general/2023/12/28/cypherpunk.html).
+
+>  Side Note: Advanced users will skip interacting with Etherscan and use things like [ApeWorx](https://www.apeworx.io/) or [Foundry](https://getfoundry.sh/) to do their on-chain interactions, which are open source and skips the above risk. But a large number of people will not learn how to use any open source CLI tools and they will rely on Etherscan website for reading information and sometimes even writing.
+
+Here is a doomsday scenario involving Etherscan: their DNS is hijacked and the website redirects to a malicious wallet drainer (which [happens](https://cointelegraph.com/news/curve-finance-exploit-experts-dissect-what-went-wrong) a [lot](https://crypto.news/hackers-hijack-frax-finance-dns-domain/) in [crypto](https://cointelegraph.com/news/balancer-social-engineering-attack-dns-provider-frontend-hijack), even to the teams with the best security measures). This could happen to any protocol website, *which is why I think [learning how to self-host](https://medium.com/iearn/self-hosting-web3-services-299306b706ee) is an important skill.*
+
+**The more people rely on Etherscan and have no good alternatives, the more incentive exists for a malicious actor to use it as an attack vector on the Ethereum community.**
+
+I’m not here to bash Etherscan. I believe their team is doing its best running its own business, my background in indie game development taught me that there are segments of the market that are very hard to profit without recurring to some default market strategies (ads, microtransactions), and it would be naive to expect them to open the source with nothing in return. So let’s talk about some alternatives!
+
+## Open Source Transaction Explorers
+
+### Beaconchain
+
+* Ethereum Preview: [https://beaconcha.in/](https://beaconcha.in/)
+* Source: [https://github.com/gobitfly/eth2-beaconchain-explorer](https://github.com/gobitfly/eth2-beaconchain-explorer)
+
+### **Blockscout**:
+
+* Ethereum Preview: [https://eth.blockscout.com/](https://eth.blockscout.com/)
+* Source: [https://github.com/blockscout/blockscout](https://github.com/blockscout/blockscout)
+
+### **Otterscan**
+
+* Optimism Preview: [https://otterscan.mainnet.testinprod.io/](https://otterscan.mainnet.testinprod.io/)
+* Source: [https://github.com/otterscan/otterscan](https://github.com/otterscan/otterscan)
+  
+>  A hard problem for open-source scanners today is that contract verification is centralized on Etherscan. How to deliver this feature with the same quality as an alternative if everyone is verifying contracts with Etherscan today? The “open auditability” value of Ethereum is compromised if we depend on a single closed-source entity to validate and audit what’s in production.
+
+All of the above are alternatives to Etherscan, if you try them out next time you want to use a scan you are already participating in decentralizing this part of the chain, and even better if you self-host them! But we can’t rely on altruism to maintain this, we have seen scans [close](https://www.investing.com/news/cryptocurrency-news/avax-blockchain-explorer-to-shut-down-as-etherscan-fees-draw-controversy-3214279) due to monetization issues, which I believe is one of the core aspects of our entire conundrum and why Etherscan is closed source to begin with!
+
+## Incentives for Explorers
+
+It’s visible that transaction explorers suffer from an incentive problem, let’s take a look at Etherscan website:
+
+![hummmm this ad looks legit!](https://cdn-images-1.medium.com/max/2726/1*69QzIPAe6Sfl7nnZ4xjWMg.png)
+
+Is there any other piece of Ethereum infrastructure that you use that shows you a suspicious ad like that? No! Because the incentives for the other parts are much better developed than having to be an ad seller to survive. Why do the websites of Ethereum Foundation, AAVE, Yearn, Maker, Uniswap, centralized exchanges, and other big Ethereum apps will not show you any ads? Because those app's monetary incentives are aligned, and showing ads is a net-negative thing to do since ads introduce another layer of risk to the end user, who is just trying to use a good finance product.
+
+I am not big brain enough to suggest an actual system design that fixes the scan situation right now, but I do believe that Ethereum could think of better incentives for people to run decentralized nodes that serve as an Etherscan alternative before we rely completely on it as a community, which would start by incentivizing somehow the open source alternatives and also incentivizing making them available to the public.
+
+>  Ethereum RPC nodes might have a similar centralization issue, but it’s easier to decentralize RPCs right now than scans since the best RPC clients are open source and [easy to reproduce](https://ethereum.org/en/developers/docs/nodes-and-clients/run-a-node/).
+
+I invite anyone to participate in this discussion and come up with something we can test!
+
+## Straight from the Otterscan
+
+To bring more perspectives to the conversation, here are the thoughts of the Otterscan creator [Willian Mitsuda](https://twitter.com/wmitsuda) when I asked some questions and showed him this article:
+
+![Now speaking: Willian!](https://cdn-images-1.medium.com/max/2000/1*_x2PYUibqpJqgCxS2q5TxA.png)
+
+### **Q: What motivated you to create Otterscan, and how does it differ from Etherscan in architecture and functionality?**
+
+Etherscan is already a great tool. I wanted to create something to fill in the gaps and reach an audience that Etherscan doesn’t: **be able to run your own explorer at your home, using your own node, running on consumer hardware, not expensive cloud machines.**
+
+Everything is open source, so users can hack and modify it. We use open databases like Sourcify for contract verification, so something as critical doesn’t vanish if the company behind it disappears.
+
+Etherscan is a closed-source SaaS, so we can’t do a fair comparison at an architectural level. But regarding Otterscan, our endgame is to reach feature parity with Etherscan (we still haven’t, but we will) while testing the limits of what can be done with a regular Ethereum node.
+
+To do that, [Erigon](https://github.com/ledgerwatch/erigon) (and all the technology they invented) was fundamental. Otterscan couldn’t exist before 3 years ago when Erigon made archive nodes possible in ~2TB (mainnet) and a few days of sync.
+
+**Otterscan V1 was only possible because Erigon enabled archive nodes in consumer hardware** and it was easy to expose data that existed inside your node, but not available through the standard JSON-RPC APIs.
+
+**Otterscan V2 (in alpha at this moment) will be only possible because Erigon kept evolving** and the new architecture of tx-based indexes in Erigon 3 (as opposed to block-based indexes) will allow us to build and augment standard node capabilities by deriving new data from it efficiently.
+
+That’ll bring us very close to producing most of the data Etherscan gives users, but without requiring anything other than your node and some (affordable) extra disk space.
+
+### **Q: What are your thoughts on the existing incentives for using and serving an open-source explorer? Any thoughts on decentralized funding for explorers?**
+
+I think finding a business model for explorers is as challenging as it is for other web3 products. We are gladly sponsored by Erigon, which allowed us to keep working on it so far as an open-source public good without any VC funding.
+
+New grant programs such as [Optimism’s Retroactive Public Goods Funding](https://app.optimism.io/retropgf) can potentially allow long-term survival for similar products.
+
+### **Q: How can the community contribute to the development and improvement of Otterscan, and what kind of contributions are you looking for?**
+
+Otterscan is composed of 2 parts:
+
+* The UI is a React application.
+* And an API implementation that is embedded inside Erigon.
+
+So people interested in contributing can improve the UI itself, program new APIs and indexers inside Erigon (that could be a good entry point for anyone interested in adventuring into ETH client internals), or make use of Otterscan APIs to do something completely new, like a specialized UI.
+
+Another interesting idea is implementing Otterscan APIs in other clients. There is already an independent community initiative to port it to Reth, and another community member implemented it inside Anvil, so you can point the Otterscan UI to it and browse your devnet.
+
+Here is an example community-made PR to add support for Otterscan JSON-RPC API extensions on Reth:
+[**Add support for Otterscan JSON-RPC API extensions · Issue #3726 · paradigmxyz/reth**](https://github.com/paradigmxyz/reth/issues/3726)
+
+And another community member added it inside Anvil:
+
+{{< tweet otterscan 1689190104613462016 >}}
+
+### Q: What advice would you give developers interested in building their open-source projects for the Ethereum ecosystem?
+
+Just build it. If you are technically skilled, there are lots of opportunities out there, and if you make something that solves other people’s problems, you will surely be recognized.

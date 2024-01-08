@@ -1,0 +1,126 @@
+---
+title: "Automatizando investimentos dentro da blockchain de acordo com o risco"
+author: "Marco Guaspari Worms"
+date: "2022-08-01"
+categories: [portuguese, yearn]
+---
+
+>  Esse artigo é a junção de todos os posts de um fio no twitter: [https://twitter.com/MarcoWorms/status/1553429027628744704](https://twitter.com/MarcoWorms/status/1553429027628744704)
+
+A yearn é tipo uma conta poupança 100% transparente dentro da blockchain, decidir onde alocar os recursos e quanto risco tomar para isso é parte crucial da operação!
+
+Cada [cofre](https://medium.com/iearn/yearn-finance-explained-what-are-vaults-and-strategies-96970560432) possui até 20 estratégias de investimento, essas estratégias têm níveis de riscos diferentes medidos quantitativamente que são usados para decidir o quanto alocar por opção.
+
+Com as turbulências atuais nos mercados financeiros e de cripto um contribuidor da yearn ([storming0x](https://twitter.com/storming0x)) escreveu detalhadamente como o protocolo da yearn lida com os riscos com uma framework aberta que pode ser melhorada por qualquer outro serviço, assim como o código de tudo feito na yearn!
+
+![](https://i.imgur.com/cQIU76Z.png)
+
+Pros componentes principais (tipo o código do cofre) os procedimentos de segurança e testes é o clássico em DeFi: um processo cascata de desenvolvimento/teste/auditoria
+
+Mas pro código das estratégias de investimento isso muda pois oportunidades surgem e morrem muito rápido
+
+Auditorias e reviews de segurança são o maior gargalo pra colocar contratos em produção
+
+A demanda é muito alta e você não tem controle do tempo que pode demorar
+
+Se as estratégias de investimento precisam ir pra produção mais rápido que o processo normal, **como gerir o risco?**
+
+![](https://cdn-images-1.medium.com/max/2000/1*kXaVNhsEzqqRVJ_g_-_wHw.gif)
+
+Cada estratégia recebe uma nota para a **chance de um problema ou hack VS. tamanho do impacto**
+
+Jogadores de poker podem chamam isso de “Valor Esperado” (EV em inglês)
+
+Uma formula dá notas consistentes para cada estratégia diferente baseado em dimensões medidas num processo interno
+
+* **Documentação sobre notas de risco das estratégias:** [https://docs.yearn.finance/resources/risks/risk-score](https://docs.yearn.finance/resources/risks/risk-score)
+
+![Exemplos de notas de uma estratégia](https://cdn-images-1.medium.com/max/3796/0*VjPyzipnENGZjjd_)
+
+Quanto menor for a nota, menor a chance de um problema acontecer baseado em dados passados
+
+Essa nota passa por dimensões como:
+
+* Auditorias
+* Reviews
+* Complexidade
+* Protocolos Usados
+
+Assim comparamos riscos de estratégias diferentes
+
+Com as notas conseguimos fazer um mapa de risco onde o total que uma estratégia tem investido nela entra como um dos fatores de risco (“chance de algo dar problema”)
+
+Colocamos a estratégia na tabela com eixos
+
+* Gravidade (y)
+* Chance (x)
+
+aqui: [http://yearn.watch/risk](https://t.co/sDh4ewP272)
+
+![[http://yearn.watch/risk](https://t.co/sDh4ewP272)](https://cdn-images-1.medium.com/max/2000/1*lBFL4LR2MWen1OFx2lE3CQ.png)
+
+Como isso é útil?
+
+Soltamos uma estratégia antes de auditorias, marcando ela como alto risco
+
+Limitamos o total de recursos alocados na estratégia enquanto mitigação de risco são feitas
+
+A yearn coloca a estratégia numa bicicleta com rodinhas, tomando ações preventivas
+
+Essa forma de abordar o problema balanceia experimentação rápida com gestão de risco e segurança
+
+Reviews de segurança internos sempre acontecem antes de deployar um código mas isso é só a parte da nota, passando por desde pares até auditorias completas, melhorando a nota
+
+“testar em produção” virou um meme no DeFi summer
+
+Na realidade, a yearn faz alocações medidas por risco e checa o risco antes de alocar os fundos
+
+Isso mostra que levamos a sério segurança
+
+Mais trabalho está sendo feito nos riscos dos cofres
+
+* **Documentação sobre notas de risco dos cofres:** [https://github.com/yearn/yearn-data-analytics/blob/master/src/risk_framework/README.md](https://github.com/yearn/yearn-data-analytics/blob/master/src/risk_framework/README.md)
+
+Sobre a nota de “Protocolos Usados”
+
+Antes de fazer deploy de uma estratégia que use um protocolo novo fazemos uma checagem de diligência em vários aspectos: governança da multisig, codebase, auditorias, etc
+
+A maioria dos protocolos estão abertos a melhorar nessas dimensões
+
+A yearn é transparente sobre todos os riscos que um usuário tem ao depositar nela
+
+Você pode simplesmente depositar e esquecer
+
+Ou você pode [monitorar](https://medium.com/iearn/diving-into-yearn-metrics-8c3fb0520927) cada átomo de como a salsicha é feita com ferramentas feitas pelos próprios contribuidores
+
+DeFi de verdade é transparente
+
+![Exemplo de cofre visualizado no [yearn.watch](https://yearn.watch/)](https://cdn-images-1.medium.com/max/2000/0*gRj7rQupMSq517AV.png)
+
+Enquanto trabalho é feito nas mitigações de risco as notas melhoram e alocamos mais recursos na estratégia
+
+A yearn faz reviews recorrentes baseados no total depositado na estratégia
+
+Uma das metas dos cofres v3 é ter todo o framework de risco “on chain” e automatizado
+
+Esses aspectos de gestão de risco são a receita secreta da yearn pra lidar com investimentos e segurança através de prevenção
+
+Nenhum sistema é perfeito, incluindo esse
+
+Mas acho que o sistema se provou na fogueira que foi o crash atual
+
+Outros podem iterar em cima disso
+
+Espero que isso tenha agregado para pessoas e protocolos que vão criar seus próprios frameworks
+
+A Yearn se inspira em gigantes como [@MakerDAO](https://twitter.com/MakerDAO) e customizamos para nossas necessidades
+
+Obrigado a todos contribuidores na yearn que fazem e mantém as documentações e ferramentas
+
+![](https://cdn-images-1.medium.com/max/2000/1*Ccb-_eElgHRTG-J5kF6wPA.gif)
+
+Traduzi para português pois gostei do fio que ele fez e ajudei a fazer partes das documentações!
+
+Aprenda mais sobre a [@iearnfinance](https://twitter.com/iearnfinance) e como funciona outros processos da DAO lendo a documentação: [http://docs.yearn.finance](https://t.co/Ml5GM7hVWB)
+
+[Post original do @storming0x](https://twitter.com/storming0x/status/1553092343619850240)

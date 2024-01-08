@@ -1,0 +1,119 @@
+---
+title: "Answering the public questions about Yearn Finance"
+author: "Marco Guaspari Worms"
+date: "2024-01-02"
+categories: [english, yearn]
+---
+
+> This article is not financial advice, it simply reflects my opinions around the Yearn protocol, always do your own research before investing in anything.
+
+> Disinformation about crypto ecossystems is rampant and this is my attempt to bring quality information on subjects that are hard to find answers for on Google.
+
+![I recently found this website that shows top Google searches related to a theme ([https://answerthepublic.com/](https://answerthepublic.com/)) and I wanted to do a fun exercise of answering all the top questions about Yearn!](https://cdn-images-1.medium.com/max/2102/1*HUCyuoE4gsACGdqcBxjbBA.png)
+
+## What is yearn finance?
+
+Taken straight from Yearn documentation:
+
+>  Yearn Finance is DeFi’s premier yield aggregator. Giving individuals, DAOs and other protocols a way to deposit digital assets and receive yield.
+
+>  The protocol is maintained by various independent developers and is governed by YFI holders.
+
+But if you are not used to crypto, some words above might be scary so let’s break down what the above means:
+
+>  Yearn Finance is a product that exist in Decentralized Finance. It is a yield aggregator: “yield” means “profitable returns from an investment”, and “aggregator” means it aggregates many sources of investment (that generate yield).
+
+>  Yearn not only aggregates them but also screens every possible yield opportunity through a a [risk framework](https://docs.yearn.finance/resources/risks/protocol-risks), and only lets users deposit in ones that pass quality criteria.
+
+>  The Yearn Finance protocol is maintained by different people, most anonymous, and the group coordinates itself through a crypto coin called YFI, which is used as voting power in an open forum that can suggest new directions for Yearn products.
+
+* Yearn Website: [https://yearn.fi](https://yearn.fi)
+* Yearn Documentation: [https://docs.yearn.finance/](https://docs.yearn.finance/)
+
+*This question is more deeply answered by the article “Yearn Finance Explained”: [https://medium.com/iearn/yearn-finance-explained-what-are-vaults-and-strategies-9697056043](https://medium.com/iearn/yearn-finance-explained-what-are-vaults-and-strategies-96970560432)*
+
+## Is Yearn Finance dead?
+
+**No!** **Yearn is more alive than ever!**
+
+The best place to follow yearn activity is through twitter: [https://twitter.com/yearnfi](https://twitter.com/yearnfi) (watch out for impostors! this is the only yearn account!)
+
+You can also reach out to active community members through Discord: [https://discord.gg/yearn](https://discord.gg/yearn)
+
+In 2023 alone Yearn has delivered many products like veYFI, yCRV, yPRISMA, yETH, and the new version of the core product Yearn Vaults V3. Developer chats are active and building is non-stop!
+
+The rumor that “yearn is dead” comes from the departure of the initial developer ([Andre Cronje](https://twitter.com/AndreCronjeTech)) from the team. Yearn is a big team today with dozens of people maintaining many parts of the yearn ecosystem, and Andre set out to work in other projects like [Fantom](https://fantom.foundation/) and [Keep3r](https://keep3r.network/).
+
+The Yearn creative lead [draper](undefined) made a recent thread with all the videos we made for new releases for 2023, I highly recommend watching them! It’s fun!
+
+{{< tweet draper0x 1741443589161312636 >}}
+
+## Is Yearn Finance a good investment?
+
+It depends! The issue with this question is that there are many ways take part in the yearn ecosystem, each has its pros and cons:
+
+* You can deposit into one of the hundreds of existing yearn vaults.
+* You can lock YFI tokens and receive veYFI, which allows you to boost vault rewards and vote on where bought-back YFI will be sent.
+* You can participate in ETH staking through yETH
+
+For Yearn Vaults you can see how risk is assessed for each yield strategy in the yearn risk framework documentation: [https://docs.yearn.finance/resources/risks/protocol-risks](https://docs.yearn.finance/resources/risks/protocol-risks)
+
+## Is Yearn Finance safe?
+
+It depends! There are many factors to consider because it depends on what you want to do and your risk tolerance. Depositing in Yearn Vaults or any other Yearn product contains layers of risks from different smart contracts.
+
+Yearn does a diligence process in all yield strategies, and the people involved in this process are some of the best in the space to deal with Ethereum smart contract security, but security is an incredibly complex issue in DeFi due to the immutable nature of transactions and smart contracts (hacks can’t be undone).
+
+The core product from Yearn ([yVaults](https://medium.com/iearn/yearn-finance-explained-what-are-vaults-and-strategies-96970560432)) exists to abstract away all the security diligence process. The user can deposit in strategies that are vetted and optimized by simple deposit/withdrawing, which is a much more friendly interface than interacting with all DeFi protocols needed, but ultimately by doing this abstraction Yearn also introduces another set of risks, which is why users should always do their own research before interacting with DeFi protocols. Refer to Yearn documentation for a deep dive into risks:
+
+* **Protocol Risks:** [https://docs.yearn.finance/resources/risks/protocol-risks](https://docs.yearn.finance/resources/risks/protocol-risks)
+* **Vaults Risks:** [https://docs.yearn.finance/resources/risks/vault-risks](https://docs.yearn.finance/resources/risks/vault-risks)
+* **Strategy Risks:** [https://docs.yearn.finance/resources/risks/strategy-risks](https://docs.yearn.finance/resources/risks/strategy-risks)
+* **Risk Scores for vaults**: [https://docs.yearn.finance/resources/risks/risk-score](https://docs.yearn.finance/resources/risks/risk-score)
+
+## How does yearn finance work?
+
+Yearn works through many pieces:
+
+* You can use yearn products at [https://yearn.fi/](https://yearn.finance/)
+* Active developers use telegram groups to coordinate independent products, the biggest public group is [https://t.me/yearnfinance](https://t.me/yearnfinance)
+* There is an open community discord where people can reach out for support: [https://discord.gg/yearn](https://discord.gg/yearn)
+* There is an official Yearn GitHub where product are developed/maintained: [https://github.com/yearn](https://github.com/yearn)
+* Yearn products are a series of contracts deployed across many blockchains, you can check live addresses here: [https://docs.yearn.fi/getting-started/products/addresses](https://docs.yearn.finance/getting-started/products/addresses)
+* There is an open governance forum to propose things to be voted by veYFI holders: [https://gov.yearn.fi/](https://gov.yearn.fi/)
+* Governance votes happen on snapshot: [https://snapshot.org/#/veyfi.eth](https://snapshot.org/#/veyfi.eth)
+* Documentation is done at [https://docs.yearn.finance/](https://docs.yearn.finance/)
+
+*If you are looking for how the core product of yearn “Yearn Vaults” work check the article “Yearn Finance Explained”: [https://medium.com/iearn/yearn-finance-explained-what-are-vaults-and-strategies-9697056043](https://medium.com/iearn/yearn-finance-explained-what-are-vaults-and-strategies-96970560432)*
+
+## When was yearn finance launched?
+
+According to one of the first posts made on Yearn Medium it was around 24th January 2020. The post was made on Feb 7 and says launch was 14 days ago:
+
+![[https://medium.com/iearn/iearn-finance-milestones-and-roadmap-27fe63830951](https://medium.com/iearn/iearn-finance-milestones-and-roadmap-27fe63830951) (one of the first posts in yearn medium)](https://cdn-images-1.medium.com/max/2000/1*_J3YP0odctH6GAvwyI0dqg.png)
+
+## Why is yearn finance going down? Will yearn finance go up again?
+
+This question is probably related to the price action of YFI, which contains many factors, not limited to but including: the price of Bitcoin, the price of Ethereum, the sentiment of the crypto community about original DeFi protocols, the chance of the bet that EVM smart contracts being the future of finance, and a gazillion other factors that are not necessarily tied to just the quality of Yearn’s deliverables or team.
+
+The team is actively maintaining the protocol and delivering great new products despite the YFI price action. Also, with the introduction of veYFI there is more to be done with YFI, like boosting vaults rewards.
+
+## Where to stake yearn finance?
+
+I interpret this question as “where to stake YFI to earn more YFI” and the answer is veYFI!
+
+* veYFI website: [https://yearn.fi/veyfi](https://yearn.fi/veyfi)
+* veYFI docs: [https://docs.yearn.finance/contributing/governance/veyfi](https://docs.yearn.finance/contributing/governance/veyfi)
+
+## Who owns yearn finance?
+
+Yearn is a DAO (Decentralized Autonomous Organization) which means governance is fragmented between many parts.
+
+YFI holders and the yearn teams plays a crucial role in ownership: YFI holders can vote for anything to happen on governance forums, but it would be extremely slow and inefficient, so yearn teams have autonomy to do changes but anything that can generate a greater impact the ecosystem is often put through vote in the governance forum. Here are some examples of how ownership is fragmented:
+
+* Let’s say there is a bug on the website that makes a button vanish. Anyone can open a PR with a fix, it’s all open source, the frontend team from yearn will either fix themselves or accept a community fix. YFI holders do not need to be involved.
+* But if we want to change voting power dynamics and move from YFI to veYFI, we have to involve YFI holders in this decision and then put it to a vote.
+
+Ownership in a DAO is fragmented and Yearn tries to give autonomy to teams for execution and autonomy for YFI holders for strategy.
+
+![Trust is one of yearn values, taken from [https://yearn.love/](https://yearn.love/)](https://cdn-images-1.medium.com/max/2526/1*LJRgqqEZ8yj8lWrQknyeDQ.png)

@@ -1,0 +1,66 @@
+---
+title: "yETH: LSD Lobbying season is now open"
+author: "Marco Guaspari Worms"
+date: "2023-07-04"
+categories: [english, yearn]
+---
+
+![](https://cdn-images-1.medium.com/max/3000/0*HQPLLhpEKmdJlik7.png)
+
+yETH gives users a way to hold a basket of various Ethereum Liquid Staking Tokens (LSDs) in a single token. Giving them access to the best yields while spreading their risk across multiple LSDs. We are now opening the bootstrapping phase to launch yETH!
+
+## Bootstrapping: Whitelist, Incentives, and Votes
+
+The bootstrapping consists of 3 phases:
+
+* Whitelisting for LSD protocols
+* Deposit and Incentives
+* Voting
+
+![](https://i.imgur.com/dNw6phF.png)
+
+## Whitelisting Period for LSD Protocols
+
+During the 3-week whitelisting period, LSD protocols interested in being included in yETH must pay a 1 ETH non-refundable fee, which turns into yield for st-yETH users. After paying the fee, protocols fill out a form with basic screening questions. Yearn reviews responses, but does not evaluate any merit of the LSD protocol beyond just looking for malicious submissions.
+
+* [Join the Whitelist](https://yeth.yearn.finance/)
+
+## Deposit and Incentives
+
+The 2-week deposit phase starts concurrently with the final week of the whitelisting period. During this time, aspiring yETH users can deposit their ETH into the Bootstrapper contract, receiving 1:1 st-yETH tokens in return. The bootstraped st-yETH tokens are locked for 16 weeks.
+
+The 2-week incentive phase starts concurrently with the final week of the whitelisting period. st-yETH token holders can now create incentives for other st-yETH holders to vote for or against specific assets to be included in the yETH pool in the next phase.
+
+* [Deposit ETH](https://yeth.yearn.finance/deposit)
+* [Incentivize a LSD protocol](https://yeth.yearn.finance/incentive)
+
+## Voting
+
+When incentive phase ends, voting period starts.
+
+Users who have locked their ETH during the deposit phase will receive st-yETH tokens, granting them voting rights to decide which LSD protocols should be included in the yETH pool. As a user, you’ll have the power to choose the best protocols based on their incentives, performance, and other factors.
+
+Incentives posted by protocols who are chosen go to ALL st-yETH holders, no matter who they voted for. This avoids a “winner takes it all” scenario and there is no wrong way to vote. The top 5 LSDs with the most votes are included by the end of voting, and if an outcome doesn’t occur for an incentive poster, they can claim their incentives back.
+
+* [Vote on LSDs](https://yeth.yearn.finance/vote)
+
+## Post-Bootstrapping: What Happens Next?
+
+Once the bootstrapping phase ends, Yearn begins launch preparations and purchases LSD tokens with the deposited ETH according to the final weight of the vote. When launched, users can deposit LSDs or ETH into the pool and receive yETH tokens while having the ability to stake their yETH as Staked yETH (st-yETH) to earn compounded yield according to the earnings of LSDs and other protocol rewards.
+
+## Why should LSD protocols participate in bootstraping?
+
+* The pool buys LSD tokens with all the deposited ETH, creating buy pressure and demand for your LSD token.
+* If you get included in the bootstrapping phase, the max starting [weight](https://gov.yearn.finance/t/yip-72-launch-yeth/13158#yeth-in-a-nutshell-5) is 45%, if you get added later, you start at 1% so it’s a much steeper hill to climb.
+* If you participate in depositing ETH, you end up controlling the direction of the protocol, so you can influence future weights, future parameter settings, and whether or not a competing LSD protocol gets included.
+
+## Join the Lobbying: Create or Receive Incentives
+
+We invite you to participate in this exciting on-chain lobbying fiesta by depositing ETH during the bootstrapping phase and voting for your favorite LSD protocols!
+
+* [Join the Whitelist](https://yeth.yearn.finance/)
+* [Deposit ETH](https://yeth.yearn.finance/deposit)
+* [Incentivize a LSD protocol](https://yeth.yearn.finance/incentive)
+* [Vote on LSDs](https://yeth.yearn.finance/vote)
+
+*Bootstrapping and yETH specifications can be found in the governance proposal: [YIP-72: Launch yETH](https://gov.yearn.finance/t/yip-72-launch-yeth/13158/1)*

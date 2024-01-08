@@ -1,0 +1,143 @@
+---
+title: "Isolating the impurity of randomness in card games"
+author: "Marco Guaspari Worms"
+date: "2018-04-05"
+categories: [english, functional programming]
+---
+
+![[Slay the Spire is awesome](https://www.rockpapershotgun.com/2018/02/19/why-revealing-all-is-the-secret-of-slay-the-spires-success/)](https://cdn-images-1.medium.com/max/3840/1*tKzMEkY_-HZY0bfFzJPymQ.jpeg)
+
+*I’ve tried to add all the reference needed to lookup topics that I’m not sure everyone knows. If you feel that there is any section missing reference please let me know :)*
+
+> This article is about handling a card deck in Javascript using patterns to make it easy to separate concerns between the deck handling and the Random Number Generator (RNG). It favors traceability of what happened, so you can always have a predictable history of your deck state management over performance.
+
+Tip: use [Ramda’s REPL](http://ramdajs.com/repl/?v=0.25.0) to try out the examples. You don’t need to import [Ramda](http://ramdajs.com/) there ;)
+
+## A word on impurity
+
+RNGs are [impure](https://drboolean.gitbooks.io/mostly-adequate-guide-old/content/ch3.html) by nature. They are also at the heart of all card games, so learning how to separate the deck handling logic from your source of randomness will bring a better entropy management for your program ([software entropy](https://en.wikipedia.org/wiki/Software_entropy) and not [random entropy](https://en.wikipedia.org/wiki/Entropy_(computing))). We will see how to manipulate a card deck using a functional-oriented style, keeping in mind immutability, function purity, and proper side-effect handling.
+
+## Why would we want immutability?
+
+The focus of this article is not state management, but to answer the question above I need to scratch that surface.
+
+Card games have an asynchronous pace. Unlike a big part of games, you don’t actually need thousands of functions firing everywhere every 1/60 of a second. Like most board games, a card game can almost always be described as a reactive system. I don’t know if that term actually exists but it seems a nice fit since basically what you need to do is wait for the user to do something and only after that you respond reactively to what he did.
+
+Talking about reactive stuff, there has been massive fuzz about [React](https://reactjs.org/) over this last couple of years. It really is something amazing because it brought to the masses the concept of view = render(state) that translates into "the view is always the return of a renderer function that knows the state", so everytime you want to change something in your view, you simply tell React to setState and it will inteligently update your view.
+
+The concept above is really cool because it just fits like a glove to most card and board games but we all know that tech has its trade-offs. When you use React-like stuff you have to be very careful to not break some basic laws, and one of them is immutability. You are not allowed to mutate the state, you can only dispatch the new state you want your view to have, and this calls for a bit more complicated state management (using stuff like Redux when your state gets harder to manage).
+
+*Do note that this laws only exist because Javascript has methods that mutates stuff. This wouldn’t be a problem in a language designed with that in mind such as [ELM](http://elm-lang.org/) or [ReasonML](https://reasonml.github.io/)*
+
+When using a predictable state manager like [Redux](https://redux.js.org/) you will see that you will always want to track down what variables were used on a state change, that way you can always rebuild your state from the events and have a reliable source of bug tracking. So, let’s see how to manipulate a deck of cards favouring a functional programming style that helps us deal better with this immutable object changes.
+
+Our goal here is to facilitate the use of [event-sourcing](https://martinfowler.com/eaaDev/EventSourcing.html) in your application, so you can always replay events to obtain the current state, this also brings nice debugability for free. You will always be able to reproduce any game that your users played since you can track down every state change, and this also opens up a lot of space for gathering intel on balancing out stuff since you have all the data you need by default.
+
+## What is a deck of cards? What is a card?
+
+Any array can be a deck. We will essentially learn a bunch of useful array methods that you can use for designing card-based games such as Magic: The Gathering, [Slay the Spire](http://store.steampowered.com/app/646570/Slay_the_Spire/), Solitaire, Poker, or whatever else.
+
+Since a deck is any array, then a card is any element in the root level of the deck array. We will talk about why a card should probably be an object later on.
+
+{{< gist MarcoWorms 136b858aac7e1effe78481dda0a05d4a >}}
+
+## Drawing a card from the deck
+
+When drawing a card we want 2 things:
+
+1. We want to know what card we drew
+2. We want the new deck without the drawn card
+
+Our draw function must respect both rules so lets see how to build this. First lets start with the deck. I suggest you to create your own deck ;)
+
+{{< gist MarcoWorms 9617a1772065b07fb3d62730355034e7 >}}
+
+So now let’s get the card and the remaining deck:
+
+{{< gist MarcoWorms 9617a1772065b07fb3d62730355034e7 >}}
+
+If you dislike Ramda or frameworks you can always [write your own implementation](https://en.wikipedia.org/wiki/Reinventing_the_wheel). For sanity reasons I will be doing all examples with minimal Ramda usage, but in real life cases I strongly suggest you use it as much as you can since it drastically diminishes the amount of code you have to write (and test, and maintain).
+
+{{< gist MarcoWorms 4883dd50db21cd1aa46e8d3b5fac01bd >}}
+
+If you noticed, this kinda ruins the possibility of having elements in your array that are not unique. For example, running without([1], [1, 2, 1]) would destroy your game because it removes both 1s from the array.
+
+What I can say about this is that it’s highly unlikely that in a game you will use anything other than an object to represent cards. All other data structures seems unfit for this purpose and I recommend you always use objects to represent cards.
+
+We know how to draw a card from the top of the deck, but what if we wanted to do it from the bottom? Or worse, what if we want a random card? Lets start by separating concerns. We will make a generic draw function that doesn’t know how to pick a card, it only knows how to respect the 2 rules we set to card drawing:
+
+{{< gist MarcoWorms b51fd9a6318827870cd59f7a7fb41333 >}}
+
+[***Check out the drawing cards interactive example](https://goo.gl/7j4Khk)***
+> # Hint for Ramda’s REPL: click “tidy” in the output tab for pretty results
+
+So now our example of drawing the top card becomes this:
+
+{{< gist MarcoWorms 7201871343040506703dfa7df740f389 >}}
+
+And if we want to draw it from the bottom:
+
+{{< gist MarcoWorms b54dc2d524a2e1c8c40760ce39504caf >}}
+
+One important thing to notice in this implementation: We have delegated the dirtiness of deciding which card to draw to a function called ‘cardPicker’. Now our draw function can’t be responsible for unexpected behavior that comes with the burden of dealing with randomness, and this means we can now draw a random card from the deck like this:
+
+{{< gist MarcoWorms 7f9268cd757acd4b0e4bedf27ba1bfde >}}
+
+randomElement does the dirty job of generating a random number, so we successfully removed this burden from the draw! You can now write some tests to your draw function ;)
+
+Before we move on, there is one last thing we can do to make our draw function even better. There is a reason why the cardPicker argument comes before the deck and it's because I used a data-last approach for it so we can benefit from something called ["partial application"](https://mostly-adequate.gitbooks.io/mostly-adequate-guide/ch04.html). The data to be operated on is supplied last so we can do some nifty stuff like this:
+
+First we import [ramda’s curry method](http://ramdajs.com/docs/#curry) to make our draw function accept partial application
+
+{{< gist MarcoWorms 6fe37c632d164acb4fa3f57974c3a862 >}}
+
+Now we can use our new powers to bring in semantic delights to our code:
+
+{{< gist MarcoWorms f8a470b5c8320820d788465722b3e6e4 >}}
+
+[Check out the drawing cards using partial application interactive example](https://goo.gl/BNNaox)
+
+Have fun experimenting around with the draw, I’m sure there are many interesting things to explore with just this function :D
+
+## Adding a card to the deck
+
+After all that over engineering for drawing, adding something to an array is kinda boring. We can just use common array methods for that:
+
+{{< gist MarcoWorms a51c61a8511fc8e9d10fe9f04bbe9b6b >}}
+
+[Check out the adding cards interactive example](https://goo.gl/e9LLNf)
+
+## Shuffling the deck and seeded values
+
+This is probably the most difficult part to try to remove impurity. Shuffling the deck is heavily RNG-based, so I’m gonna take a different approach here and use a seeded random. This same technique could be used to improve our draw function, so after this section I recommend you try to make your draw function also a seeded random number.
+
+What is a seeded random? Well, I’m calling it random but that’s a lie, it’s not random at all, we are just gonna use a complicated operation that makes it hard to predict the output of this function. By doing so we are gonna respect the function purity laws that the same inputs should give the same outputs.
+
+Let’s make a really basic seeded random value function:
+
+{{< gist MarcoWorms d5ce7890df9fd9e87928d2f79f0b30d6 >}}
+
+Cool. This function will always return a number from 0 to 1 given a seed number (which is what you will make actually random in your implementation). Lets then make a shuffle function that uses a seed to shuffle an array:
+
+{{< gist MarcoWorms 71d26db8f851c66c6b25863d97d5eb01 >}}
+
+We can now shuffle or deck:
+
+{{< gist MarcoWorms 976be1150c0331f8b44e0577679f540e >}}
+
+[Check out the shuffle interactive example](https://goo.gl/jjuh14)
+
+Everytime you call shuffle with the same seed and deck you will have the same output.
+
+But there is still a catch: how do we make our seed random?
+
+Well, that’s totally up to you. Now that the shuffle function is pure and it’s not its responsibility to know about randomness anymore that burden is up to you.
+
+I recommend you browse [random.org](https://www.random.org/) for more information on randomness and for a good random API. You can also check out the dice implementation I did with a friend of mine for a Telegram’s MMORPG:
+
+* [Dice module](https://github.com/telemmo/telemmo/blob/master/src/game/core/dice.js)
+* [Also, check this test for the dice module usage](https://github.com/telemmo/telemmo/blob/master/src/game/core/dice.test.js)
+
+I guess the point of the article is fulfilled by now and I want to know if this content was relevant to you. Please leave a comment sharing your thoughts, thanks for reading!
+
+*I recently made a Twitter so if you want to chat around just hit me up there [@MarcoWorms](https://twitter.com/MarcoWorms)*
