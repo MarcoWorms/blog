@@ -2,18 +2,39 @@ project:
   type: website
 
 website:
-  title: "blog"
+  title: "Worms Blog"
   navbar:
     right:
-      - about.qmd
-      - icon: github
-        href: https://github.com/
       - icon: twitter
-        href: https://twitter.com
+        href: https://twitter.com/MarcoWorms
+      - icon: github
+        href: https://github.com/MarcoWorms
 format:
   html:
-    theme: cosmo
+    # theme: default
+    # theme: cerulean
+    # theme: cosmo
+    # theme: cyborg
+    # theme: darkly
+    # theme: flatly
+    # theme: journal
+    # theme: litera
+    # theme: lumen
+    # theme: lux
+    # theme: materia
+    # theme: minty
+    # theme: morph
+    # theme: pulse
+    # theme: quartz
+    # theme: sandstone
+    # theme: simplex
+    # theme: sketchy
+    # theme: slate
+    # theme: solar
+    theme: spacelab
+    # theme: superhero
+    # theme: united
+    # theme: vapor
+    # theme: yeti
+    # theme: zephyr
     css: styles.css
-
-
-

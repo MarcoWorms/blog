@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Marco Guaspari Worms">
+<meta name="dcterms.date" content="2018-04-05">
+
+<title>Worms Blog - Isolating the impurity of randomness in card games</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Worms Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/MarcoWorms" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/MarcoWorms" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Isolating the impurity of randomness in card games</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">english</div>
+                <div class="quarto-category">functional programming</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Marco Guaspari Worms </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 5, 2018</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/3840/1*tKzMEkY_-HZY0bfFzJPymQ.jpeg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://www.rockpapershotgun.com/2018/02/19/why-revealing-all-is-the-secret-of-slay-the-spires-success/">Slay the Spire is awesome</a></figcaption>
+</figure>
+</div>
+<p><em>I’ve tried to add all the reference needed to lookup topics that I’m not sure everyone knows. If you feel that there is any section missing reference please let me know :)</em></p>
+<blockquote class="blockquote">
+<p>This article is about handling a card deck in Javascript using patterns to make it easy to separate concerns between the deck handling and the Random Number Generator (RNG). It favors traceability of what happened, so you can always have a predictable history of your deck state management over performance.</p>
+</blockquote>
+<p>Tip: use <a href="http://ramdajs.com/repl/?v=0.25.0">Ramda’s REPL</a> to try out the examples. You don’t need to import <a href="http://ramdajs.com/">Ramda</a> there ;)</p>
+<section id="a-word-on-impurity" class="level2">
+<h2 class="anchored" data-anchor-id="a-word-on-impurity">A word on impurity</h2>
+<p>RNGs are <a href="https://drboolean.gitbooks.io/mostly-adequate-guide-old/content/ch3.html">impure</a> by nature. They are also at the heart of all card games, so learning how to separate the deck handling logic from your source of randomness will bring a better entropy management for your program (<a href="https://en.wikipedia.org/wiki/Software_entropy">software entropy</a> and not <a href="https://en.wikipedia.org/wiki/Entropy_(computing)">random entropy</a>). We will see how to manipulate a card deck using a functional-oriented style, keeping in mind immutability, function purity, and proper side-effect handling.</p>
+</section>
+<section id="why-would-we-want-immutability" class="level2">
+<h2 class="anchored" data-anchor-id="why-would-we-want-immutability">Why would we want immutability?</h2>
+<p>The focus of this article is not state management, but to answer the question above I need to scratch that surface.</p>
+<p>Card games have an asynchronous pace. Unlike a big part of games, you don’t actually need thousands of functions firing everywhere every 1/60 of a second. Like most board games, a card game can almost always be described as a reactive system. I don’t know if that term actually exists but it seems a nice fit since basically what you need to do is wait for the user to do something and only after that you respond reactively to what he did.</p>
+<p>Talking about reactive stuff, there has been massive fuzz about <a href="https://reactjs.org/">React</a> over this last couple of years. It really is something amazing because it brought to the masses the concept of view = render(state) that translates into “the view is always the return of a renderer function that knows the state”, so everytime you want to change something in your view, you simply tell React to setState and it will inteligently update your view.</p>
+<p>The concept above is really cool because it just fits like a glove to most card and board games but we all know that tech has its trade-offs. When you use React-like stuff you have to be very careful to not break some basic laws, and one of them is immutability. You are not allowed to mutate the state, you can only dispatch the new state you want your view to have, and this calls for a bit more complicated state management (using stuff like Redux when your state gets harder to manage).</p>
+<p><em>Do note that this laws only exist because Javascript has methods that mutates stuff. This wouldn’t be a problem in a language designed with that in mind such as <a href="http://elm-lang.org/">ELM</a> or <a href="https://reasonml.github.io/">ReasonML</a></em></p>
+<p>When using a predictable state manager like <a href="https://redux.js.org/">Redux</a> you will see that you will always want to track down what variables were used on a state change, that way you can always rebuild your state from the events and have a reliable source of bug tracking. So, let’s see how to manipulate a deck of cards favouring a functional programming style that helps us deal better with this immutable object changes.</p>
+<p>Our goal here is to facilitate the use of <a href="https://martinfowler.com/eaaDev/EventSourcing.html">event-sourcing</a> in your application, so you can always replay events to obtain the current state, this also brings nice debugability for free. You will always be able to reproduce any game that your users played since you can track down every state change, and this also opens up a lot of space for gathering intel on balancing out stuff since you have all the data you need by default.</p>
+</section>
+<section id="what-is-a-deck-of-cards-what-is-a-card" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-deck-of-cards-what-is-a-card">What is a deck of cards? What is a card?</h2>
+<p>Any array can be a deck. We will essentially learn a bunch of useful array methods that you can use for designing card-based games such as Magic: The Gathering, <a href="http://store.steampowered.com/app/646570/Slay_the_Spire/">Slay the Spire</a>, Solitaire, Poker, or whatever else.</p>
+<p>Since a deck is any array, then a card is any element in the root level of the deck array. We will talk about why a card should probably be an object later on.</p>
+<p><script src="https://gist.github.com/MarcoWorms/136b858aac7e1effe78481dda0a05d4a.js"></script></p>
+</section>
+<section id="drawing-a-card-from-the-deck" class="level2">
+<h2 class="anchored" data-anchor-id="drawing-a-card-from-the-deck">Drawing a card from the deck</h2>
+<p>When drawing a card we want 2 things:</p>
+<ol type="1">
+<li>We want to know what card we drew</li>
+<li>We want the new deck without the drawn card</li>
+</ol>
+<p>Our draw function must respect both rules so lets see how to build this. First lets start with the deck. I suggest you to create your own deck ;)</p>
+<p><script src="https://gist.github.com/MarcoWorms/9617a1772065b07fb3d62730355034e7.js"></script></p>
+<p>So now let’s get the card and the remaining deck:</p>
+<p><script src="https://gist.github.com/MarcoWorms/9617a1772065b07fb3d62730355034e7.js"></script></p>
+<p>If you dislike Ramda or frameworks you can always <a href="https://en.wikipedia.org/wiki/Reinventing_the_wheel">write your own implementation</a>. For sanity reasons I will be doing all examples with minimal Ramda usage, but in real life cases I strongly suggest you use it as much as you can since it drastically diminishes the amount of code you have to write (and test, and maintain).</p>
+<p><script src="https://gist.github.com/MarcoWorms/4883dd50db21cd1aa46e8d3b5fac01bd.js"></script></p>
+<p>If you noticed, this kinda ruins the possibility of having elements in your array that are not unique. For example, running without([1], [1, 2, 1]) would destroy your game because it removes both 1s from the array.</p>
+<p>What I can say about this is that it’s highly unlikely that in a game you will use anything other than an object to represent cards. All other data structures seems unfit for this purpose and I recommend you always use objects to represent cards.</p>
+<p>We know how to draw a card from the top of the deck, but what if we wanted to do it from the bottom? Or worse, what if we want a random card? Lets start by separating concerns. We will make a generic draw function that doesn’t know how to pick a card, it only knows how to respect the 2 rules we set to card drawing:</p>
+<p><script src="https://gist.github.com/MarcoWorms/b51fd9a6318827870cd59f7a7fb41333.js"></script></p>
+<p><a href="https://goo.gl/7j4Khk">***Check out the drawing cards interactive example</a>*** &gt; # Hint for Ramda’s REPL: click “tidy” in the output tab for pretty results</p>
+<p>So now our example of drawing the top card becomes this:</p>
+<p><script src="https://gist.github.com/MarcoWorms/7201871343040506703dfa7df740f389.js"></script></p>
+<p>And if we want to draw it from the bottom:</p>
+<p><script src="https://gist.github.com/MarcoWorms/b54dc2d524a2e1c8c40760ce39504caf.js"></script></p>
+<p>One important thing to notice in this implementation: We have delegated the dirtiness of deciding which card to draw to a function called ‘cardPicker’. Now our draw function can’t be responsible for unexpected behavior that comes with the burden of dealing with randomness, and this means we can now draw a random card from the deck like this:</p>
+<p><script src="https://gist.github.com/MarcoWorms/7f9268cd757acd4b0e4bedf27ba1bfde.js"></script></p>
+<p>randomElement does the dirty job of generating a random number, so we successfully removed this burden from the draw! You can now write some tests to your draw function ;)</p>
+<p>Before we move on, there is one last thing we can do to make our draw function even better. There is a reason why the cardPicker argument comes before the deck and it’s because I used a data-last approach for it so we can benefit from something called <a href="https://mostly-adequate.gitbooks.io/mostly-adequate-guide/ch04.html">“partial application”</a>. The data to be operated on is supplied last so we can do some nifty stuff like this:</p>
+<p>First we import <a href="http://ramdajs.com/docs/#curry">ramda’s curry method</a> to make our draw function accept partial application</p>
+<p><script src="https://gist.github.com/MarcoWorms/6fe37c632d164acb4fa3f57974c3a862.js"></script></p>
+<p>Now we can use our new powers to bring in semantic delights to our code:</p>
+<p><script src="https://gist.github.com/MarcoWorms/f8a470b5c8320820d788465722b3e6e4.js"></script></p>
+<p><a href="https://goo.gl/BNNaox">Check out the drawing cards using partial application interactive example</a></p>
+<p>Have fun experimenting around with the draw, I’m sure there are many interesting things to explore with just this function :D</p>
+</section>
+<section id="adding-a-card-to-the-deck" class="level2">
+<h2 class="anchored" data-anchor-id="adding-a-card-to-the-deck">Adding a card to the deck</h2>
+<p>After all that over engineering for drawing, adding something to an array is kinda boring. We can just use common array methods for that:</p>
+<p><script src="https://gist.github.com/MarcoWorms/a51c61a8511fc8e9d10fe9f04bbe9b6b.js"></script></p>
+<p><a href="https://goo.gl/e9LLNf">Check out the adding cards interactive example</a></p>
+</section>
+<section id="shuffling-the-deck-and-seeded-values" class="level2">
+<h2 class="anchored" data-anchor-id="shuffling-the-deck-and-seeded-values">Shuffling the deck and seeded values</h2>
+<p>This is probably the most difficult part to try to remove impurity. Shuffling the deck is heavily RNG-based, so I’m gonna take a different approach here and use a seeded random. This same technique could be used to improve our draw function, so after this section I recommend you try to make your draw function also a seeded random number.</p>
+<p>What is a seeded random? Well, I’m calling it random but that’s a lie, it’s not random at all, we are just gonna use a complicated operation that makes it hard to predict the output of this function. By doing so we are gonna respect the function purity laws that the same inputs should give the same outputs.</p>
+<p>Let’s make a really basic seeded random value function:</p>
+<p><script src="https://gist.github.com/MarcoWorms/d5ce7890df9fd9e87928d2f79f0b30d6.js"></script></p>
+<p>Cool. This function will always return a number from 0 to 1 given a seed number (which is what you will make actually random in your implementation). Lets then make a shuffle function that uses a seed to shuffle an array:</p>
+<p><script src="https://gist.github.com/MarcoWorms/71d26db8f851c66c6b25863d97d5eb01.js"></script></p>
+<p>We can now shuffle or deck:</p>
+<p><script src="https://gist.github.com/MarcoWorms/976be1150c0331f8b44e0577679f540e.js"></script></p>
+<p><a href="https://goo.gl/jjuh14">Check out the shuffle interactive example</a></p>
+<p>Everytime you call shuffle with the same seed and deck you will have the same output.</p>
+<p>But there is still a catch: how do we make our seed random?</p>
+<p>Well, that’s totally up to you. Now that the shuffle function is pure and it’s not its responsibility to know about randomness anymore that burden is up to you.</p>
+<p>I recommend you browse <a href="https://www.random.org/">random.org</a> for more information on randomness and for a good random API. You can also check out the dice implementation I did with a friend of mine for a Telegram’s MMORPG:</p>
+<ul>
+<li><a href="https://github.com/telemmo/telemmo/blob/master/src/game/core/dice.js">Dice module</a></li>
+<li><a href="https://github.com/telemmo/telemmo/blob/master/src/game/core/dice.test.js">Also, check this test for the dice module usage</a></li>
+</ul>
+<p>I guess the point of the article is fulfilled by now and I want to know if this content was relevant to you. Please leave a comment sharing your thoughts, thanks for reading!</p>
+<p><em>I recently made a Twitter so if you want to chat around just hit me up there <a href="https://twitter.com/MarcoWorms"><span class="citation" data-cites="MarcoWorms">@MarcoWorms</span></a></em></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

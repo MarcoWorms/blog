@@ -1,0 +1,257 @@
+---
+title: "Conjuring images with Stable Diffusion"
+author: "Marco Guaspari Worms"
+date: "2022-10-07"
+categories: [english]
+---
+
+![“medieval book of spells open and glowing, placed on a stone pedestal, magical setting” Steps: 150, Sampler: Euler, CFG scale: 9, Seed: 2670068578, Size: 768x512](https://cdn-images-1.medium.com/max/6066/1*SZiDcLV9Vu_uOdfcw8LJmg.png)
+
+[Stable Diffusion](https://github.com/CompVis/stable-diffusion) (SD) is a new open-source tool that allows anyone to generate images using AI pre-trained by the nice folks at [Stability.ai](https://stability.ai/blog/stable-diffusion-public-release). You can use any image you make on it commercially as long as you link to its [license](https://github.com/CompVis/stable-diffusion/blob/main/LICENSE). Be aware that some images might not be able to be used because of patents, for example, if you generate an image of Apple’s logo it doesn't mean you can use it as your brand.
+
+Technically, stable diffusion describes itself as: *“A latent text-to-image diffusion model”:*
+
+* **Latent: **To work properly SD depends on a large amount of data (space) that was compressed into a lightweight representation ([latent space](https://towardsdatascience.com/understanding-latent-space-in-machine-learning-de5a7c687d8d)).
+
+* **Text-to-image:** The core functionality of the whole thing, you feed text to it and it will give you back an image (there are plenty of configs tough for how to do this).
+
+* **Diffusion Model: **In AI diffusion is the process of slowly adding random noise to data and then learning to reverse the diffusion process to construct desired data samples from the noise.
+
+![reverse diffusion process, thanks to [https://jalammar.github.io/illustrated-stable-diffusion/](https://jalammar.github.io/illustrated-stable-diffusion/)](https://cdn-images-1.medium.com/max/2000/1*jcccm053U2EO63bwb55czw.gif)
+
+Very roughly stable diffusion contains a **text decoder** that knows how to interpret text input and represent it as data for an **image generator. **You can read more about how this works in this [illustrated guide.](https://jalammar.github.io/illustrated-stable-diffusion/)
+
+![high-level overview of how SD works, thanks to [https://jalammar.github.io/illustrated-stable-diffusion/](https://jalammar.github.io/illustrated-stable-diffusion/)](https://cdn-images-1.medium.com/max/2776/0*T7l-ecwVYMAcc7eM.png)
+
+## Set up and run local SD + User Interface
+
+There are many ways to set up and run SD, but after using some my favorite UI is this one:
+
+* [https://github.com/AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
+
+So go ahead to their [installation](https://github.com/AUTOMATIC1111/stable-diffusion-webui#installation-and-running) section and follow the steps to install and run it. It will require installing python, downloading the repo, and running the “webui-user” script to install and run everything needed. When done copy and paste the link provided by the script output into your browser:
+
+![This opens after running the install instructions on windows](https://cdn-images-1.medium.com/max/3428/1*KZxPgmqyZJ1uwONY6EWIxg.png)
+> # You can also use [DreamStudio](https://beta.dreamstudio.ai/home) instead of the local setup in case you can’t run it, but it will not have the same scripts used by the local UI in the later parts of this article.
+
+## Core tools: text-to-image and image-to-image
+
+### txt2img
+
+Text-to-Image is a very good starting point when you want just to pump out some images from a prompt idea. Opening the UI will take you straight to txt2img:
+
+![Open the link provided by the previous step in the browser to see the UI](https://cdn-images-1.medium.com/max/6028/1*x5coNlK6t9DcOOlX0ydTHQ.png)
+
+This is where we can start from scratch with only text. Let’s understand the parameters provided:
+
+**1) Prompt:** a phrase that will direct the image generation process.
+
+**2) Steps: **the number of times the diffusion process will happen.
+
+**3) Sampler: **different ways of diffusing the image.
+
+**4) Size: **initial image resolution, needs beefy GPU to increase.
+
+**5) Modifiers: “**restore faces” helps fix faces, “tiling” generates seamless tiles (amazing for games and 3d modeling), “highres fix” helps create images when initial size is much higher than 512x512.
+
+**6) Batch Count: **number of images to generate.
+
+**7) CFG Scale: “**A Cfg Scale value of 0 will give you a random image based on the seed, whereas a Cfg Scale of 20 (the maximum on SD) will give you the closest match to your prompt that the model can produce.” [(source)](https://www.jonstokes.com/p/getting-started-with-stable-diffusion)
+
+**8) Seed: **A number, when set “-1” will be randomized. You can think of:
+
+result = prompt + seed + sampler + steps + cfg_scale
+
+The seed plays a huge part in this formula, so if you like an image and want to reproduce it you will need all the above data.
+
+**9) Scripts: **enables prompt matrix and X/Y plot (which we’ll use later)
+
+Here is an example generation from txt2img:
+
+![“oil painting of a happy kitten” Steps: 50, Sampler: PLMS, CFG scale: 7, Seed: 3482179995, Size: 512x512](https://cdn-images-1.medium.com/max/5212/1*HFuqoZCaCjVo_RzrCfFwWA.png)
+
+Once you find an image you like you can already use it, but you can also:
+
+* send it to “img2img” to create more versions similar to this one.
+
+* send it to “extras” to upscale to a higher resolution.
+
+### img2img
+
+Contains most txt2img parameters and some more:
+
+* **Image** is the initial image to be used for the diffusion process.
+
+* **Samplers** are different from txt2img, some overlap but others are exclusive to one another (for example there is no PLMS in img2img).
+
+* **Denoising Strenght**, when increased, will allow img2img to deviate further from the initial image.
+
+Here is an example of img2img running on top of one of the txt2img outputs from the last example:
+
+![“oil painting of a happy kitten” Steps: 50, Sampler: Euler a, CFG scale: 7, Seed: 3482179995, Size: 512x512, Denoising strength: 0.75](https://cdn-images-1.medium.com/max/5404/1*ykh8_ND2BMYu_j8_gTC8qg.png)
+
+A fun factor is that we can change the prompt too, so let’s try a new prompt with the same configs and initial image and change the **kitten** for a **dog**:
+
+![“oil painting of a happy dog” Steps: 50, Sampler: Euler a, CFG scale: 7, Seed: 3482179995, Size: 512x512, Denoising strength: 0.75](https://cdn-images-1.medium.com/max/5260/1*9PAYcNjdiYB5-b0FBS2BPA.png)
+
+There are no limits to where you can get mixing txt2img, img2img, and different prompts. Let’s dive deeper into prompts and techniques for tweaking configs so we can expand even further the boundaries of what we can do with SD
+
+## Prompts: basics & beyond
+
+The prompt is the most humane input of everything we provide to SD to make an image. There is not much ready-to-consume science behind crafting prompts, but there are tons of people experimenting and writing about their findings. I started small by typing whatever came to mind, then evolved by dissecting prompts of cool images I found at repositories linked below.
+
+People that know about photography and art history are in for a treat, the more you know about art (artists, styles) and photography naming conventions (“golden hour”, framing names) the more you will be able to pump out precise images of what you want.
+
+To compose a prompt, you don't need to add all of the below, and word order might vary depending on preference, but I think this list sums up what you can think of to improve prompt preciseness. It’s not a rigid framework and you should fiddle around to find what works best for you:
+
+* Subject (person, cat, dog, pizza)
+
+* Environment (beach, stadium, park)
+
+* Framing (overview shot, close-up shot)
+
+* Lightning (morning lights, at night)
+
+* Art Style (oil painting, vector art, 3d render)
+
+* Artist Style (van gogh, picasso, andy warhol)
+
+* Details (4k, unreal engine, intricate details)
+
+For example, I will generate an image with only a “Subject” in txt2img and add each of the above in order on the same seed and configs so we can see how the words are affecting the image generation:
+
+### cat
+
+![Steps: 50, Sampler: PLMS, CFG scale: 7, Seed: 2620801971, Size: 512x512 (all other images below have the same config)](https://cdn-images-1.medium.com/max/2000/1*gkDokLxuCBQ7pImuUw_hZA.png)
+
+### cat in a beach
+
+![](https://cdn-images-1.medium.com/max/2000/1*Stu1QchlhSUQ8dCRTjGRRw.png)
+
+### overview shot of a cat in a beach
+
+![](https://cdn-images-1.medium.com/max/2000/1*hZBEVS4hESyaUNEfgt3KtA.png)
+
+### overview shot of a cat in a beach at night
+
+![](https://cdn-images-1.medium.com/max/2000/1*XteZ8WR1rJwNPW2Qbr8aCg.png)
+
+### overview shot of a cat in a beach at night, acrylic painting
+
+![](https://cdn-images-1.medium.com/max/2000/1*mtIPbXR0o1kzp4yk0ss3mA.png)
+
+### overview shot of a cat in a beach at night, acrylic painting by andy warhol
+
+![](https://cdn-images-1.medium.com/max/2000/1*b52u4UCxY3Pkma5ranATjA.png)
+
+### overview shot of a cat in a beach at night, acrylic painting by andy warhol, intricate details
+
+![](https://cdn-images-1.medium.com/max/2000/1*IiyYVu5MDEFapTLQ2JhxPg.png)
+
+### Read more about SD and prompts
+
+* [List of awesome SD resources](https://github.com/awesome-stable-diffusion/awesome-stable-diffusion)
+
+* [SD prompt resources](https://www.reddit.com/r/StableDiffusion/comments/xcrm4d/useful_prompt_engineering_tools_and_resources/)
+
+* [DALL-E prompt book](http://dallery.gallery/wp-content/uploads/2022/07/The-DALL%C2%B7E-2-prompt-book-v1.02.pdf)
+
+* [SD scientific paper](https://arxiv.org/abs/2112.10752)
+
+## Dissecting prompts with “prompt matrix”
+
+We can create matrixes that visually dissect for us what is happening in a prompt, ina. the process is much similar to the above one but automated. I find this especially useful to clean and remove words that aren’t adding anything to the final result, and also to understand what composes a beautiful public prompt. Head to [lexica.art](https://lexica.art/) or your preferred prompt repository and find one you like:
+
+![[https://lexica.art/prompt/7115b90c-4da0-4918-b1cb-3d6f6f304ce3](https://lexica.art/prompt/7115b90c-4da0-4918-b1cb-3d6f6f304ce3)](https://cdn-images-1.medium.com/max/6720/1*V6Wwgc1Grca5B1R5St07bQ.png)
+>  delirium, chaotic storm of liquid smoke, stylized beauty portrait of natalia portman, by petros afshar, ross tran, tom whalen, peter mohrbacher, artgerm, shattered glass, bubbly underwater scenery, radiant light
+>  Steps: 50, Sampler: DDIM, CFG scale: 10, Seed: 3231029621, Size: 512x640
+
+These configs should get close to the website results:
+
+![](https://cdn-images-1.medium.com/max/3072/1*4K0DE9g13MQrPXxJenAjGg.png)
+
+Now let's use the **prompt matrix** script that allows us to breakdown this prompt into many parts and it will show us how the image looks like for every possible combination:
+
+### Original Prompt
+>  delirium, chaotic storm of liquid smoke, stylized beauty portrait of natalia portman, by petros afshar, ross tran, tom whalen, peter mohrbacher, artgerm, shattered glass, bubbly underwater scenery, radiant light
+
+### Prompt Broken down into matrix
+>  delirium|chaotic storm of liquid smoke|stylized beauty portrait of natalia portman|by petros afshar, ross tran, tom whalen, peter mohrbacher, artgerm| shattered glass|bubbly underwater scenery|radiant light
+
+When you enable the prompt matrix script you can add “|” as a break so it knows how to build the matrix.
+
+![](https://cdn-images-1.medium.com/max/2580/1*JtyjNO9UdlyFSg5qrCTS-Q.png)
+
+When using this script. “Batch Count” will be ignored. Here is a matrix using the same seed as the first image from the previous batch (You will find it complete at the bottom-right here):
+
+![delirium|chaotic storm of liquid smoke|stylized beauty portrait of natalia portman|by petros afshar, ross tran, tom whalen, peter mohrbacher, artgerm| shattered glass|bubbly underwater scenery|radiant light](https://cdn-images-1.medium.com/max/6392/1*6jW2WzUHphc7q0dFTTXUlQ.jpeg)
+
+This feature allows you to select one image from the matrix and then look at the prompt that made it. The grey strikes text means that part has been omitted. The first image (top-left) is just the first part of the prompt before the first “|” (in this case, “delirium”). I use this a lot with my prompts to find out what words are influencing the final result and how.
+
+## Fine-tuning configs with “X/Y plots”
+
+The X/Y plot script will also create a matrix but we can decide what the X (horizontal) and Y (vertical) axes are:
+
+![](https://cdn-images-1.medium.com/max/2552/1*_w-Fsid7mB_Ukq0ylHGhTQ.png)
+
+This script is extremely useful for finding out the best sampler, CFG scale, and step count for what you want to do. I will run the above configs for the same prompt and seed from the previous example. Unlike in the prompt matrix, “Batch Count” does work here so set it to 1 if you don’t want it to take too long to generate:
+
+![](https://cdn-images-1.medium.com/max/6912/1*W3PfS_eFHjKBNun36Rgi4w.png)
+
+You can make X/Y Plots with any variables, not just these 2, so have fun finding the config that makes the cooler images for your desired prompt! I find this script extremely useful to figure out sampler, steps, and CFG scale for a prompt.
+
+## Upscaling:
+
+In the “Extras” tab we can find the upscalers:
+
+![](https://cdn-images-1.medium.com/max/2648/1*Ng3-79ZgU3wsEzmtP5ke1w.png)
+
+Again, this is something you will experiment with depending on what you want. I often like to use “SwinIR” on both upscale boxes, but in this example I preferred “ESRGAN” results:
+
+![no upscale](https://cdn-images-1.medium.com/max/2000/1*XycXwUrysSLWiIsYR2W26w.png)
+
+![SwinIR_4x upscale](https://cdn-images-1.medium.com/max/4096/1*mPFia0TIXkDYIBp-pODTIQ.png)
+
+![ESRGAN 4x upscale](https://cdn-images-1.medium.com/max/4096/1*FfurygfGu7V53kdHWMNYwA.png)
+
+Both upscale 4x resolution, so the image went from 512x512 to 2048x2048. You can repeat the process and upscale it repeatedly, but I haven't experimented much with doing this.
+
+## Post-Production
+
+If you have basic photoshop skills you can post-produce images to remove weird unwanted watermarks/signatures resemblances and also apply extra design on top of it. I’ve been using this for my latest articles, here are some examples:
+
+![original yearn.finance logo (where I work at!) designed by a person](https://cdn-images-1.medium.com/max/2560/1*geuPMDrA7WD2NoQGgG_z4w.jpeg)
+
+![img2img version of the logo (prompt: “demon”)](https://cdn-images-1.medium.com/max/2000/1*-tbBODMZyBnJOeEmwX7GIA.jpeg)
+
+![final banner for the article using the font taken from the presskit](https://cdn-images-1.medium.com/max/2800/0*Mo--0li3l6Lh00Cu.png)
+
+In the above example we can see how img2img is very powerful in achieving some form while retaining the old one. But there is much more that could be done:
+
+![“wildwest exploration blue compass” (made in Midjourney txt2img, not SD)](https://cdn-images-1.medium.com/max/2560/1*iHzJPN-O8fsPWvHRKr6btA.jpeg)
+
+![photoshopped text + yearn logo](https://cdn-images-1.medium.com/max/2560/1*nUWkX9L7rAJGOsTnMpNyzg.jpeg)
+
+Another example from scratch with SD:
+
+![txt2img “saint holding circular blue token with vibrant neon outline, dark background, top artstation”](https://i.imgur.com/aV6KOFW.png)
+
+![img2img “saint holding circular blue token with vibrant neon outline, dark background, top artstation”](https://i.imgur.com/aV6KOFW.png)
+
+![top pick](https://i.imgur.com/4WI8vnZ.png)
+
+![photoshop yearn logo added in](https://i.imgur.com/OmmPuZs.png)
+
+## Final Words
+
+Its been 8 months since I wrote an article on [how to make images with open-source AI tools](https://medium.com/@marcoworms/generate-images-with-open-source-ai-tools-e32eb4ea2d93) and since then the rise o Stable Diffusion, Midjourney, and DALL-E has been exponential and unstoppable.
+
+* SD is open source and people are doing amazing things with it, like plugging it into 3d render pipelines and video post-production.
+
+* Midjourney pricing and UI are very accessible. It produces beautiful results with small prompts, remaster uses SD for even more stunning results.
+
+* DALL-E outpainting is incredible, you can merge/extend existing artwork. More expensive than the rest, but worth the try.
+
+I’m very excited about the future of this tech. Whenever I feel like we had another significant advancement I’ll be sure to make another article! If you like this type of content [follow me on Twitter](https://twitter.com/MarcoWorms) where I often post random images and guides for weird and beautiful tech.
+
+![“cowboy riding into the sunset, cyberpunk landscape, unreal engine render, vibrant lights” Steps: 50, Sampler: DDIM, CFG scale: 10, Seed: 987765270, Size: 1024x512, High Res. Fix Denoising strength: 0.7, Up: SwinIR_4x](https://cdn-images-1.medium.com/max/8192/1*u1uMfn8GpoWwuRyOo5wcbQ.png)

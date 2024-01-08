@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Marco Guaspari Worms">
+<meta name="dcterms.date" content="2023-01-04">
+
+<title>Worms Blog - Yearn Strategies Case Study: Lido Staked ETH</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Worms Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/MarcoWorms" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/MarcoWorms" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Yearn Strategies Case Study: Lido Staked ETH</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">english</div>
+                <div class="quarto-category">yearn</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Marco Guaspari Worms </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 4, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p><img src="https://cdn-images-1.medium.com/max/3072/0*55IdG70LbTcG2BqI.png" class="img-fluid"></p>
+<p>Last month we published a DeFi risk <a href="https://medium.com/iearn/measuring-risk-for-defi-yield-strategies-b53f62b83b92">case-study</a> that used the lens of the <a href="https://docs.yearn.finance/resources/risks/risk-score">Yearn Risk Framework</a> to analyze the risks involved in operating a yield strategy for the DAI <a href="https://medium.com/iearn/yearn-finance-explained-what-are-vaults-and-strategies-96970560432">Yearn Vault</a>. This article will use similar methods to look at the risks of investing in stETH (Lido Finance Staked ETH) using Yearn vaults and strategies.</p>
+<p>To guide our journey, we will explore the risks for each layer until we reach the “steCRV yVault” that includes the risk of all parts, following these in order:</p>
+<ul>
+<li>What is Proof-of-Stake yield?</li>
+<li>What is Liquid Staking, Lido Finance, and stETH?</li>
+<li>Overview ETH yVault</li>
+<li>Overview steCRV</li>
+<li>Overview steCRV yVault</li>
+</ul>
+<p>One important thing to note: the <a href="https://docs.yearn.finance/resources/risks/risk-score">Yearn Risk Framework</a> will give scores to strategy operation risks, not token-holding risks. So for example a strategy that invests token X in protocol Y will have risk scores tailored for protocol Y, but the risks for holding token X are on the user. By following through with all the above questions, we will be able to understand both the token-holding and operational risks for each step. &gt; <em>The <a href="https://docs.yearn.finance/getting-started/guides/how-to-understand-strategies-descriptions">Yearn Strategy Descriptions Glossary</a> might help you if you struggle with the DeFi lingo!</em></p>
+<section id="proof-of-stake-yield-and-validators" class="level2">
+<h2 class="anchored" data-anchor-id="proof-of-stake-yield-and-validators">Proof of Stake yield and Validators</h2>
+<p><img src="https://cdn-images-1.medium.com/max/3072/0*sy-ff40eclGGcXbF.jpg" class="img-fluid"></p>
+<p>As of September 15, 2022, Ethereum started using the <a href="https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/">Proof-of-Stake (PoS)</a> process to validate new transactions added to the blockchain. The previous method, Proof-of-Work (PoW, required “validator nodes” to spend energy to validate transactions. In Proof-of-Stake, validator nodes use ETH deposited in it to validate transactions, achieving the same result.</p>
+<p>Validators checks that new transactions propagated over the network are valid. When users stake (deposit) ETH in a validator node, they invest in the network’s security and help it keep functioning. In return, stakers are rewarded with new blocks reward emissions for new transactions validated.</p>
+<p>ETH deposited in validators can be partly <a href="https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/rewards-and-penalties/#slashing">slashed</a> if the validator behaves dishonestly. Slashed ETH is mostly burned, and a small percentage of the slashed amount goes to the nodes that reported the misbehavior.</p>
+<p>The Ethereum Foundation has a great resource on the <a href="https://ethereum.org/en/staking/">types of staking</a> you can participate on:</p>
+<ul>
+<li><strong>Solo home staking:</strong> Most impactful, Full control, Full rewards, Trustless.</li>
+<li><strong>Staking as a service:</strong> Your 32 ETH, Non-custodial keys, Entrusted node operation.</li>
+<li><strong>Pooled staking:</strong> Stake any amount, Earn rewards, Keep it simple, Popular.</li>
+<li><strong>Centralized exchanges:</strong> Least impactful, Highest trust assumptions, Not your keys.</li>
+</ul>
+<section id="proof-of-stake-risks" class="level3">
+<h3 class="anchored" data-anchor-id="proof-of-stake-risks">Proof-of-Stake Risks</h3>
+<ul>
+<li>A user with 51% or more tokens for a PoS network can control it. To mitigate this risk, the tokens can be fairly distributed to ensure enough decentralization. <a href="https://medium.com/@arjunblj/grin-and-the-mythical-fair-launch-395ca87a5e73">“Fair Launch”</a> methods contain their own set of risks since “fairness” is a subjective concept.</li>
+<li>Part of staked ETH can be <a href="https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/rewards-and-penalties/#slashing">slashed</a> if a validator misbehaves. This adds a layer of risk when staking on someone else’s validator.</li>
+<li>Proof-of-stake is younger and less battle-tested than proof-of-work.</li>
+<li>Requires two separate software pieces to run a validator, which is more complex than PoW. Can lead to more software bugs.</li>
+</ul>
+<p>The Ethereum community has agreed that the risks of PoS are worth it over the risks of PoW after years of discussion. If you want to receive Proof-of-Stake yield with no added trust assumptions and still provide the best value to the Ethereum network, then solo staking is the way but it requires the most knowledge and capital to start.</p>
+</section>
+</section>
+<section id="liquid-staking-lido-finance-and-steth" class="level2">
+<h2 class="anchored" data-anchor-id="liquid-staking-lido-finance-and-steth">Liquid Staking, Lido Finance, and stETH</h2>
+<p><img src="https://cdn-images-1.medium.com/max/3072/0*gFupSkpPTKOva_qi.jpg" class="img-fluid"></p>
+<p>If you want to take part in Ethereum’s Proof of Stake process and <a href="https://ethereum.org/en/staking/solo/">do it yourself</a> then there are a couple of key blockers that might prevent you from doing it:</p>
+<ul>
+<li>Users need at least 32 ETH to make a solo validator node.</li>
+</ul>
+<p><a href="https://ethereum.org/en/staking/saas/">Staking as a Service</a> solves the above problem but:</p>
+<ul>
+<li>ETH staked can’t be withdrawn, so it becomes illiquid for ANY other usage such as collateral or trading</li>
+</ul>
+<p>To facilitate this <a href="https://ethereum.org/en/staking/pools/">Pooled Staking</a> was created, and along with it, <a href="https://lido.fi/">Lido Finance</a> created a new DeFi product: <strong>stETH</strong>.</p>
+<p>To understand stETH we need to know what is <strong>Liquid Staking</strong> first:</p>
+<ul>
+<li><strong>Staking</strong> is when you lock your assets, maybe for a set period. In PoS this is done to help support blockchain security through the staking/slashing process.</li>
+<li><strong>Liquid Staking</strong> is when the staking process gives you a receipt token that can be traded in the market, normally near 1:1 value of the staked token since you will be able to be redeemed for one in the future.</li>
+</ul>
+<p>stETH is the liquid-staked version of ETH provided by <a href="https://lido.fi/">Lido Finance</a>. To have stETH, one must deposit ETH in Lido’s platform, and it creates stETH on a 1:1 ratio for you. Lido stake all ETH deposited and splits yield with all stETH holders. The deposit operation can’t be reversed today, so if you want to go back from ETH to stETH you have to sell stETH in the market.</p>
+<p><img src="https://cdn-images-1.medium.com/max/5200/0*-UKCfkJALoyqFJwq.png" class="img-fluid"></p>
+<section id="steth-risks" class="level3">
+<h3 class="anchored" data-anchor-id="steth-risks">stETH Risks</h3>
+<p>stETH doesn’t have a withdrawal mechanism today, so users depend on the market valuing stETH 1:1 with ETH, this price relation can trade at discount in case of a big sell-off. In contrast, Lido is a reputable protocol that you can track onchain where every single ETH is at. In case of price trading at discount it creates an opportunity for people to buy cheaper ETH, and most people today believe in the capability of Ethereum and Lido teams to deliver a withdraw function in the following years to come. Today’s bottleneck for staking withdraws is mostly on Ethereum’s side rather than Lido.</p>
+<p>If you want to learn more, Lido <a href="https://help.lido.fi/en/articles/5230603-what-are-the-risks-of-staking-with-lido">explains all risks involved in stETH</a> about the risks of:</p>
+<ul>
+<li>Smart Contracts (can have bugs).</li>
+<li>Ethereum Virtual Machine (can have bugs).</li>
+<li>DAO management (can be mismanaged).</li>
+<li>Validators (ETH can be slashed).</li>
+<li>Market Prices (can make exiting stETH expensive if price trade at discount from ETH).</li>
+</ul>
+<p>As of writing, Lido has about 4.7m ETH locked in them and $5.7b worth of circulating stETH:</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*7jkwvErRsmLUsdA0.png" class="img-fluid"></p>
+<p>In the next section we’ll see how Yearn evaluates the risk for depositing ETH in Lido to convert stETH, and learn the Yearn risk scores around it compared to the rest of DeFi yield strategies. stETH is considered one of the lowest-risk strategies, but it still contains many inherent risks (listed above).</p>
+</section>
+</section>
+<section id="yaern-eth-vault-and-steth-yield" class="level2">
+<h2 class="anchored" data-anchor-id="yaern-eth-vault-and-steth-yield">Yaern ETH Vault and stETH yield</h2>
+<p><img src="https://cdn-images-1.medium.com/max/5200/0*4MDHqjDwTXEuY5KT.jpg" class="img-fluid"></p>
+<p>One way to be exposed to stETH is by using <a href="https://medium.com/iearn/yearn-finance-explained-what-are-vaults-and-strategies-96970560432">Yearn Vaults</a>. The benefit of using Yearn here is that you can deposit/withdraw wETH at any time in the <a href="https://yearn.finance/#/vault/0xa258C4606Ca8206D8aA700cE2143D7db854D168c">ETH yVault</a>, and today it allocates about 1/3 of its funds into stETH, alongside other yield strategies.</p>
+<p>There is another strategy in <a href="https://yearn.watch/vault/0xa258C4606Ca8206D8aA700cE2143D7db854D168c">ETH vault active strategies</a> that also uses stETH. And it uses about 20% of the ETH yVault funds. This strategy “delegates deposits” to the steCRV yVault. In the Yearn ecosystem, a “delegate deposit” is when a yVault deposits in another yVault, and this can be seen in <a href="https://yearn.vision/d/apkUMx6nz/vault-overview?orgId=1&amp;var-networks=ETH&amp;var-exp=false&amp;var-vaults=yvWETH%200.4.2&amp;var-address=0xa258C4606Ca8206D8aA700cE2143D7db854D168c&amp;var-version=v2">yearn.vision</a> for every vault. In this case ETH delegates to “steCRV” vault (which will be explained in the next sections):</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*t2gCnaNS_fC4Bt0t.png" class="img-fluid"></p>
+<p>At <a href="https://yearn.watch/risk">yearn.watch/risk</a> we can see the risk for both strategies. <strong>Lower Number = Less Risk</strong>. You can see the meaning for each score in the <a href="https://medium.com/iearn/measuring-risk-for-defi-yield-strategies-b53f62b83b92">Previous Article</a> and in <a href="https://docs.yearn.finance/resources/risks/risk-score">Yearn Risk Framework</a> page.</p>
+<ul>
+<li>This strategy just holds stETH (<a href="https://yearn.watch/vault/0xa258C4606Ca8206D8aA700cE2143D7db854D168c/0x120FA5738751b275aed7F7b46B98beB38679e093">stETHAccumulator_v2</a>) (it got migrated from v1, so TVL score is not displaying correctly here since these are the scores for v1)</li>
+</ul>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*0T7fX23xpJ9IIqP8.png" class="img-fluid"></p>
+<ul>
+<li>This strategy delegates to steCRV Vault (<a href="https://yearn.watch/vault/0xa258C4606Ca8206D8aA700cE2143D7db854D168c/0xF9fDc2B5F60355A237deb8BD62CC117b1C907f7b">single sided curve eth steth</a>)</li>
+</ul>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*HYqbDOUa668bq-D7.png" class="img-fluid"></p>
+<p><em>In the below risk table, Bottom-to-top is the level of impact in case of a problem, left-to-right is the likeness that it can occur. Bottom-left is less risky, top-right is riskier:</em></p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*lmyIXzBicVP8CDzk.png" class="img-fluid"></p>
+<p>At the time of writing (percentages can change at any time!) when depositing ETH in the Yearn ETH Vault:</p>
+<ul>
+<li>33% stays as stETH generating yield</li>
+<li>21% is delegated to steCRV Vault (that we will learn about in the next section)</li>
+<li>40% is switched between different lending strategies (this was the first strategy type that Yearn had)</li>
+<li>The rest (6%) goes into other smaller strategies</li>
+</ul>
+<section id="eth-yvault-risks" class="level3">
+<h3 class="anchored" data-anchor-id="eth-yvault-risks">ETH yVault risks</h3>
+<p>Besides the risks of strategies taking a loss, which is mitigated by the “Yearn Risk Framework”, Yearn vaults also contain risks of their own. Since the ETH vault uses <a href="https://lido.fi/">Lido</a> as part of a yield strategy, the risk scores include the Lido protocol. When we move on to steCRV we will see that this is different: Yearn will not include Lido in the strategy scores for steCRV because the yield strategy operations do not use Lido.</p>
+<p>The full risk overview of using the ETH vault is the sum of the risk scores for its strategies plus inherent vault risks: (<em>Taken from the <a href="https://docs.yearn.finance/resources/risks/vault-risks">docs</a></em>)</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*IjL2S1Mic1341m50.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="stecrv-liquidity-pool" class="level2">
+<h2 class="anchored" data-anchor-id="stecrv-liquidity-pool">steCRV liquidity pool</h2>
+<p><img src="https://cdn-images-1.medium.com/max/3072/0*5nRAgqhJNx-zfuPf.jpg" class="img-fluid"></p>
+<p>We know what stETH is and how the ETH yVault uses it for yield, but there is another way to earn yield on top of stETH: the curve stETH/ETH liquidity pool. (see <a href="https://finematics.com/liquidity-pools-explained/">here</a> to learn more about LPs)</p>
+<p>In <a href="https://curve.fi/#/ethereum/pools/steth/deposit">stETH+ETH</a> liquidity pool at curve people can:</p>
+<ul>
+<li>Sell stETH to ETH</li>
+<li>Buy stETH for cheaper than locking ETH at 1:1 on Lido (depends on market conditions)</li>
+<li>Provide Liquidity stETH+ETH liquidity and earn trading fees</li>
+</ul>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*DTUe2qiDlQ1EJxg9.png" class="img-fluid"></p>
+<p>The token you get when depositing stETH+ETH to this liquidity pool is called <strong>steCRV</strong> (<a href="https://etherscan.io/address/0x06325440d014e39736583c165c2963ba99faf14e">address</a>). This token is already a “yield-bearing” token since it represents an LP position that earns trading fees + CRV emissions. But there is one extra layer of yield that Yearn taps into to make the steCRV yVault, our next and last section.</p>
+<p><img src="https://cdn-images-1.medium.com/max/5200/0*dG1432WXer79MAN0.png" class="img-fluid"></p>
+<p>A convenient feature found in <a href="https://yearn.finance/#/vault/0xdCD90C7f6324cfa40d7169ef80b12031770B4325">Yearn steCRV vault</a> is the ability to skip doing all the above steps manually by using zaps:</p>
+<p><img src="https://cdn-images-1.medium.com/max/5200/0*dKIrh2TCLCDSWsc3.png" class="img-fluid"></p>
+<p><a href="https://medium.com/iearn/yearn-cow-swap-371b6d7cf3b3">Yearn colabs with CoW Swap</a> and <a href="https://app.portals.fi/">portals.fi</a> to constantly improve the zaping operational security and efficiency. Here is an example zap from ETH but you can zap from other tokens too:</p>
+<p><img src="https://cdn-images-1.medium.com/max/2098/0*1Avd7nj0fnBNyodU.png" class="img-fluid"></p>
+<section id="stecrv-risks" class="level3">
+<h3 class="anchored" data-anchor-id="stecrv-risks">steCRV risks</h3>
+<ul>
+<li><p>All inherent stETH and smart contracts risks</p></li>
+<li><p>All liquidity pools have a risk of <a href="https://academy.binance.com/en/articles/impermanent-loss-explained">Impermanent Loss</a>. This pool’s assets are supposed to be 1:1 in ratio, but if many people sell stETH and no one repurchases it before you exit the LP, then IL may occur.</p></li>
+<li><p>Curve protocol <a href="https://resources.curve.fi/faq/security#what-are-the-risks-involved">risks</a> (which will be covered next section of this article because the steCRV yVault risk score covers the Curve protocol)</p></li>
+</ul>
+</section>
+</section>
+<section id="yearn-stecrv-vault" class="level2">
+<h2 class="anchored" data-anchor-id="yearn-stecrv-vault">Yearn steCRV Vault</h2>
+<p><img src="https://cdn-images-1.medium.com/max/2560/0*UE3m3nxALO561khK.png" class="img-fluid"></p>
+<p>In the previous section, we saw that Curve’s role in this ecosystem is to provide the ETH+stETH Liquidity Pool. Because of <a href="https://phemex.com/blogs/the-curve-wars-what-why">Curve Wars</a>, a protocol called <a href="https://www.convexfinance.com/">Convex Finance</a> emerged, which builds a layer ontop of Curve.</p>
+<p>The <a href="https://yearn.finance/#/vault/0xdCD90C7f6324cfa40d7169ef80b12031770B4325">steCRV yVault</a> stakes steCRV in <a href="https://www.convexfinance.com/stake">Convex</a>. There, it earns CRV and CVX yield. Earned tokens are harvested, sold for more steCRV, then deposited back into the vault (auto-compounded). This is a convenient operation since it maximizes the yield you can get from steCRV and automates harvesting in Convex. It also cost less gas overall per user because Yearn shares the operational gas prices with all vault depositors (like all other yVaults).</p>
+<p><img src="https://cdn-images-1.medium.com/max/5200/0*7AVDHAzDCOxnR_IE.png" class="img-fluid"></p>
+<p>You could do this operation manually and not use yVaults though:</p>
+<ol type="1">
+<li>Obtain stETH at <a href="https://stake.lido.fi/">Lido</a> or swap at <a href="https://curve.fi/#/ethereum/pools/steth/swap">Curve</a></li>
+<li><a href="https://curve.fi/#/ethereum/pools/steth/deposit">Deposit</a> stETH+ETH on Curve, receiving steCRV</li>
+<li><a href="https://www.convexfinance.com/stake">Stake</a> steCRV on Convex</li>
+<li>Periodically harvest rewards, sell them for more steCRV, and stake again in Convex</li>
+</ol>
+<p>By delegating this operation to steCRV yVault you get the following:</p>
+<ul>
+<li>Gas fees for operations are shared across all other users, which translates to higher yields</li>
+<li>Harvest and compound are automated, which is convenient</li>
+</ul>
+<section id="stecrv-yvault-risks" class="level3">
+<h3 class="anchored" data-anchor-id="stecrv-yvault-risks">steCRV yVault risks</h3>
+<ul>
+<li>All inherent stETH, smart contracts, steCRV risks</li>
+<li>Increased overall risk since there are more smart contracts involved (Convex adds another layer of <a href="https://docs.convexfinance.com/convexfinance/faq/risks">risks</a>)</li>
+<li>Yield harvest+compound schedules are controlled by Yearn</li>
+</ul>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*jUe2lCeTdU3ytdnb.png" class="img-fluid"></p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*NR4eggilgrj-Pj9z.png" class="img-fluid"></p>
+<p>The overall risk score for this vault is higher than the other ones we looked at, meaning this set of yield strategies is one of the highest risk/reward Yearn has by its own standards.</p>
+</section>
+</section>
+<section id="learn-more" class="level2">
+<h2 class="anchored" data-anchor-id="learn-more">Learn More</h2>
+<p><img src="https://cdn-images-1.medium.com/max/3072/0*Xa9viX9Jsvg0exWk.png" class="img-fluid"></p>
+<p>Yearn strategy risks are complex to measure. The discussed steCRV yVault example showcases how any scenario, even when using only reputable protocols, must be taken seriously to protect users because of the high impact on the ecosystem. The more educated users, protocols, and devs are in assessing risk regarding strategies and other yield-generating operations, the safer DeFi will be for <em>everyone</em> to use it.</p>
+<ul>
+<li><a href="https://docs.lido.fi/guides/steth-integration-guide#risks">Lido docs (risk page)</a></li>
+<li><a href="https://resources.curve.fi/faq/security#what-are-the-risks-involved">Curve docs (risk page)</a></li>
+<li><a href="https://docs.convexfinance.com/convexfinance/faq/risks">Convex docs (risk page)</a></li>
+<li><a href="https://docs.yearn.finance/resources/risks/protocol-risks">Yearn docs (risk page)</a></li>
+<li><a href="https://docs.yearn.finance/resources/risks/risk-score">Yearn risk scores descriptions</a></li>
+<li><a href="https://yearn.watch/risk">Yearn risk table</a></li>
+<li><a href="https://docs.yearn.finance/getting-started/guides/how-to-understand-strategies-descriptions">Yearn strategy descriptions glossary</a></li>
+<li><a href="https://yearn.vision/d/apkUMx6nz/vault-overview?orgId=1&amp;var-networks=ETH&amp;var-exp=false&amp;var-vaults=yvWETH%200.4.2&amp;var-address=0xa258C4606Ca8206D8aA700cE2143D7db854D168c&amp;var-version=v2">Yearn vision yVault overview</a></li>
+<li><a href="https://yearn.watch/vault/0xdCD90C7f6324cfa40d7169ef80b12031770B4325">steCRV yVault watch</a></li>
+<li><a href="https://yearn.watch/vault/0xa258C4606Ca8206D8aA700cE2143D7db854D168c">ETH yVault watch</a></li>
+<li><a href="https://medium.com/iearn/yearn-cow-swap-371b6d7cf3b3">Yearn &lt;&gt; CoW Swap colab</a></li>
+<li><a href="https://cobie.substack.com/p/apecoin-and-the-death-of-staking">Cobie blog on staking risks (beyond PoS)</a></li>
+<li><a href="https://medium.com/@arjunblj/grin-and-the-mythical-fair-launch-395ca87a5e73">Balaji blog on fair launches</a></li>
+</ul>
+<p>Thanks to everyone that helped this article exist: <em>Farrah, Dark Ghosty, storm0x, <a href="https://twitter.com/saltyfacu">Facu</a>, <span class="citation" data-cites="steve0xp">@steve0xp</span>, <a href="https://twitter.com/draper_forms">Draper</a>, Corn, <a href="https://twitter.com/0xCarvas">Carvas</a></em></p>
+<blockquote class="blockquote">
+<p><em>All banner images for this article were made with <a href="https://medium.com/@marcoworms/conjuring-images-with-stable-diffusion-20f3e000a837">Stable Diffusion</a>, you can find the prompt specifications and images used for titles <a href="https://hackmd.io/YeDrdsZrSyqYWhzQa6pp5Q?view">here</a>, feel free to use any of the pre-generated outputs as yours!</em></p>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/3072/0*c4m1jOQgOz-xEFIU.jpg" class="img-fluid"></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

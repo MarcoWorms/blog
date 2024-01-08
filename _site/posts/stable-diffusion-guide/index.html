@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Marco Guaspari Worms">
+<meta name="dcterms.date" content="2022-10-07">
+
+<title>Worms Blog - Conjuring images with Stable Diffusion</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Worms Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/MarcoWorms" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/MarcoWorms" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Conjuring images with Stable Diffusion</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">english</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Marco Guaspari Worms </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 7, 2022</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/6066/1*SZiDcLV9Vu_uOdfcw8LJmg.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">“medieval book of spells open and glowing, placed on a stone pedestal, magical setting” Steps: 150, Sampler: Euler, CFG scale: 9, Seed: 2670068578, Size: 768x512</figcaption>
+</figure>
+</div>
+<p><a href="https://github.com/CompVis/stable-diffusion">Stable Diffusion</a> (SD) is a new open-source tool that allows anyone to generate images using AI pre-trained by the nice folks at <a href="https://stability.ai/blog/stable-diffusion-public-release">Stability.ai</a>. You can use any image you make on it commercially as long as you link to its <a href="https://github.com/CompVis/stable-diffusion/blob/main/LICENSE">license</a>. Be aware that some images might not be able to be used because of patents, for example, if you generate an image of Apple’s logo it doesn’t mean you can use it as your brand.</p>
+<p>Technically, stable diffusion describes itself as: <em>“A latent text-to-image diffusion model”:</em></p>
+<ul>
+<li><p><strong>Latent: </strong>To work properly SD depends on a large amount of data (space) that was compressed into a lightweight representation (<a href="https://towardsdatascience.com/understanding-latent-space-in-machine-learning-de5a7c687d8d">latent space</a>).</p></li>
+<li><p><strong>Text-to-image:</strong> The core functionality of the whole thing, you feed text to it and it will give you back an image (there are plenty of configs tough for how to do this).</p></li>
+<li><p><strong>Diffusion Model: </strong>In AI diffusion is the process of slowly adding random noise to data and then learning to reverse the diffusion process to construct desired data samples from the noise.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*jcccm053U2EO63bwb55czw.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">reverse diffusion process, thanks to <a href="https://jalammar.github.io/illustrated-stable-diffusion/">https://jalammar.github.io/illustrated-stable-diffusion/</a></figcaption>
+</figure>
+</div>
+<p>Very roughly stable diffusion contains a <strong>text decoder</strong> that knows how to interpret text input and represent it as data for an <strong>image generator. </strong>You can read more about how this works in this <a href="https://jalammar.github.io/illustrated-stable-diffusion/">illustrated guide.</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2776/0*T7l-ecwVYMAcc7eM.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">high-level overview of how SD works, thanks to <a href="https://jalammar.github.io/illustrated-stable-diffusion/">https://jalammar.github.io/illustrated-stable-diffusion/</a></figcaption>
+</figure>
+</div>
+<section id="set-up-and-run-local-sd-user-interface" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-and-run-local-sd-user-interface">Set up and run local SD + User Interface</h2>
+<p>There are many ways to set up and run SD, but after using some my favorite UI is this one:</p>
+<ul>
+<li><a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">https://github.com/AUTOMATIC1111/stable-diffusion-webui</a></li>
+</ul>
+<p>So go ahead to their <a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui#installation-and-running">installation</a> section and follow the steps to install and run it. It will require installing python, downloading the repo, and running the “webui-user” script to install and run everything needed. When done copy and paste the link provided by the script output into your browser:</p>
+<p><img src="https://cdn-images-1.medium.com/max/3428/1*KZxPgmqyZJ1uwONY6EWIxg.png" class="img-fluid" alt="This opens after running the install instructions on windows"> &gt; # You can also use <a href="https://beta.dreamstudio.ai/home">DreamStudio</a> instead of the local setup in case you can’t run it, but it will not have the same scripts used by the local UI in the later parts of this article.</p>
+</section>
+<section id="core-tools-text-to-image-and-image-to-image" class="level2">
+<h2 class="anchored" data-anchor-id="core-tools-text-to-image-and-image-to-image">Core tools: text-to-image and image-to-image</h2>
+<section id="txt2img" class="level3">
+<h3 class="anchored" data-anchor-id="txt2img">txt2img</h3>
+<p>Text-to-Image is a very good starting point when you want just to pump out some images from a prompt idea. Opening the UI will take you straight to txt2img:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/6028/1*x5coNlK6t9DcOOlX0ydTHQ.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Open the link provided by the previous step in the browser to see the UI</figcaption>
+</figure>
+</div>
+<p>This is where we can start from scratch with only text. Let’s understand the parameters provided:</p>
+<p><strong>1) Prompt:</strong> a phrase that will direct the image generation process.</p>
+<p><strong>2) Steps: </strong>the number of times the diffusion process will happen.</p>
+<p><strong>3) Sampler: </strong>different ways of diffusing the image.</p>
+<p><strong>4) Size: </strong>initial image resolution, needs beefy GPU to increase.</p>
+<p><strong>5) Modifiers: “</strong>restore faces” helps fix faces, “tiling” generates seamless tiles (amazing for games and 3d modeling), “highres fix” helps create images when initial size is much higher than 512x512.</p>
+<p><strong>6) Batch Count: </strong>number of images to generate.</p>
+<p><strong>7) CFG Scale: “</strong>A Cfg Scale value of 0 will give you a random image based on the seed, whereas a Cfg Scale of 20 (the maximum on SD) will give you the closest match to your prompt that the model can produce.” <a href="https://www.jonstokes.com/p/getting-started-with-stable-diffusion">(source)</a></p>
+<p><strong>8) Seed: </strong>A number, when set “-1” will be randomized. You can think of:</p>
+<p>result = prompt + seed + sampler + steps + cfg_scale</p>
+<p>The seed plays a huge part in this formula, so if you like an image and want to reproduce it you will need all the above data.</p>
+<p><strong>9) Scripts: </strong>enables prompt matrix and X/Y plot (which we’ll use later)</p>
+<p>Here is an example generation from txt2img:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/5212/1*HFuqoZCaCjVo_RzrCfFwWA.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">“oil painting of a happy kitten” Steps: 50, Sampler: PLMS, CFG scale: 7, Seed: 3482179995, Size: 512x512</figcaption>
+</figure>
+</div>
+<p>Once you find an image you like you can already use it, but you can also:</p>
+<ul>
+<li><p>send it to “img2img” to create more versions similar to this one.</p></li>
+<li><p>send it to “extras” to upscale to a higher resolution.</p></li>
+</ul>
+</section>
+<section id="img2img" class="level3">
+<h3 class="anchored" data-anchor-id="img2img">img2img</h3>
+<p>Contains most txt2img parameters and some more:</p>
+<ul>
+<li><p><strong>Image</strong> is the initial image to be used for the diffusion process.</p></li>
+<li><p><strong>Samplers</strong> are different from txt2img, some overlap but others are exclusive to one another (for example there is no PLMS in img2img).</p></li>
+<li><p><strong>Denoising Strenght</strong>, when increased, will allow img2img to deviate further from the initial image.</p></li>
+</ul>
+<p>Here is an example of img2img running on top of one of the txt2img outputs from the last example:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/5404/1*ykh8_ND2BMYu_j8_gTC8qg.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">“oil painting of a happy kitten” Steps: 50, Sampler: Euler a, CFG scale: 7, Seed: 3482179995, Size: 512x512, Denoising strength: 0.75</figcaption>
+</figure>
+</div>
+<p>A fun factor is that we can change the prompt too, so let’s try a new prompt with the same configs and initial image and change the <strong>kitten</strong> for a <strong>dog</strong>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/5260/1*9PAYcNjdiYB5-b0FBS2BPA.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">“oil painting of a happy dog” Steps: 50, Sampler: Euler a, CFG scale: 7, Seed: 3482179995, Size: 512x512, Denoising strength: 0.75</figcaption>
+</figure>
+</div>
+<p>There are no limits to where you can get mixing txt2img, img2img, and different prompts. Let’s dive deeper into prompts and techniques for tweaking configs so we can expand even further the boundaries of what we can do with SD</p>
+</section>
+</section>
+<section id="prompts-basics-beyond" class="level2">
+<h2 class="anchored" data-anchor-id="prompts-basics-beyond">Prompts: basics &amp; beyond</h2>
+<p>The prompt is the most humane input of everything we provide to SD to make an image. There is not much ready-to-consume science behind crafting prompts, but there are tons of people experimenting and writing about their findings. I started small by typing whatever came to mind, then evolved by dissecting prompts of cool images I found at repositories linked below.</p>
+<p>People that know about photography and art history are in for a treat, the more you know about art (artists, styles) and photography naming conventions (“golden hour”, framing names) the more you will be able to pump out precise images of what you want.</p>
+<p>To compose a prompt, you don’t need to add all of the below, and word order might vary depending on preference, but I think this list sums up what you can think of to improve prompt preciseness. It’s not a rigid framework and you should fiddle around to find what works best for you:</p>
+<ul>
+<li><p>Subject (person, cat, dog, pizza)</p></li>
+<li><p>Environment (beach, stadium, park)</p></li>
+<li><p>Framing (overview shot, close-up shot)</p></li>
+<li><p>Lightning (morning lights, at night)</p></li>
+<li><p>Art Style (oil painting, vector art, 3d render)</p></li>
+<li><p>Artist Style (van gogh, picasso, andy warhol)</p></li>
+<li><p>Details (4k, unreal engine, intricate details)</p></li>
+</ul>
+<p>For example, I will generate an image with only a “Subject” in txt2img and add each of the above in order on the same seed and configs so we can see how the words are affecting the image generation:</p>
+<section id="cat" class="level3">
+<h3 class="anchored" data-anchor-id="cat">cat</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*gkDokLxuCBQ7pImuUw_hZA.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Steps: 50, Sampler: PLMS, CFG scale: 7, Seed: 2620801971, Size: 512x512 (all other images below have the same config)</figcaption>
+</figure>
+</div>
+</section>
+<section id="cat-in-a-beach" class="level3">
+<h3 class="anchored" data-anchor-id="cat-in-a-beach">cat in a beach</h3>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*Stu1QchlhSUQ8dCRTjGRRw.png" class="img-fluid"></p>
+</section>
+<section id="overview-shot-of-a-cat-in-a-beach" class="level3">
+<h3 class="anchored" data-anchor-id="overview-shot-of-a-cat-in-a-beach">overview shot of a cat in a beach</h3>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*hZBEVS4hESyaUNEfgt3KtA.png" class="img-fluid"></p>
+</section>
+<section id="overview-shot-of-a-cat-in-a-beach-at-night" class="level3">
+<h3 class="anchored" data-anchor-id="overview-shot-of-a-cat-in-a-beach-at-night">overview shot of a cat in a beach at night</h3>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*XteZ8WR1rJwNPW2Qbr8aCg.png" class="img-fluid"></p>
+</section>
+<section id="overview-shot-of-a-cat-in-a-beach-at-night-acrylic-painting" class="level3">
+<h3 class="anchored" data-anchor-id="overview-shot-of-a-cat-in-a-beach-at-night-acrylic-painting">overview shot of a cat in a beach at night, acrylic painting</h3>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*mtIPbXR0o1kzp4yk0ss3mA.png" class="img-fluid"></p>
+</section>
+<section id="overview-shot-of-a-cat-in-a-beach-at-night-acrylic-painting-by-andy-warhol" class="level3">
+<h3 class="anchored" data-anchor-id="overview-shot-of-a-cat-in-a-beach-at-night-acrylic-painting-by-andy-warhol">overview shot of a cat in a beach at night, acrylic painting by andy warhol</h3>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*b52u4UCxY3Pkma5ranATjA.png" class="img-fluid"></p>
+</section>
+<section id="overview-shot-of-a-cat-in-a-beach-at-night-acrylic-painting-by-andy-warhol-intricate-details" class="level3">
+<h3 class="anchored" data-anchor-id="overview-shot-of-a-cat-in-a-beach-at-night-acrylic-painting-by-andy-warhol-intricate-details">overview shot of a cat in a beach at night, acrylic painting by andy warhol, intricate details</h3>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*IiyYVu5MDEFapTLQ2JhxPg.png" class="img-fluid"></p>
+</section>
+<section id="read-more-about-sd-and-prompts" class="level3">
+<h3 class="anchored" data-anchor-id="read-more-about-sd-and-prompts">Read more about SD and prompts</h3>
+<ul>
+<li><p><a href="https://github.com/awesome-stable-diffusion/awesome-stable-diffusion">List of awesome SD resources</a></p></li>
+<li><p><a href="https://www.reddit.com/r/StableDiffusion/comments/xcrm4d/useful_prompt_engineering_tools_and_resources/">SD prompt resources</a></p></li>
+<li><p><a href="http://dallery.gallery/wp-content/uploads/2022/07/The-DALL%C2%B7E-2-prompt-book-v1.02.pdf">DALL-E prompt book</a></p></li>
+<li><p><a href="https://arxiv.org/abs/2112.10752">SD scientific paper</a></p></li>
+</ul>
+</section>
+</section>
+<section id="dissecting-prompts-with-prompt-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="dissecting-prompts-with-prompt-matrix">Dissecting prompts with “prompt matrix”</h2>
+<p>We can create matrixes that visually dissect for us what is happening in a prompt, ina. the process is much similar to the above one but automated. I find this especially useful to clean and remove words that aren’t adding anything to the final result, and also to understand what composes a beautiful public prompt. Head to <a href="https://lexica.art/">lexica.art</a> or your preferred prompt repository and find one you like:</p>
+<p><img src="https://cdn-images-1.medium.com/max/6720/1*V6Wwgc1Grca5B1R5St07bQ.png" class="img-fluid" alt="https://lexica.art/prompt/7115b90c-4da0-4918-b1cb-3d6f6f304ce3"> &gt; delirium, chaotic storm of liquid smoke, stylized beauty portrait of natalia portman, by petros afshar, ross tran, tom whalen, peter mohrbacher, artgerm, shattered glass, bubbly underwater scenery, radiant light &gt; Steps: 50, Sampler: DDIM, CFG scale: 10, Seed: 3231029621, Size: 512x640</p>
+<p>These configs should get close to the website results:</p>
+<p><img src="https://cdn-images-1.medium.com/max/3072/1*4K0DE9g13MQrPXxJenAjGg.png" class="img-fluid"></p>
+<p>Now let’s use the <strong>prompt matrix</strong> script that allows us to breakdown this prompt into many parts and it will show us how the image looks like for every possible combination:</p>
+<section id="original-prompt" class="level3">
+<h3 class="anchored" data-anchor-id="original-prompt">Original Prompt</h3>
+<blockquote class="blockquote">
+<p>delirium, chaotic storm of liquid smoke, stylized beauty portrait of natalia portman, by petros afshar, ross tran, tom whalen, peter mohrbacher, artgerm, shattered glass, bubbly underwater scenery, radiant light</p>
+</blockquote>
+</section>
+<section id="prompt-broken-down-into-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="prompt-broken-down-into-matrix">Prompt Broken down into matrix</h3>
+<blockquote class="blockquote">
+<p>delirium|chaotic storm of liquid smoke|stylized beauty portrait of natalia portman|by petros afshar, ross tran, tom whalen, peter mohrbacher, artgerm| shattered glass|bubbly underwater scenery|radiant light</p>
+</blockquote>
+<p>When you enable the prompt matrix script you can add “|” as a break so it knows how to build the matrix.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2580/1*JtyjNO9UdlyFSg5qrCTS-Q.png" class="img-fluid"></p>
+<p>When using this script. “Batch Count” will be ignored. Here is a matrix using the same seed as the first image from the previous batch (You will find it complete at the bottom-right here):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/6392/1*6jW2WzUHphc7q0dFTTXUlQ.jpeg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">delirium|chaotic storm of liquid smoke|stylized beauty portrait of natalia portman|by petros afshar, ross tran, tom whalen, peter mohrbacher, artgerm| shattered glass|bubbly underwater scenery|radiant light</figcaption>
+</figure>
+</div>
+<p>This feature allows you to select one image from the matrix and then look at the prompt that made it. The grey strikes text means that part has been omitted. The first image (top-left) is just the first part of the prompt before the first “|” (in this case, “delirium”). I use this a lot with my prompts to find out what words are influencing the final result and how.</p>
+</section>
+</section>
+<section id="fine-tuning-configs-with-xy-plots" class="level2">
+<h2 class="anchored" data-anchor-id="fine-tuning-configs-with-xy-plots">Fine-tuning configs with “X/Y plots”</h2>
+<p>The X/Y plot script will also create a matrix but we can decide what the X (horizontal) and Y (vertical) axes are:</p>
+<p><img src="https://cdn-images-1.medium.com/max/2552/1*_w-Fsid7mB_Ukq0ylHGhTQ.png" class="img-fluid"></p>
+<p>This script is extremely useful for finding out the best sampler, CFG scale, and step count for what you want to do. I will run the above configs for the same prompt and seed from the previous example. Unlike in the prompt matrix, “Batch Count” does work here so set it to 1 if you don’t want it to take too long to generate:</p>
+<p><img src="https://cdn-images-1.medium.com/max/6912/1*W3PfS_eFHjKBNun36Rgi4w.png" class="img-fluid"></p>
+<p>You can make X/Y Plots with any variables, not just these 2, so have fun finding the config that makes the cooler images for your desired prompt! I find this script extremely useful to figure out sampler, steps, and CFG scale for a prompt.</p>
+</section>
+<section id="upscaling" class="level2">
+<h2 class="anchored" data-anchor-id="upscaling">Upscaling:</h2>
+<p>In the “Extras” tab we can find the upscalers:</p>
+<p><img src="https://cdn-images-1.medium.com/max/2648/1*Ng3-79ZgU3wsEzmtP5ke1w.png" class="img-fluid"></p>
+<p>Again, this is something you will experiment with depending on what you want. I often like to use “SwinIR” on both upscale boxes, but in this example I preferred “ESRGAN” results:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*XycXwUrysSLWiIsYR2W26w.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">no upscale</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/4096/1*mPFia0TIXkDYIBp-pODTIQ.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">SwinIR_4x upscale</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/4096/1*FfurygfGu7V53kdHWMNYwA.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">ESRGAN 4x upscale</figcaption>
+</figure>
+</div>
+<p>Both upscale 4x resolution, so the image went from 512x512 to 2048x2048. You can repeat the process and upscale it repeatedly, but I haven’t experimented much with doing this.</p>
+</section>
+<section id="post-production" class="level2">
+<h2 class="anchored" data-anchor-id="post-production">Post-Production</h2>
+<p>If you have basic photoshop skills you can post-produce images to remove weird unwanted watermarks/signatures resemblances and also apply extra design on top of it. I’ve been using this for my latest articles, here are some examples:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2560/1*geuPMDrA7WD2NoQGgG_z4w.jpeg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">original yearn.finance logo (where I work at!) designed by a person</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*-tbBODMZyBnJOeEmwX7GIA.jpeg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">img2img version of the logo (prompt: “demon”)</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2800/0*Mo--0li3l6Lh00Cu.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">final banner for the article using the font taken from the presskit</figcaption>
+</figure>
+</div>
+<p>In the above example we can see how img2img is very powerful in achieving some form while retaining the old one. But there is much more that could be done:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2560/1*iHzJPN-O8fsPWvHRKr6btA.jpeg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">“wildwest exploration blue compass” (made in Midjourney txt2img, not SD)</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2560/1*nUWkX9L7rAJGOsTnMpNyzg.jpeg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">photoshopped text + yearn logo</figcaption>
+</figure>
+</div>
+<p>Another example from scratch with SD:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://i.imgur.com/aV6KOFW.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">txt2img “saint holding circular blue token with vibrant neon outline, dark background, top artstation”</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://i.imgur.com/aV6KOFW.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">img2img “saint holding circular blue token with vibrant neon outline, dark background, top artstation”</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://i.imgur.com/4WI8vnZ.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">top pick</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://i.imgur.com/OmmPuZs.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">photoshop yearn logo added in</figcaption>
+</figure>
+</div>
+</section>
+<section id="final-words" class="level2">
+<h2 class="anchored" data-anchor-id="final-words">Final Words</h2>
+<p>Its been 8 months since I wrote an article on <a href="https://medium.com/@marcoworms/generate-images-with-open-source-ai-tools-e32eb4ea2d93">how to make images with open-source AI tools</a> and since then the rise o Stable Diffusion, Midjourney, and DALL-E has been exponential and unstoppable.</p>
+<ul>
+<li><p>SD is open source and people are doing amazing things with it, like plugging it into 3d render pipelines and video post-production.</p></li>
+<li><p>Midjourney pricing and UI are very accessible. It produces beautiful results with small prompts, remaster uses SD for even more stunning results.</p></li>
+<li><p>DALL-E outpainting is incredible, you can merge/extend existing artwork. More expensive than the rest, but worth the try.</p></li>
+</ul>
+<p>I’m very excited about the future of this tech. Whenever I feel like we had another significant advancement I’ll be sure to make another article! If you like this type of content <a href="https://twitter.com/MarcoWorms">follow me on Twitter</a> where I often post random images and guides for weird and beautiful tech.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/8192/1*u1uMfn8GpoWwuRyOo5wcbQ.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">“cowboy riding into the sunset, cyberpunk landscape, unreal engine render, vibrant lights” Steps: 50, Sampler: DDIM, CFG scale: 10, Seed: 987765270, Size: 1024x512, High Res. Fix Denoising strength: 0.7, Up: SwinIR_4x</figcaption>
+</figure>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

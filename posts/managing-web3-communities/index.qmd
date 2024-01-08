@@ -1,0 +1,98 @@
+---
+title: "Generating pixel art NFTs and link to my web generators with sources"
+author: "Marco Guaspari Worms"
+date: "2021-12-07"
+categories: [english, marketing]
+---
+
+## Managing Web3 communities and social media
+
+This is a light framework to help artists and coders deal with the **Community Management** and **Social Media **aspects of their project.
+
+## Targeting Content
+
+> When you try to build content it’s much easier if you know who you are building for. We are gonna paint here 2 targets to facilitate your process of building content for any social platform:
+
+Let’s picture your entire digital presence in 2 spheres:
+
+**The Inner Circle **is where you can talk closely to your community, people here have closer access to the development team. For web3 communities, this is normally a Discord server
+
+**The Outer Circle **is where you have both people that already know your project and a huge pool of complete strangers. For web3 communities, this is normally a Twitter (+ any other social media) profiles
+
+Everything you do is easier to release if aim to one of these targets with your intentions. You should always try to have at least 1 initiative running for each of these targets, this ensures you are looking closely at both **Onboarding **(the flow of people entering) ****and **Retention **(the % of people that sticks for the long run)
+
+Now that we know our targets we need to know our tools
+
+## Communication, Expectations, People, and Trust
+
+**Communication **is your main tool, and you’ll have to use everything you can (text, voice, image, video) to help you get your idea passed through the internet to another person
+
+**Expectations **are what you craft with this tool (also, you are not 100% in control here, but that’s just life), expectations are easily influenced by the people’s **Trust **in your team and project
+
+**People** are the ones that consume your products, create expectations, and build trust as they do it, they sometimes read what you post (you can’t expect them to read 100% of what you post).
+
+You can never forget you are building for **People**, so always listen to what they have to say (which you can always politely expose a different vision and you don’t have to agree with them)
+
+**Trust** is what helps you get information across in the good and the bad times, if people trust you it’s easier for you to align expectations with less communication needed in the process.
+
+Your job with every content you post on social media is to use **Communication **to constantly help **People **get their **Expectations **straight about what you want to deliver, constantly building and maitaining the overall **Trust **they have both in your team and your delivery capacity.
+>  You won’t get 100% expectations of 100% people straight, but you can show your community that you are constantly putting authentic effort into communication, and every time you do this the smart people in your community will have more and more reasons to trust you.
+
+So let’s put this together with the targeting content and build a framework you can follow:
+
+## Framework for Web3 community management using Twitter + Discord
+>  Please don't copy-paste this and expect to work, this is a simple implementation of the above ideas, I always preach against copy-pasting frameworks, the reason I built this one is to try to help people envision that dealing with the social media aspect can be something contained and even fun.
+
+**1Write down your project’s vision so everyone in your team is aligned**
+
+For example, our Fantom Kittens community is about creating an open environment for people that want to learn more about Web3 so they can feel comfortable in starting to build their things. This means our content will never directly disincentivize people from building in web3 or joining our community for free.
+
+The more you polish your vision the easier it is for you to craft content to any target.
+
+**2Every day your team has to be active in The Inner Circle**
+
+![gm!](https://cdn-images-1.medium.com/max/2000/1*g5S_wABuq18-p1pi5pEDVw.png)
+
+“Every Day” is kinda hardcore, but the more active your team as an entity is in your inner circle the more trust you’ll build with the people you have there.
+
+But just try to be there even if it’s for 5 minutes! Read what’s going on, reply to some people, just interact with them as you would on a normal interaction with a friend of a friend
+
+The “gm” channels you see in many Web3 communities are a good incentive for people to go there every day, say “good morning” and check out what’s happening in your community!
+
+**3Every day you should do at least 1 quality post for The Outer Circle**
+
+***(**The more creative and the more you know about what happens in the Outter Circle the better the quality of your posts will be, memes are your friends)*
+
+Maintaining a constant flow of information to the outer world about your community and what you are building. When you do this you guarantee that anyone that gets to know you today will have fresh content to consume, will start to see you are consistent and consistency helps build the trust needed to get new people to take more time to look into your project and onboard to the inner circle
+
+Also, remember to efficiently replicate information from Twitter to Discord and vice-versa so the maximum amount of people see it when it’s released. You can use [TweetShift](https://tweetshift.com/) to help you replicate any Twitter account at a discord channel.
+
+*The images below have an example of an initiative that we made that helps us generate quality content, you’ll probably want to have some initiatives like these running in parallel so you have different content types to post on alternating days*
+
+![In Fantom Kittens we started to make special kittens molded to some people that we like and send them publicly via Twitter](https://cdn-images-1.medium.com/max/2000/1*BwfkwciD-Q_7jdAHF-jCbQ.png)
+
+![In this case, we even got a cute reply from a person we admire a lot ❤](https://cdn-images-1.medium.com/max/2000/1*QQUgMjR7qgy-OxtW_RuJTg.png)
+
+**4It’s nice to always have events running or planned for The Inner Circle and The Outer Circle ***(Inner events may be harder to run and Outer events normally already please the Inner people if they can also participate, so starting with Outer events is easier especially when you don’t have many people in your Inner)*
+
+![The [Fantom Kittens Shitcoin Festival](https://medium.com/@marcoworms/deploying-your-own-shitcoin-at-ftm-and-creating-a-decentralized-market-for-it-1dda397f9e4) is an example of an event that embraces the Outer circle and also the Inner one](https://cdn-images-1.medium.com/max/2494/1*zd6aRC70b9MDvt3h5FwU4A.png)
+
+**5Everything you have to repeatedly answer start to build into a “Readme” discord channel, you can later turn this into a “Website” ***(We did exactly this with [fakeworms.studio](http://fakeworms.studio))*
+
+![](https://cdn-images-1.medium.com/max/2518/1*PEALEihfjGMowurMrdspMQ.png)
+
+**6Your Twitter Profile information is seen by many people in the Outer circle as the first contact with your community.**
+
+Try to have good condensed information for first-timers there:
+
+![There are tons of info here: Old collection, New collection, Who we are, Where we are, How to join us, our “Latest product”, and our full website with more information on all of this](https://cdn-images-1.medium.com/max/2000/1*Y9IfASJSKRGB0ICR-qNnAw.png)
+
+## Closing Thoughts
+
+I don’t want any of this to feel like a closed model, I saw people demanding this type of content and this is my first attempt at building it, if you have any feedback you can reach me out on Twitter or in our community Discord chats!
+
+Discord: **[discord.gg/fantom-kittens](https://t.co/Qh5h6wJsoB)**
+
+Twitter: **[https://twitter.com/FakewormsStudio](https://twitter.com/FakewormsStudio)**
+
+Website: **[https://fakeworms.studio/](https://fakeworms.studio/)**

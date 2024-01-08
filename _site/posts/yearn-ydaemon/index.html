@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Marco Guaspari Worms">
+<meta name="dcterms.date" content="2022-09-16">
+
+<title>Worms Blog - yDaemon: one API to unify all yearn data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Worms Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/MarcoWorms" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/MarcoWorms" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">yDaemon: one API to unify all yearn data</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">english</div>
+                <div class="quarto-category">yearn</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Marco Guaspari Worms </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 16, 2022</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p><img src="https://cdn-images-1.medium.com/max/5200/0*VJeiEc_Vh769rYAE.png" class="img-fluid"></p>
+<p>yDaemon (<a href="https://github.com/yearn/ydaemon">source</a>) is a yearn <a href="https://restfulapi.net/">REST</a> API that provides a single unified interface to consume all relevant Yearn ecosystem data. The API data updates in near real-time thanks to the many daemons that it spawns in order to check data sources for changes:</p>
+<ul>
+<li>Yearn <a href="https://medium.com/iearn/subgraphs-explained-yearning-for-data-4e90d18e33e">Subgraph</a> (main source of historical data)</li>
+<li>Yearn <a href="https://github.com/yearn/ydaemon/tree/main/data/meta">Meta</a> (static data updated by yearn team, like strategy descriptions)</li>
+<li>Yearn <a href="https://docs.yearn.finance/vaults/yearn-api">API</a> (APY computations)</li>
+<li>Yearn <a href="https://docs.yearn.finance/vaults/yearn-lens/">Lens</a> (token prices)</li>
+<li>Yearn <a href="https://docs.yearn.finance/resources/risks/risk-score">Risk Framework</a> (soon)</li>
+</ul>
+<p>yDaemon exposes 4 routes for you to work with data:</p>
+<ul>
+<li><a href="https://ydaemon.ycorpo.com/docs/routes/getSupportedChains">getSupportedChains</a>: lists every valid chainID</li>
+<li><a href="https://ydaemon.ycorpo.com/docs/routes/getAllVaults">getAllVaults</a>: lists information all vaults for a chainID</li>
+<li><a href="https://ydaemon.ycorpo.com/docs/routes/getVault">getVault</a>: lists information for a single vault</li>
+<li><a href="https://ydaemon.ycorpo.com/docs/routes/getBlacklistedVaults">getBlacklistedVaults</a>: lists vaults not included in yDaemon API</li>
+</ul>
+<blockquote class="blockquote">
+<p><em>chainID is a unique number that represents a blockchain, for example Ethereum ID is 1.</em></p>
+</blockquote>
+<p>The main routes to use are getAllVaults and getVault, both work with the same vault object type the only difference is that one route returns information for a list of all vaults and the other returns for a single one. Some of the most important information that these routes are:</p>
+<ul>
+<li><strong>Vault Data</strong>: Address, Symbol, Name, Icon, Version, Creation Date, Last Update.</li>
+<li><strong>Vault Underlying Token Data</strong>: Address, Name, Symbol, Icon.</li>
+<li><strong>Vault TVL</strong>: Total Assets, Total Assets in USD, Value of Token in USD .</li>
+<li><strong>Vault APY</strong>: Gross APR, Net APY, Performance Fees, Management Fees, APY based on Weekly/Monthly/Lifetime performance, Curve APRs breakdown.</li>
+<li><strong>Vault Strategies</strong>: Address, Name, Description, Strategist, Total Gain, Total Loss, Total Debt, Debt Limit.</li>
+</ul>
+<section id="setup-ydaemon-locally" class="level2">
+<h2 class="anchored" data-anchor-id="setup-ydaemon-locally">Setup yDaemon locally</h2>
+<p>There are 2 ways to install and run it using either Docker or <a href="https://github.com/yearn/ydaemon/blob/main/INSTALL.md">Manual Installation</a>, I will proceed with using Docker since it works with fewer dependencies in any OS:</p>
+<ol type="1">
+<li><p><a href="https://docs.docker.com/get-docker/">Download</a> and install Docker</p></li>
+<li><p><a href="https://git-scm.com/downloads">Download</a> and install Git</p></li>
+<li><p>Create an <a href="https://auth.alchemyapi.io/">Alchemy</a> or <a href="https://infura.io/">Infura</a> account (or another RPC provider) and get RPC HTTPS keys for the blockchains you want to query data from. Fantom only has the <a href="https://docs.fantom.foundation/api/public-api-endpoints">public</a> RPC</p></li>
+<li><p>Open your terminal and type git clone https://github.com/yearn/ydaemon.git to download yDaemon source code and cd ydaemon to enter the project’s folder</p></li>
+<li><p>Create a .env file containing the lines for the blockchains you want to query from, you don’t need to add URLs for the ones you don’t want to query:</p>
+<p>RPC_URI_FOR_1=https://eth-mainnet.g.alchemy.com/v2/secret_secret_secret RPC_URI_FOR_10=https://another.rpc.url RPC_URI_FOR_250=https://another.rpc.url RPC_URI_FOR_42161=https://another.rpc.url</p></li>
+<li><p>In the terminal, type docker-compose up –build –detach to run yDaemon.</p></li>
+<li><p>To stop type docker-compose down.</p></li>
+</ol>
+</section>
+<section id="daemons" class="level2">
+<h2 class="anchored" data-anchor-id="daemons">Daemons</h2>
+<p><img src="https://cdn-images-1.medium.com/max/5200/0*uajLgo_Rp_ZuAtCb.png" class="img-fluid"></p>
+<p>To keep data up-to-date the API daemons are spawned on deploy and work in the following cadence:</p>
+<ul>
+<li>Prices from the oracle are updated every 30 seconds for every tokens and vaults, since the price may change at every block.</li>
+<li>APY information is updated every 10 minutes, as the underlying API is updated every 30 minutes.</li>
+<li>Metadata is updated every day and whenever you deploy yDaemon API.</li>
+</ul>
+<p>Each daemon knows how to fetch and handle data from a specific source and <a href="https://ydaemon.ycorpo.com/docs/daemons/intro#cache">cache</a> it if needed, most data that doesn’t come from the Subgraph is cached on deployment and then periodically updated.</p>
+<p>There is a <a href="https://ydaemon.ycorpo.com/docs/daemons/list">**list of all Daemons</a>** at the docs. All daemons are written in <a href="https://go.dev/">Go</a> and you can find them in the source code at the <a href="https://github.com/yearn/ydaemon/tree/main/internal/daemons">daemons</a> folder.</p>
+</section>
+<section id="query-ydaemon" class="level2">
+<h2 class="anchored" data-anchor-id="query-ydaemon">Query yDaemon</h2>
+<p>The public endpoint to use yDaemon is:</p>
+<ul>
+<li><a href="https://ydaemon.yearn.finance/">https://ydaemon.yearn.finance/</a></li>
+</ul>
+<p>You can test the API <a href="https://github.com/yearn/ydaemon#endpoints">endpoints</a> by changing the:chainID and :address in the URLs below to what you want to query for</p>
+<p><strong>getSupportedChains</strong>: GET</p>
+<ul>
+<li>Local: <a href="http://localhost:8080/info/chains">http://localhost:8080/info/chains</a></li>
+<li>Live: <a href="https://ydaemon.yearn.finance/info/chains">https://ydaemon.yearn.finance/info/chains</a></li>
+</ul>
+<p><strong>getAllVaults</strong>: GET</p>
+<ul>
+<li>Local: <a href="http://localhost:8080/:chainID/vaults/all">http://localhost:8080/:chainID/vaults/all</a> | <a href="http://localhost:8080/1/vaults/all">ETH</a> | <a href="http://localhost:8080/10/vaults/all">OP</a> | <a href="http://localhost:8080/250/vaults/all">FTM</a> | <a href="http://localhost:8080/42161/vaults/all">ARBI</a></li>
+<li>Live: <a href="https://ydaemon.yearn.finance/:chainID/vaults/all">https://ydaemon.yearn.finance/:chainID/vaults/all</a> | <a href="https://ydaemon.yearn.finance/1/vaults/all">ETH</a> | <a href="https://ydaemon.yearn.finance/10/vaults/all">OP</a> | <a href="https://ydaemon.yearn.finance/250/vaults/all">FTM</a> | <a href="https://ydaemon.yearn.finance/42161/vaults/all">ARBI</a></li>
+</ul>
+<p><strong>getVault</strong>: GET</p>
+<ul>
+<li>Local: <a href="http://localhost:8080/:chainID/vaults/:address">http://localhost:8080/:chainID/vaults/:address</a></li>
+<li>Live: <a href="https://ydaemon.yearn.finance/:chainID/vaults/:address">https://ydaemon.yearn.finance/:chainID/vaults/:address</a></li>
+</ul>
+<p><strong>getBlacklistedVaults</strong>: GET</p>
+<ul>
+<li>Local: <a href="http://localhost:8080/info/vaults/blacklisted">http://localhost:8080/info/vaults/blacklisted</a></li>
+<li>Live: <a href="https://ydaemon.yearn.finance/info/vaults/blacklisted">https://ydaemon.yearn.finance/info/vaults/blacklisted</a></li>
+</ul>
+<p>With the service up you can now query for vaults data, for example at Ethereum :chainID = 1 let’s query the DAI vault :address = 0xdA816459F1AB5631232FE5e97a05BBBb94970c95 by entering this URL in the browser (or query form any programming language):</p>
+<ul>
+<li><a href="https://ydaemon.yearn.finance/1/vaults/0xdA816459F1AB5631232FE5e97a05BBBb94970c95">https://ydaemon.yearn.finance/1/vaults/0xdA816459F1AB5631232FE5e97a05BBBb94970c95</a></li>
+</ul>
+<p>Copy the returned text and paste it into something like <a href="http://json2table.com/">json2table</a> so you can prettify the JSON. For example, we can see that management fees for this vault are now 0 (announced recently on <a href="https://twitter.com/iearnfinance/status/1565217164122103809">twitter</a>):</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*HPRbs671oz_0wmhQ.png" class="img-fluid"></p>
+</section>
+<section id="filters" class="level2">
+<h2 class="anchored" data-anchor-id="filters">Filters</h2>
+<p>The getAllVaults might return a huge list so it has some query tools you can use to filter and reorder results:</p>
+<ul>
+<li><code>?skip=N</code> will skip N vault from the graphQL query. Default is 0</li>
+<li><code>?first=N</code> will limit the result to N vaults on the graphQL query. Default is 1000</li>
+<li><code>?strategiesDetails=withDetails</code> adds more details to vault strategies</li>
+<li><code>?strategiesCondition=absolute</code> removes strategies with 0 TVL</li>
+</ul>
+<p>So if I want the listing result to return only 5 vaults, I can use first:</p>
+<ul>
+<li><a href="https://ydaemon.yearn.finance/1/vaults/all?first=5">https://ydaemon.yearn.finance/1/vaults/all?first=5</a></li>
+</ul>
+<p>If I’m building some sort of pagination system that shows vaults in groups of 5, I can ask for the next page using skip:</p>
+<ul>
+<li><a href="https://ydaemon.yearn.finance/1/vaults/all?first=5?skip=5">https://ydaemon.yearn.finance/1/vaults/all?first=5?skip=5</a></li>
+</ul>
+<p>Query vaults with complete strategy details only for strategies with 0 TVL:</p>
+<ul>
+<li><a href="https://ydaemon.yearn.finance/1/vaults/all?strategiesDetails=withDetails?strategiesCondition=absolute">https://ydaemon.yearn.finance/1/vaults/all?strategiesDetails=withDetails?strategiesCondition=absolute</a></li>
+</ul>
+<p>See all available <a href="https://github.com/yearn/ydaemon#endpoints">fillters</a></p>
+</section>
+<section id="build-with-yearn" class="level2">
+<h2 class="anchored" data-anchor-id="build-with-yearn">Build with Yearn</h2>
+<p>If you are using yDaemon to build anything let our community know! Here are some useful links:</p>
+<ul>
+<li><a href="https://github.com/yearn/ydaemon">yDaemon Github Repository</a></li>
+<li><a href="https://docs.yearn.finance/">Yearn Documentation</a></li>
+<li><a href="https://docs.yearn.finance/partners/introduction">Yearn Partnership Documentation</a></li>
+<li><a href="https://discord.com/invite/yearn">Yearn Community Discord</a></li>
+<li><a href="https://t.me/yearnfinance">Yearn Community Telegram</a></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

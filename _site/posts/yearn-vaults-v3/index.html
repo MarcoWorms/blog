@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Marco Guaspari Worms">
+<meta name="dcterms.date" content="2022-05-02">
+
+<title>Worms Blog - Yearn Vaults v3</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Worms Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/MarcoWorms" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/MarcoWorms" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Yearn Vaults v3</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">english</div>
+                <div class="quarto-category">yearn</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Marco Guaspari Worms </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 2, 2022</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p><img src="https://cdn-images-1.medium.com/max/2880/1*CYZe-atKXG5s8vPWmqorMQ.png" class="img-fluid"></p>
+<p>As we look ahead to the exciting changes v3 Vaults are bringing for both developers and degens, I spoke with the Yearn contributor leading the v3 design team. I was surprised to learn about the number of new features! Initially, our conversation started around the <a href="https://twitter.com/iearnfinance/status/1511444220850184197">ERC-4626 standard</a> which standardizes vaults across protocols but it turns out that’s just the tip of the iceberg.</p>
+<section id="the-purpose-of-v3-is-to-improve-all-core-aspects-of-yearn-vaults" class="level2">
+<h2 class="anchored" data-anchor-id="the-purpose-of-v3-is-to-improve-all-core-aspects-of-yearn-vaults">The purpose of v3 is to improve all core aspects of Yearn Vaults</h2>
+<section id="security" class="level3">
+<h3 class="anchored" data-anchor-id="security">Security</h3>
+<p>Maintain Yearn’s position as best in class for DeFi security practices.</p>
+</section>
+<section id="development" class="level3">
+<h3 class="anchored" data-anchor-id="development">Development</h3>
+<p>Reduce friction for creating strategies, and allow a wider range of strategies for a vault.</p>
+</section>
+<section id="automation" class="level3">
+<h3 class="anchored" data-anchor-id="automation">Automation</h3>
+<p>Allow more vault functions to be automated besides <em>harvest</em>, getting one step closer to the dream of the <em>100% automated vault</em>.</p>
+</section>
+</section>
+<section id="in-order-to-tackle-the-v3-scope-the-developers-are-working-on-the-following" class="level2">
+<h2 class="anchored" data-anchor-id="in-order-to-tackle-the-v3-scope-the-developers-are-working-on-the-following">In order to tackle the v3 scope, the developers are working on the following:</h2>
+<section id="increase-modularity" class="level3">
+<h3 class="anchored" data-anchor-id="increase-modularity">Increase modularity</h3>
+<p>Implementing code that is simple in a robust way in the yVault contract, which allows smarter logic to be placed in modules that can be iterated.</p>
+<p>Adopting the ERC-4626 standard which allows our vaults to be compatible with any other protocols that follow it.</p>
+</section>
+<section id="improve-strategy---vault-relation" class="level3">
+<h3 class="anchored" data-anchor-id="improve-strategy---vault-relation">Improve Strategy &lt;-&gt; Vault relation</h3>
+<p>Allow for simpler strategy testing, deploying, and overall including more tools to tackle a wider range of yield possibilities, including locking funds, riskier strategies, and multichain strategies.</p>
+</section>
+<section id="create-new-products" class="level3">
+<h3 class="anchored" data-anchor-id="create-new-products">Create new products</h3>
+<p>Create new products like <em>Junior Tranches</em> which enables riskier strategies and allows users to choose a higher-risk deposit option.</p>
+<p>Allow more than 1 vault for each token type</p>
+<p>Allow vaults to be controlled by multisigs that can be shared with partner protocols</p>
+</section>
+</section>
+<section id="flexibility" class="level2">
+<h2 class="anchored" data-anchor-id="flexibility">Flexibility</h2>
+<p>v3 will give developers and strategists more flexibility for shipping code to production. It increases the modularization of the contracts and also opens doors for new ways to deposit in vaults.</p>
+<p>We’ll also see a better automatization of peripheral contracts: in v2 only the <em>harvest</em> functions are automated and, in v3 we’ll get closer to a <em>100% automated vault</em> because now more important functions are easier to automate with the <a href="https://keep3r.network/">Keep3r Network.</a> &gt; <strong><em>We want to move fast and not break things</em></strong> <em>— Skeletor</em></p>
+</section>
+<section id="strategies-on-steroids" class="level2">
+<h2 class="anchored" data-anchor-id="strategies-on-steroids">Strategies on steroids</h2>
+<p>v2 Vaults had a limit of 20 strategies per vault, in v3 this limit will be increased. Additionally, riskier strategies will now follow a contract model analogous to the <a href="https://corporatefinanceinstitute.com/resources/knowledge/finance/junior-tranche-debt/">Senior/ Junior Tranches</a>.</p>
+<p>Riskier strategies will now have a <em>Junior Tranche</em> contract, meaning the user will first deposit tokens into a vault and can then choose to deposit the vault tokens into a junior tranche contract for a higher-risk/higher-reward option. Users can also choose specific strategies to focus on. This is an optional feature that people with a higher risk appetite might want to explore.</p>
+<p>Another thing the v3 team is working on is how to decentralize <a href="https://medium.com/iearn/how-new-yearn-vault-strategies-are-endorsed-8c0e0870790d">strategy endorsement</a>. Today many security audit aspects at Yearn are centralized. But being able to decentralize this process would give more room to scale the product.</p>
+<p>Further features focus on improving the overall usage of vaults by users, strategists, and developers, such as:</p>
+<ul>
+<li><p>ySwaps (the service that strategists use to make token swaps) is being optimized for gas efficiency.</p></li>
+<li><p>v2 harvests take 6 hours for share-prices to go up, but in v3 the time is dynamic, improving MEV protection.</p></li>
+<li><p>The increased modularity around vault’s processes allows us to make tighter partnerships with other protocols and build solutions more specialized to their cases.</p></li>
+</ul>
+</section>
+<section id="vaults-code" class="level2">
+<h2 class="anchored" data-anchor-id="vaults-code">Vaults code</h2>
+<p>v2 vaults code is written in <a href="https://vyper.readthedocs.io/en/stable/">Vyper</a>, but v3 is built with <a href="https://docs.soliditylang.org/en/v0.8.13/">Solidity</a>.</p>
+<p>Vyper is a solid language as proven by the v2 system, but has a smaller developer pool. Our decision to go with solidity was based, among other factors, on accessing the larger developer pool necessary for a critical project like this. We see a bright future for Vyper and will continue exploring it in Yearn for smart contracts, any of the modules around vaults can be done using it.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/3050/0*vSNetKyTnctYtsZ6.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://defillama.com/languages">Defillama blockchain programming language usage statistics</a></figcaption>
+</figure>
+</div>
+<p>Statistics on coding languages used across blockchains can be monitored on <a href="https://defillama.com/languages">Defillama</a>, at the moment Vyper makes up around 10% and Solidity 69%. This reflects Solidity’s market dominance, and since we needed more contributors to ship v3 we chose the tech that would allow us to build an experienced team faster.</p>
+</section>
+<section id="the-future-awaits" class="level2">
+<h2 class="anchored" data-anchor-id="the-future-awaits">The future awaits</h2>
+<p>I’ve only scratched the surface of what’s to come in v3. Yearn contributors are also working on building a number of other exciting products and functionalities! <a href="https://yearnfinance.notion.site/Join-Us-3e9c95b9bd7846a18c0f1cbe6ab05eda">**Learn more about opportunities to join Yearn here!</a>**</p>
+<section id="made-in-yearn.finance" class="level3">
+<h3 class="anchored" data-anchor-id="made-in-yearn.finance">Made in <a href="https://yearn.finance/#/portfolio">yearn.finance</a></h3>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

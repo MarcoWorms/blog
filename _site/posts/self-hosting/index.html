@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Marco Guaspari Worms">
+<meta name="dcterms.date" content="2021-03-31">
+
+<title>Worms Blog - Self-Hosting Web3 Services</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Worms Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/MarcoWorms" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/MarcoWorms" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Self-Hosting Web3 Services</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">portuguese</div>
+                <div class="quarto-category">translation</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Marco Guaspari Worms </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 31, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p><img src="https://cdn-images-1.medium.com/max/4000/0*iFKs54O8tWvkXLhw.png" class="img-fluid"></p>
+<p>Web3 has brought a new way to communicate with applications: apps are no longer hosted by centralized server providers but rather on blockchains, which are decentralized systems. Apps built on top of decentralized foundations are resilient to downtime and censorship, but there is an issue: serving the app interface to the users using the web browser often relies on centralized entities.</p>
+<p>In this article we’ll learn how to self-host app interfaces for core crypto and Yearn services, so if official websites are down by any reason you can actually serve the website for yourself since the blockchain is never down!</p>
+<section id="back-end-front-end-web3" class="level2">
+<h2 class="anchored" data-anchor-id="back-end-front-end-web3">Back-end, Front-end, Web3!</h2>
+<p>A quick intro to these concepts:</p>
+<ul>
+<li><p><strong>Front-end</strong> is the name given to the portion of the application that is seen by the user, like a website or a mobile app.</p></li>
+<li><p><strong>Back-end</strong> is the name given to the portion of the application that is not seen by the user. Many front-end actions rely on back-end to process.</p></li>
+</ul>
+<p>In Web3 the blockchain manages to decentralize the back-end, but the front-end will still be served to the user using the default centralized method:</p>
+<ul>
+<li><p>User requests browser to go to a page (example <a href="http://yearn.finance/">http://yearn.finance</a>)</p></li>
+<li><p>Browser requests DNS for the IP of this address (13.227.124.73)</p></li>
+<li><p>Browser requests the files for the IP</p></li>
+</ul>
+<p>And if any of these two happens:</p>
+<p><strong>DNS doesn’t resolve your domain to an IP address</strong> or <strong>IP address doesn’t serve you the front-end files</strong></p>
+<p>You won’t be able to see the front-end in order to click stuff and communicate with the back-end. In order to be able to use Web3 services without these concerns you can self-host the front-end and workaround both the “DNS resolution” and the “IP-not-online” problem at the same time!</p>
+<p><img src="https://cdn-images-1.medium.com/max/4000/0*xmR_T3o-Sw1YW3oh.png" class="img-fluid"></p>
+</section>
+<section id="why-self-hosting" class="level2">
+<h2 class="anchored" data-anchor-id="why-self-hosting">Why Self-Hosting?</h2>
+<p>Self-hosting a website in web3 means the front-end will work even when the default front-end provider is down. This cuts many middlemen that exist in the middle of the way of your machine reaching the front-end files! It’s a win/win relationship for the individual and the service that if you know how to do it you can back up the services that are essential to you:</p>
+<ul>
+<li><p>The individual gains more resiliency accessing the service even when conditions to reach the front-end are bad</p></li>
+<li><p>The server that delivers front-end files receives fewer requests, which helps it not get congested</p></li>
+<li><p>The local version of the app will be frozen in a specific version. If this version works well for the individual it’s great to have a backup so if the live front-end breaks any feature you can still access the working version</p></li>
+</ul>
+<p>In order to self-host a service, we’ll have to go through the developer documentation of how to download, set up, and run a local environment for each app.</p>
+<p>After running it locally, instead of accessing the default website URL in the browser, we will instead use something like “localhost:application” and it will work just fine! The “application” is a number that often defaults to 3000</p>
+<p><img src="https://cdn-images-1.medium.com/max/4000/0*Lqd7Z2QhwyT36ZDx.png" class="img-fluid"></p>
+</section>
+<section id="points-to-pay-attention-before-starting" class="level2">
+<h2 class="anchored" data-anchor-id="points-to-pay-attention-before-starting">Points to pay attention before starting</h2>
+<p><strong>To Windows users: </strong>Depending on the service it might be easier to use Linux instead of Windows, but if you have windows don’t worry, many services work fine out-of-the-box, and for the ones that don’t you can use <a href="https://docs.microsoft.com/en-us/windows/wsl/install">WSL (Windows Subsystem for Linux)</a>. A <a href="https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html">Virtual Machine</a> is also a good alternative, you can install a common Linux distribution such as <a href="https://ubuntu.com/">Ubuntu</a> or <a href="https://www.debian.org/">Debian</a> which often has many resources to get around errors. <strong>If you have unexpected errors on Windows it’s recommended to try running on Mac/Linux instead.</strong></p>
+<p><strong>To Mac/Linux users</strong>: If any command show unexpected errors try running them using the keyword sudo before, like sudo command, this forces the command to be run as administrator and sometimes your default permissions are not the same as the admin ones.</p>
+<p><strong>On unexpected errors:</strong> Read carefully through the repository readme! If nothing works, Google is your best friend.</p>
+<p><strong>If everything went correct but on-chain transactions fail:</strong> There is a file called .env used by projects to configure default keys. There you can find places to add project keys for services like <a href="https://infura.io/">Infura</a> and <a href="https://thegraph.com/studio/">The Graph</a>, some of the apps might require you to use your own keys, in order to grab a key you have to create an account at the service website!</p>
+<p><strong>After running a service in order to run it again:</strong> You can skip any git clone and yarn install and other key configuration steps, you usually just have to cd (change directory) into the project’s folder again and run yarn start</p>
+<p><strong>After running a service in order to run another:</strong> You’ll have to either close the terminal window OR shutdown the execution yourself: to do this use “Ctrl+C” and you can exit the project folder with the command cd ..</p>
+</section>
+<section id="lets-start-then" class="level2">
+<h2 class="anchored" data-anchor-id="lets-start-then">Let’s start then!</h2>
+<section id="requirements" class="level3">
+<h3 class="anchored" data-anchor-id="requirements"><strong>Requirements</strong></h3>
+<ul>
+<li><p>Install <a href="https://nodejs.org/en/">**Node.js</a>**</p></li>
+<li><p>Install <a href="https://git-scm.com/downloads">**git</a>**</p></li>
+<li><p>Type npm install –global yarn in a terminal window to set up <a href="https://yarnpkg.com/">Yarn</a> (used to install the dependencies for most projects)</p></li>
+</ul>
+</section>
+<section id="how-to-open-a-terminal-window" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-open-a-terminal-window"><strong>How to open a terminal window</strong></h3>
+<ul>
+<li><p><strong>Windows: </strong>Windows + R -&gt; type cmd -&gt; Enter</p></li>
+<li><p><strong>Mac: </strong>CMD + Space -&gt; Terminal</p></li>
+</ul>
+</section>
+</section>
+<section id="self-hosting-yearn-website" class="level2">
+<h2 class="anchored" data-anchor-id="self-hosting-yearn-website">Self-Hosting Yearn Website</h2>
+<section id="repository-httpsgithub.comyearnyearn-finance-v3" class="level3">
+<h3 class="anchored" data-anchor-id="repository-httpsgithub.comyearnyearn-finance-v3">Repository: <a href="https://github.com/yearn/yearn-finance-v3">https://github.com/yearn/yearn-finance-v3</a></h3>
+<ol type="1">
+<li><p>Open terminal</p></li>
+<li><p>git clone <a href="https://github.com/yearn/yearn-finance-v3">https://github.com/yearn/yearn-finance-v3</a></p></li>
+<li><p>cd yearn-finance-v3</p></li>
+<li><p>yarn install</p></li>
+<li><p><strong>Not-Windows:</strong> yarn dev / <strong>Windows:</strong> yarn dev-win</p></li>
+<li><p>Browser should automatically open a tab at localhost:3000</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2290/0*pY4p_toftBCJeYIg.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://yearn.finance/#/home">https://yearn.finance</a></figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="self-hosting-yearn-blog" class="level2">
+<h2 class="anchored" data-anchor-id="self-hosting-yearn-blog">Self-Hosting Yearn Blog</h2>
+<section id="repository-httpsgithub.comyearnyearn-comms" class="level3">
+<h3 class="anchored" data-anchor-id="repository-httpsgithub.comyearnyearn-comms">Repository: <a href="https://github.com/yearn/yearn-comms">https://github.com/yearn/yearn-comms</a></h3>
+<ol type="1">
+<li><p>Open terminal</p></li>
+<li><p>git clone <a href="https://github.com/yearn/yearn-comms">https://github.com/yearn/yearn-comms</a></p></li>
+<li><p>cd yearn-comms</p></li>
+<li><p>yarn install</p></li>
+<li><p>yarn dev</p></li>
+<li><p>Open the browser and navigate to localhost:3000</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2470/0*YwLpVVCocNDrwn6x.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://blog.yearn.finance/">https://blog.yearn.finance</a></figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="self-hosting-yearn-dev-docs" class="level2">
+<h2 class="anchored" data-anchor-id="self-hosting-yearn-dev-docs">Self-Hosting Yearn Dev Docs</h2>
+<section id="repository-httpsgithub.comyearnyearn-devdocs" class="level3">
+<h3 class="anchored" data-anchor-id="repository-httpsgithub.comyearnyearn-devdocs">Repository: <a href="https://github.com/yearn/yearn-devdocs">https://github.com/yearn/yearn-devdocs</a></h3>
+<ol type="1">
+<li><p>Open terminal</p></li>
+<li><p>git clone <a href="https://github.com/yearn/yearn-devdocs">https://github.com/yearn/yearn-devdocs</a></p></li>
+<li><p>cd yearn-devdocs</p></li>
+<li><p>yarn install</p></li>
+<li><p>yarn start</p></li>
+<li><p>Browser should automatically open a tab at localhost:3000</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2186/0*AEpR68BmSoKB0Hdu.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://docs.yearn.finance/">https://docs.yearn.finance</a></figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="self-hosting-yearn-vaults-descriptions" class="level2">
+<h2 class="anchored" data-anchor-id="self-hosting-yearn-vaults-descriptions">Self-Hosting Yearn Vaults Descriptions</h2>
+<section id="repository-httpsgithub.comyearnyearn-vaults-descriptions" class="level3">
+<h3 class="anchored" data-anchor-id="repository-httpsgithub.comyearnyearn-vaults-descriptions">Repository: <a href="https://github.com/yearn/yearn-vaults-descriptions">https://github.com/yearn/yearn-vaults-descriptions</a></h3>
+<ol type="1">
+<li><p>Open terminal</p></li>
+<li><p>git clone <a href="https://github.com/yearn/yearn-vaults-descriptions">https://github.com/yearn/yearn-vaults-descriptions</a></p></li>
+<li><p>cd yearn-vaults-descriptions</p></li>
+<li><p>yarn install</p></li>
+<li><p>yarn dev</p></li>
+<li><p>Open the browser and navigate to localhost:3000</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2446/0*1_VeWTfOtmFzOeXg.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://vaults.yearn.finance/">https://vaults.yearn.finance</a></figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="self-hosting-yearn-mini" class="level2">
+<h2 class="anchored" data-anchor-id="self-hosting-yearn-mini">Self-Hosting Yearn Mini</h2>
+<section id="repository-httpsgithub.comdarkghost7yearn-mini" class="level3">
+<h3 class="anchored" data-anchor-id="repository-httpsgithub.comdarkghost7yearn-mini">Repository: <a href="https://github.com/DarkGhost7/yearn-mini">https://github.com/DarkGhost7/yearn-mini</a></h3>
+<ol type="1">
+<li><p>Open terminal</p></li>
+<li><p>git clone <a href="https://github.com/DarkGhost7/yearn-mini">https://github.com/DarkGhost7/yearn-mini</a></p></li>
+<li><p>cd yearn-mini</p></li>
+<li><p>yarn install</p></li>
+<li><p>yarn start</p></li>
+<li><p>Browser should automatically open a tab at localhost:3000</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/4000/0*cWRoPVEydsJH87P8.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://yearn-mini.vercel.app/">https://yearn-mini.vercel.app</a></figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="self-hosting-yearn-watch" class="level2">
+<h2 class="anchored" data-anchor-id="self-hosting-yearn-watch">Self-Hosting Yearn Watch</h2>
+<p><em>Only works for Fantom because <a href="https://thegraph.com/studio/apikeys/">The Graph</a> Ethereum development key is not public</em></p>
+<section id="repository-httpsgithub.comyearnyearn-watch" class="level3">
+<h3 class="anchored" data-anchor-id="repository-httpsgithub.comyearnyearn-watch">Repository: <a href="https://github.com/yearn/yearn-watch">https://github.com/yearn/yearn-watch</a></h3>
+<ol type="1">
+<li><p>Open terminal</p></li>
+<li><p>git clone <a href="https://github.com/yearn/yearn-watch">https://github.com/yearn/yearn-watch</a></p></li>
+<li><p>cd yearn-watch</p></li>
+<li><p>yarn install</p></li>
+<li><p>cp .env.example .env</p></li>
+<li><p>Add <a href="https://infura.io/dashboard">Infura</a>, <a href="https://thegraph.com/studio/apikeys/">The Graph</a>, and <a href="https://www.alchemy.com/">Alchemy</a> keys to .env</p></li>
+<li><p>yarn start</p></li>
+<li><p>Browser should automatically open a tab at localhost:3000</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2382/0*VyvzhWkU7oeCzV9z.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://yearn.watch/">https://yearn.watch</a></figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="self-hosting-uniswap" class="level2">
+<h2 class="anchored" data-anchor-id="self-hosting-uniswap">Self-Hosting Uniswap</h2>
+<section id="repository-httpsgithub.comuniswapinterface" class="level3">
+<h3 class="anchored" data-anchor-id="repository-httpsgithub.comuniswapinterface">Repository: <a href="https://github.com/Uniswap/interface">https://github.com/Uniswap/interface</a></h3>
+<p><em>Did not work on Windows</em></p>
+<ol type="1">
+<li><p>Open terminal</p></li>
+<li><p>git clone <a href="https://github.com/Uniswap/interface">https://github.com/Uniswap/interface</a></p></li>
+<li><p>cd interface</p></li>
+<li><p>yarn install</p></li>
+<li><p>yarn start</p></li>
+<li><p>Open the browser and navigate to localhost:3000</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/3932/0*9jGirLMolBkZ09Jd.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://app.uniswap.org/">https://app.uniswap.org</a></figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="self-hosting-curve" class="level2">
+<h2 class="anchored" data-anchor-id="self-hosting-curve">Self-Hosting Curve</h2>
+<p><em>Old UI since the current one isn’t open source</em></p>
+<section id="repository-httpsgithub.comcurveficrv.finance" class="level3">
+<h3 class="anchored" data-anchor-id="repository-httpsgithub.comcurveficrv.finance">Repository: <a href="https://github.com/curvefi/crv.finance">https://github.com/curvefi/crv.finance</a></h3>
+<ol type="1">
+<li><p>Open terminal</p></li>
+<li><p>git clone <a href="https://github.com/curvefi/crv.finance">https://github.com/curvefi/crv.finance</a></p></li>
+<li><p>cd crv.finance</p></li>
+<li><p>yarn install</p></li>
+<li><p>yarn start</p></li>
+<li><p>Browser should automatically open a tab at localhost:3000</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/4000/0*P2wu-5QauUtI4w6-.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://crv-finance-curvefi.vercel.app/">https://crv-finance-curvefi.vercel.app</a></figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="self-hosting-cowswap" class="level2">
+<h2 class="anchored" data-anchor-id="self-hosting-cowswap">Self-Hosting Cowswap</h2>
+<section id="repository-httpsgithub.comgnosiscowswap" class="level3">
+<h3 class="anchored" data-anchor-id="repository-httpsgithub.comgnosiscowswap">Repository: <a href="https://github.com/gnosis/cowswap">https://github.com/gnosis/cowswap</a></h3>
+<p><em>Did not work on Windows</em></p>
+<ol type="1">
+<li><p>Open terminal</p></li>
+<li><p>git clone <a href="https://github.com/gnosis/cowswap">https://github.com/gnosis/cowswap</a></p></li>
+<li><p>cd cowswap</p></li>
+<li><p>yarn install</p></li>
+<li><p>yarn start</p></li>
+<li><p>Browser should automatically open a tab at localhost:3000</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*uSAPjFSs5DhCmvYl.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://cowswap.exchange/#/swap">https://cowswap.exchange</a></figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="self-hosting-gnosis-safe" class="level2">
+<h2 class="anchored" data-anchor-id="self-hosting-gnosis-safe">Self-Hosting Gnosis Safe</h2>
+<section id="repository-httpsgithub.comgnosissafe-react" class="level3">
+<h3 class="anchored" data-anchor-id="repository-httpsgithub.comgnosissafe-react">Repository: <a href="https://github.com/gnosis/safe-react">https://github.com/gnosis/safe-react</a></h3>
+<ol type="1">
+<li><p>Open terminal</p></li>
+<li><p>git clone <a href="https://github.com/gnosis/safe-react">https://github.com/gnosis/safe-react</a></p></li>
+<li><p>cd safe-react</p></li>
+<li><p>yarn install</p></li>
+<li><p>cp .env.example .env</p></li>
+<li><p>Add <a href="https://infura.io/dashboard">Infura</a> keys to .env</p></li>
+<li><p>yarn start</p></li>
+<li><p>Browser should automatically open a tab at localhost:3000</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/4000/0*CTrdPKYyu1Es2C-D.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://gnosis-safe.io/">https://gnosis-safe.io</a></figcaption>
+</figure>
+</div>
+<p><strong>Producer</strong>: <a href="https://twitter.com/MarcoWorms">*Worms</a><em>, <strong>Reviewers</strong>: <a href="https://github.com/DarkGhost7">*Dark Ghosty</a></em>, <a href="https://twitter.com/cryptouf">*Cryptouf</a><em>, <a href="https://twitter.com/redphonecrypto">*Red Phone Crypto</a></em></p>
+</section>
+<section id="made-in-yearn.finance" class="level3">
+<h3 class="anchored" data-anchor-id="made-in-yearn.finance">Made in <a href="https://yearn.finance/#/home">yearn.finance</a></h3>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

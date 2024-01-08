@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Marco Guaspari Worms">
+<meta name="dcterms.date" content="2021-12-07">
+
+<title>Worms Blog - Generating pixel art NFTs and link to my web generators with sources</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Worms Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/MarcoWorms" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/MarcoWorms" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Generating pixel art NFTs and link to my web generators with sources</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">english</div>
+                <div class="quarto-category">marketing</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Marco Guaspari Worms </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 7, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="managing-web3-communities-and-social-media" class="level2">
+<h2 class="anchored" data-anchor-id="managing-web3-communities-and-social-media">Managing Web3 communities and social media</h2>
+<p>This is a light framework to help artists and coders deal with the <strong>Community Management</strong> and <strong>Social Media </strong>aspects of their project.</p>
+</section>
+<section id="targeting-content" class="level2">
+<h2 class="anchored" data-anchor-id="targeting-content">Targeting Content</h2>
+<blockquote class="blockquote">
+<p>When you try to build content it’s much easier if you know who you are building for. We are gonna paint here 2 targets to facilitate your process of building content for any social platform:</p>
+</blockquote>
+<p>Let’s picture your entire digital presence in 2 spheres:</p>
+<p><strong>The Inner Circle </strong>is where you can talk closely to your community, people here have closer access to the development team. For web3 communities, this is normally a Discord server</p>
+<p><strong>The Outer Circle </strong>is where you have both people that already know your project and a huge pool of complete strangers. For web3 communities, this is normally a Twitter (+ any other social media) profiles</p>
+<p>Everything you do is easier to release if aim to one of these targets with your intentions. You should always try to have at least 1 initiative running for each of these targets, this ensures you are looking closely at both <strong>Onboarding </strong>(the flow of people entering) ****and <strong>Retention </strong>(the % of people that sticks for the long run)</p>
+<p>Now that we know our targets we need to know our tools</p>
+</section>
+<section id="communication-expectations-people-and-trust" class="level2">
+<h2 class="anchored" data-anchor-id="communication-expectations-people-and-trust">Communication, Expectations, People, and Trust</h2>
+<p><strong>Communication </strong>is your main tool, and you’ll have to use everything you can (text, voice, image, video) to help you get your idea passed through the internet to another person</p>
+<p><strong>Expectations </strong>are what you craft with this tool (also, you are not 100% in control here, but that’s just life), expectations are easily influenced by the people’s <strong>Trust </strong>in your team and project</p>
+<p><strong>People</strong> are the ones that consume your products, create expectations, and build trust as they do it, they sometimes read what you post (you can’t expect them to read 100% of what you post).</p>
+<p>You can never forget you are building for <strong>People</strong>, so always listen to what they have to say (which you can always politely expose a different vision and you don’t have to agree with them)</p>
+<p><strong>Trust</strong> is what helps you get information across in the good and the bad times, if people trust you it’s easier for you to align expectations with less communication needed in the process.</p>
+<p>Your job with every content you post on social media is to use <strong>Communication </strong>to constantly help <strong>People </strong>get their <strong>Expectations </strong>straight about what you want to deliver, constantly building and maitaining the overall <strong>Trust </strong>they have both in your team and your delivery capacity. &gt; You won’t get 100% expectations of 100% people straight, but you can show your community that you are constantly putting authentic effort into communication, and every time you do this the smart people in your community will have more and more reasons to trust you.</p>
+<p>So let’s put this together with the targeting content and build a framework you can follow:</p>
+</section>
+<section id="framework-for-web3-community-management-using-twitter-discord" class="level2">
+<h2 class="anchored" data-anchor-id="framework-for-web3-community-management-using-twitter-discord">Framework for Web3 community management using Twitter + Discord</h2>
+<blockquote class="blockquote">
+<p>Please don’t copy-paste this and expect to work, this is a simple implementation of the above ideas, I always preach against copy-pasting frameworks, the reason I built this one is to try to help people envision that dealing with the social media aspect can be something contained and even fun.</p>
+</blockquote>
+<p><strong>1Write down your project’s vision so everyone in your team is aligned</strong></p>
+<p>For example, our Fantom Kittens community is about creating an open environment for people that want to learn more about Web3 so they can feel comfortable in starting to build their things. This means our content will never directly disincentivize people from building in web3 or joining our community for free.</p>
+<p>The more you polish your vision the easier it is for you to craft content to any target.</p>
+<p><strong>2Every day your team has to be active in The Inner Circle</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*g5S_wABuq18-p1pi5pEDVw.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">gm!</figcaption>
+</figure>
+</div>
+<p>“Every Day” is kinda hardcore, but the more active your team as an entity is in your inner circle the more trust you’ll build with the people you have there.</p>
+<p>But just try to be there even if it’s for 5 minutes! Read what’s going on, reply to some people, just interact with them as you would on a normal interaction with a friend of a friend</p>
+<p>The “gm” channels you see in many Web3 communities are a good incentive for people to go there every day, say “good morning” and check out what’s happening in your community!</p>
+<p><strong>3Every day you should do at least 1 quality post for The Outer Circle</strong></p>
+<p><em><strong>(</strong>The more creative and the more you know about what happens in the Outter Circle the better the quality of your posts will be, memes are your friends)</em></p>
+<p>Maintaining a constant flow of information to the outer world about your community and what you are building. When you do this you guarantee that anyone that gets to know you today will have fresh content to consume, will start to see you are consistent and consistency helps build the trust needed to get new people to take more time to look into your project and onboard to the inner circle</p>
+<p>Also, remember to efficiently replicate information from Twitter to Discord and vice-versa so the maximum amount of people see it when it’s released. You can use <a href="https://tweetshift.com/">TweetShift</a> to help you replicate any Twitter account at a discord channel.</p>
+<p><em>The images below have an example of an initiative that we made that helps us generate quality content, you’ll probably want to have some initiatives like these running in parallel so you have different content types to post on alternating days</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*BwfkwciD-Q_7jdAHF-jCbQ.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">In Fantom Kittens we started to make special kittens molded to some people that we like and send them publicly via Twitter</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*QQUgMjR7qgy-OxtW_RuJTg.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">In this case, we even got a cute reply from a person we admire a lot ❤</figcaption>
+</figure>
+</div>
+<p><strong>4It’s nice to always have events running or planned for The Inner Circle and The Outer Circle </strong><em>(Inner events may be harder to run and Outer events normally already please the Inner people if they can also participate, so starting with Outer events is easier especially when you don’t have many people in your Inner)</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2494/1*zd6aRC70b9MDvt3h5FwU4A.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">The <a href="https://medium.com/@marcoworms/deploying-your-own-shitcoin-at-ftm-and-creating-a-decentralized-market-for-it-1dda397f9e4">Fantom Kittens Shitcoin Festival</a> is an example of an event that embraces the Outer circle and also the Inner one</figcaption>
+</figure>
+</div>
+<p><strong>5Everything you have to repeatedly answer start to build into a “Readme” discord channel, you can later turn this into a “Website” </strong><em>(We did exactly this with <a href="http://fakeworms.studio">fakeworms.studio</a>)</em></p>
+<p><img src="https://cdn-images-1.medium.com/max/2518/1*PEALEihfjGMowurMrdspMQ.png" class="img-fluid"></p>
+<p><strong>6Your Twitter Profile information is seen by many people in the Outer circle as the first contact with your community.</strong></p>
+<p>Try to have good condensed information for first-timers there:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*Y9IfASJSKRGB0ICR-qNnAw.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">There are tons of info here: Old collection, New collection, Who we are, Where we are, How to join us, our “Latest product”, and our full website with more information on all of this</figcaption>
+</figure>
+</div>
+</section>
+<section id="closing-thoughts" class="level2">
+<h2 class="anchored" data-anchor-id="closing-thoughts">Closing Thoughts</h2>
+<p>I don’t want any of this to feel like a closed model, I saw people demanding this type of content and this is my first attempt at building it, if you have any feedback you can reach me out on Twitter or in our community Discord chats!</p>
+<p>Discord: <strong><a href="https://t.co/Qh5h6wJsoB">discord.gg/fantom-kittens</a></strong></p>
+<p>Twitter: <strong><a href="https://twitter.com/FakewormsStudio">https://twitter.com/FakewormsStudio</a></strong></p>
+<p>Website: <strong><a href="https://fakeworms.studio/">https://fakeworms.studio/</a></strong></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

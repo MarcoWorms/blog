@@ -1,0 +1,251 @@
+---
+title: "Avoiding Rug Pulls in Web3"
+author: "Marco Guaspari Worms"
+date: "2022-01-24"
+categories: [english, security]
+---
+
+# Part 1: Tech
+
+> Avoiding all scams and hacks isn’t easy, but I’ve made a deep dive into the subject by deploying my own projects and also by asking a Yearn experienced contributor to help me review and add his perspective on what’s important for technical security basics
+
+![Tagging things in the blockchain with your public address](https://miro.medium.com/v2/resize:fit:720/format:webp/0*3BMM8rUN3MH4_SsV.png)
+
+Tagging things in the blockchain with your public address
+
+Most web3 communities are filled with all kinds of people experimenting with new things. Since the tech is new and the grounds are mostly unknown, many malicious actors are trying to take advantage of other people’s ignorance by exploiting technical product quirks.
+
+## Start with the technical basics
+
+If you don’t know the basics, then the more you interact with web3, the more likely you will get hacked or rug pulled. Most scams are based on a target’s lack of knowledge about a specific feature or mechanic, so it’s important that you learn some blockchain security basics not to get fooled easily!
+
+Disclaimer: I’m not an expert in blockchain security and there are other resources from experienced users on this. If you follow this guide, you should be able to improve your web3 security posturing. Unfortunately, this article can’t cover all the possible ways you can get wrecked, so as always: “Do Your Own Research”.
+
+### What is a wallet?
+
+Your wallet is a pair of two keys:
+
+*   A **public** key (also referred to as your “address”, it’s the tag that the blockchain will put on the things you have there)
+*   A **private** key (the wallet apps abstracts this for the user in form of a sequence of ~20 words)
+
+### What is a smart contract?
+
+A smart contract is a wallet with special functions. These special functions are often programmed in Solidity and the thing you need to know about them for our scope is:
+
+![A simple overview of a smart contract](https://miro.medium.com/v2/resize:fit:720/format:webp/0*WCWikKr1G3lz5e-9.png)
+
+A simple overview of a smart contract
+
+*   A contract can act as a wallet and store funds
+*   A contract has a “local state” (used for its own internal control)
+*   A contract can’t tamper with another contract’s local state or funds (unless explicitly authorized)
+*   Most contracts are immutable by default (which means code can’t be altered unless explicit doors are left for this)
+
+### Your things on the blockchain
+
+A common misconception is that your assets on the blockchain are “in” your wallet. As we just saw, your wallet is simply a pair of keys.
+
+Your “assets” on the blockchain are actually inside contracts that “tag” things with your public address. Everything from coins to NFTs works like this, so let’s expand on this with some examples:
+
+Let’s say you go to a DEX and swap 100 $eth for 200 $woofy. Here is what happens:
+
+![Process of buying $woofy](https://miro.medium.com/v2/format:webp/1*hChVjTGJ7g4EhboQ3FmWtA.png)
+
+Process of buying $woofy
+
+When you “have 200 woofy” what you _really_ have is a tag in the local state of the woofy contract that says that you own 200 woofy. Why is this important for avoiding scams? Because the only way for someone to move your woofy is if you either:
+
+1.  **Lose your wallet recovery phrase (private-key)**. Hackers can move your assets freely when they have access to your private key. In this case, you can only move what’s left of your funds to another uncompromised wallet using a white hat service like Flashbots. If you don’t act fast enough, you could lose everything.
+2.  **Authorize another contract to move funds on your behalf** (often called a ‘token approval’). When you issue a token approval, you can set the number of funds the contract is allowed to move on your behalf. If you grant a contract a token approval and don’t revoke it later, the contract can spend your tokens long after you’re done using it.
+
+#### Point 1 is avoided by practicing good wallet security practices.
+
+Having a hardware wallet is an essential item for basic personal crypto security so you should get one and read about how to handle it properly. It’s also a good idea to use a solution like [Gnosis](https://gnosis-safe.io/) that creates wallets where all transactions need more than 1 person’s signature, so this helps spread out risk into different baskets.
+
+I won’t go into detail on how you should protect your hardware wallet secret phrase since I don’t have enough experience here, [the more assets you have in crypto the more complex the process can become.](https://twitter.com/punk6529/status/1461759031274528772)
+
+#### Point 2 is avoided by not authorizing unknown contracts in the same wallet that you have some type of funds
+
+So this leads to one of our first safety web3 pillars: **Create burner wallets to interact with contracts you don’t know.** It’s so easy to do, and you’ll feel like shit when your funds are drained simply because you interacted with a malicious contract without using a burner.
+
+**Do you have the skills to verify if a contract is malicious? If not, assume it is and make the first interaction using a burner wallet.** It takes less than a minute to create a new browser wallet (with or without a hardware wallet) and the downside of using your main wallet to make the first interaction with an unknown contract is too big.
+
+![Use burner wallets!](https://miro.medium.com/v2/format:webp/1*5ug7TnYMUUFYyJt-RnWJQQ.png)
+
+Use burner wallets!
+
+It’s also important to never have token approvals larger than needed. By default, when a dapp asks for a token approval, it will ask for access to _infinite_ tokens. This means that long after you’re done using the app, the contract can still spend your tokens!
+
+You can edit this amount and only grant the dapp access to the amount of tokens you want to transact with. This means you’ll have to do a token approval transaction before interacting with most dapps, but the security gain is [well worth it](https://cointelegraph.com/news/multichain-asks-users-to-revoke-approvals-amid-critical-vulnerability).
+
+## Learning from the experts: Yearn Finance contributor opinion
+
+I asked [Ben](https://twitter.com/thebensams) (a Yearn contributor working on our subgraph) to help me review the above and expand the article's content with a more experienced outlook!
+
+There are a few important measures you should take to defend yourself, Ben wrote this next sections until we reach “Part 2“ to help dissect the technical perspective of web3 security:
+
+### Protecting your wallet seed
+
+If you are self-custodying more than a few hundred dollars of crypto, you should invest in a hardware wallet. Hardware wallets are important because web browsers, extensions, and your computer itself can be easily hacked. Pirated software often has backdoors installed that can let a hacker steal your private keys without you ever finding out.
+
+![Hardware Wallet: A tiny device that will allow you to sleep better](https://miro.medium.com/v2/resize:fit:720/format:webp/0*OIyUZ9rRsGyFKfkO.jpg)
+
+Hardware Wallet: A tiny device that will allow you to sleep better
+
+Using a hardware wallet takes your wallet’s seed and keeps it on a dedicated security device that is not connected to the internet. This can also protect you from certain kinds of screen-share-based phishing attacks.
+
+Ledger and Trezor are the most popular and can be purchased for as little as $60 USD. Always purchase these directly from the vendor, never used.
+
+### Never use infinite approvals
+
+When depositing liquidity into a dapp, the dapp might request a token approval. By default, most dapps request _infinite_ spending capacity against your tokens. You can and should change approval quantities to the actual amount you wish to grant access to, even if it costs extra gas for the additional transaction every time you need to use the dapp.
+
+Every once in a while, you should audit your wallet to make sure there are no outstanding token approvals. You can audit your token approvals using etherscan:
+
+*   Ethereum: [https://etherscan.io/tokenapprovalchecker](https://etherscan.io/tokenapprovalchecker)
+*   Fantom: [https://ftmscan.com/tokenapprovalchecker](https://ftmscan.com/tokenapprovalchecker)
+*   Polygon: [https://polygonscan.com/tokenapprovalchecker](https://polygonscan.com/tokenapprovalchecker)
+
+![Check your blockchain scan to see all current token approvals](https://miro.medium.com/v2/resize:fit:720/format:webp/0*Rxl707EF96fimnWT.png)
+
+Check your blockchain scan to see all current token approvals
+
+### Always check addresses on Etherscan before approving transactions
+
+Attackers often set up fake dapp websites that will steal your tokens if you transact on them. Other times, legitimate dapp websites can be hacked and configured to send your money to a hacker.
+
+When MetaMask opens a transaction approval dialogue, you should make it a habit to check the address of the contract you’re transacting with. Here’s a short list of things you should check:
+
+1.  Open the address on Etherscan. The address should be associated with a smart contract and have annotations/tags that say what the contract is used for.
+2.  Open the Dapp’s documentation and make sure the address corresponds with their published smart contract addresses. Try to find this documentation without opening a link on the Dapp’s web page — if the entire site is fake, they may also have fake documentation!
+
+Once you’ve done your due diligence, you can add the address to your wallet’s address book.
+
+### Secure your Web2 Accounts/Identities
+
+If you store any amount of crypto in a custodial exchange, it’s critical that all of your Web2 accounts are secured to the highest degree possible.
+
+**Use a unique, randomly generated password on every site**
+
+Hackers often buy, sell, and trade password databases; then try to use these password databases to hack people’s exchange accounts. This is called [Credential Stuffing](https://owasp.org/www-community/attacks/Credential_stuffing), and it is the most popular way to hack Web2 accounts. If you use the same password for multiple accounts, you are putting yourself and your crypto at incredible risk.
+
+I highly recommend using a reputable encrypted password manager like 1Password.
+
+**Always use two-factor authentication**
+
+Two-factor authentication is used to prevent attackers from accessing your accounts when they know your password. Two-factor authentication has another benefit that is rarely mentioned: it prevents most company’s customer support from accidentally granting an attacker access to your account.  
+Many companies have poor account recovery processes where a hacker can get full access to your account without knowing your password. By enabling two-factor authentication, an attacker may no longer use these account recovery processes.
+
+**Avoid SMS two-factor authentication**
+
+It costs <$50 for an attacker to SIM swap your phone number on most carriers. For this reason, you should never use SMS as a second factor. Instead, use a [Time-based one-time password](https://en.wikipedia.org/wiki/Time-based_one-time_password), or if you can afford it (and the site supports it), purchase a [FIDO U2F key](https://www.yubico.com/authentication-standards/fido-u2f/) and use it as your second factor.
+
+I strongly recommend FIDO U2F keys because they have one massive benefit over TOTP: you can’t get phished if you’re using a FIDO key.
+
+# Part 2: Social Engineering
+
+![My attempt to draw a rug pull](https://miro.medium.com/v2/resize:fit:720/format:webp/1*0EyOYRWvr8TTQRR9IjG1tQ.png)
+
+My attempt to draw a rug pull
+
+This part tries to give some skills and ammunition to those who are walking unarmed as of now against common scams that use social engineering. I hope to shed light on:
+
+*   Where malicious **developers** target **users**
+*   Where malicious **users** target **users**
+*   Where malicious **users** target **developers**
+
+In this context:
+
+*   A **developer** would be someone that is building/selling something for the crypto community
+*   A **user** is someone with individual interests in consuming products or interacting with a community
+*   A **malicious** person is someone who is trying to coax you into performing an action that will end in a bad outcome for you (unexpected from your point of view) and a good outcome for them (expected in their point of view)
+
+A thing I’d like to point out is how **being malicious in many contexts is about not disclosing information** that will lead ultimately to someone’s loss (which is a basic mechanic of social engineering attacks)
+
+**Social Engineering** is the art of breaking systems by manipulating people instead of hacking code. Kevin Mitnick (one of the idealizers of modern Social Engineering practices) is probably amazed by all the opportunities cryptocurrencies provide for social engineers to wreak havoc. Unfortunately, when exploited, most of these opportunities will likely result in a huge loss of capital to individuals who don’t necessarily have tons of cash.
+
+## Where malicious developers target users
+
+This type of scam comes in many different forms:
+
+**1\. Developer releases a token that when bought by users can’t be sold (rigging a standard contract, in this case, ERC20)**
+
+The only way to be absolutely sure that a token can be sold after being bought requires viewing the contract’s source code to verify the token is not malicious.
+
+Since most users are not coding auditors, the next best way is to find out whether the token has been audited by a reputable firm. You can find a list of reputable auditors on [defisafety.com](https://www.defisafety.com/auditors). Even if a project has not been audited, you can also use DefiSafety to find out what experienced DeFi users think of the token.
+
+Worst case; you can test whether a token is sellable by buying the token with a _very_ small amount of funds to see if you can sell it back. This should be used as an absolute last resort; contracts can be programmed to act nicely for small transactions, then to steal if you perform a larger transaction!
+
+Since contracts can become mutable it’s nice to know why the devs designed it like this. If you don’t know how to check whether a contract is immutable, you can read the audit or ask in the community channels; someone from the community can probably help you with this (or the devs when they are legit).
+
+**2\. Developer promises new tech that makes users buy their tokens and doesn’t deliver the promised tech**
+
+This one requires more knowledge of tech/products and how software delivery functions to separate teams with empty promises and the ones that are actual builders:
+
+*   Does the team change directions all the time? If it does, do they care to explain why to the community?
+*   Is the overall project’s communication bad? If yes, does it looks intentional?
+
+Groups of brilliant technical people often struggle with managing communities and the people side of things, bad communication does not always mean rug pull. In fact, sometimes the teams are just exhausted and they have difficulties re-establishing new expectations within the communities.
+
+In the above case, the FUDers create excellent entry opportunities for experienced investors since prices go down even though the project tech delivery didn’t change at all. It would have never been delivered on the said date in the first place, the team sometimes is just bad at handling communication and development at the same time and rather focus on development
+
+*   What did the team deliver already? How was their process of promising these past deliverables?
+*   What do their social media sell?
+
+Do they talk about their community achievements, released/upcoming features that look real (products are better when incrementally evolved, revolutions aren’t good for the product development process), and engage meaningfully with other protocols? Then they might be in for the long run! You should definitively join their community channels and engage with what they are doing, it gives them strength to keep going!
+
+Do they sell “more money”? Long-lasting protocols and projects are not based on “buy my NFT because you’ll be rich”. Red Flag!
+
+**3\. Developer releases a (maybe) legit project but decides to pull the rug on everyone because “fuck the community”**
+
+A project’s “rug-ability” is defined by many factors, here are some things to keep an eye on:
+
+*   Are the developer team’s funds locked over time? Can the devs dump all their tokens on the market?
+*   What are the incentives that the developers have to not delete social media and vanish? If the team is fully anon, is there anyone reputable backing this team?
+*   Is this protocol that you are investing in known and respected by the community?
+
+For example, at Yearn Finance at Fantom USD stables you can get up to 20% APY (annual percentage yield) today and the protocol is battle-tested, probably the lowest risk you can find around. But you can also ape in the newest shiny aggregator that has 69420% APY! The difference is that Yearn has way more liquidity in their pool and way less incentive to pull the rug on you.
+
+## Where malicious users target users
+
+Besides malicious developers, we also have malicious users. Here is what they like to do:
+
+**1\. Message you on closed channels**
+
+Since on open channels they’d be busted by the community. So Turn off DMs for discord you have no need to receive DMs from its users and prefer open channels over closed ones:
+
+![](https://miro.medium.com/v2/format:webp/1*GeSIamj3ETK9nPbCwvl6cg.png)
+
+DefiLlama would never DM you about an exclusive NFT offer. Those types of events in any project are always announced on official channels (we’ll talk more about flaws on this in the next section), developers don’t want to use marketing tactics that scammers use (since it makes them look like scammers and often they have a poor conversion of long-term users), so if all scammers are DMing people on discord linked for fake mints then legit devs will probably use other means of announcement to not confuse their potential userbase
+
+On Telegram (or Discord too) if you ask on a protocol channel “hey I need help” someone will probably DM you telling you they are admin/mod/helpdesk. Guess what: those won’t DM you! DMs are mostly scams.
+
+**2\. Sometimes they pretend to be the developer of a project. Always verify the first time someone sent you a message that this is the real person**
+
+There are different ways to do this, simply go to the person’s official profile and click the “send private message” button from there (works on twitter and discord). This will guarantee that the chat opened is truly linked with that official profile and you didn’t oversee an l for an I (even skilled users may fall for an “l” that looks like an “I”).
+
+Also, multimillionaire protocol teams would never reach you out for funds or for help to interact with a contract. They would probably rather open an entire DAO to gather funds before sending you a message for this, so always double-check when someone comes to you trying to pass themselves as some kind of authority.
+
+**3\. Other times they pretend to need your help to get something done.**
+
+Do help people out, we need more cooperation in the space, but no one needs your secret recovery phrase to get help. You don’t have to send funds to help either. By giving attention and guidance to anyone who comes to your door, you are already doing so much more than many people around the internet. If you want to trust people over the internet and send them your password or funds, you might actually be sending it to the politician you most hate in the world, so this is why I believe helping with information and education is the most efficient way to help people around without exposing yourself to weird risk.
+
+## Where malicious users target developers
+
+On the above points it’s either a developer screwing a community or an individual screwing another one. But in this third case here we’ll have a third party ruin an entirely “healthy” ecosystem, many times at the cost of the developer’s reputation (which can be fixed in the long run) and also people’s wallets (which generates a huge riot from those who got rekt). Normally what we get in return from these cases is a hurtful DeFi security lesson (and many times this lesson was already learned in the past, in these cases it hurts even more and people get even madder)
+
+Here are some ways things can go bad quickly:
+
+**1\. A malicious user hacks a developer account and posts a scam link on the official channel**
+
+I honestly don’t know how to fully prevent this one. Since it comes from an authentic figure of authority it will probably wreck many people. The only thing the community can do here is demand good security practices from the dev team, for example: all admin/mods enable 2-factor. Recently a famous gaming project called Fractal had “373 of its members scammed out of a total of 800 in Solana cryptocurrency, worth $150,000” in a hack like this.
+
+**2\. A malicious user hacks one of the protocol’s contracts and drains its funds**
+
+Your only safety here as a user is to put in DeFi money you can afford to lose, especially in new protocols, and split the risk accordingly. You can expose yourself to less risk by using protocols that are audited, but many hacks happen in protocols that are audited so they aren't hack-proof by any means: The 30m+ U$ recent Grim Finance hack in the Fantom network left many people with a bitter taste in their mouth. They were audited and most of the code was “battle-tested”, but new code got exploited.
+
+* * *
+
+Producer: [Worms](https://twitter.com/MarcoWorms).
+
+_Thanks [Ben](https://twitter.com/thebensams) for helping with part 1!_

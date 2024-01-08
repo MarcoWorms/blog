@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Marco Guaspari Worms">
+<meta name="dcterms.date" content="2022-03-04">
+
+<title>Worms Blog - Yearn Partners: Building with yVaults</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Worms Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/MarcoWorms" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/MarcoWorms" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Yearn Partners: Building with yVaults</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">english</div>
+                <div class="quarto-category">yearn</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Marco Guaspari Worms </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 4, 2022</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://miro.medium.com/v2/format:webp/1*8Q_0cmMZxvDza3D-yc71fg.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">#buidl</figcaption>
+</figure>
+</div>
+<p><a href="https://medium.com/iearn/yearn-finance-explained-what-are-vaults-and-strategies-96970560432">Yearn Vaults</a> are built with open standards and YFI partners have made amazing applications on top of them in the past couple of years. This article showcases how other protocols have extended Yearn products, and we hope it inspires more experiments on top of YFI services!</p>
+<section id="example-cases" class="level2">
+<h2 class="anchored" data-anchor-id="example-cases">Example cases</h2>
+<p>The most common partnership cases are:</p>
+<ol type="1">
+<li><p>Using yVaults as collateral for lending/borrowing</p></li>
+<li><p>Using yVaults to generate yield with user funds</p></li>
+</ol>
+<p>In both cases, the partner is rewarded with performance fees taken from the vault’s overall profits, the more total volume that a partner contributes to a vault, the bigger share of the profit they receive. &gt; # In 2021, Yearn shared $2,793,161 with partners through the partnership program</p>
+<p>Let’s dive deeper now into our largest partner’s use cases:</p>
+</section>
+<section id="yearn-abracadabra" class="level2">
+<h2 class="anchored" data-anchor-id="yearn-abracadabra">Yearn + <a href="http://abracadabra.money/">Abracadabra</a></h2>
+<p>Abracadabra uses yVaults in their borrowing service: The key innovation is accepting interest-bearing tokens as collateral for borrowing, when repaid the user receives the collateral vault tokens back which includes the profits that were generated over the time locked.</p>
+<p>An overview of Abracadabra would be:</p>
+<ol type="1">
+<li><p>User deposits wETH (wrapped Ethereum, same as Ethereum) into a yVault, receives yvWETH</p></li>
+<li><p>User deposits yvWETH on Abracadaba as collateral, Abracadabra allows the user to mint a percentage of their collateral as a dollar stablecoin called Magic Internet Money (MIM)</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://miro.medium.com/v2/format:webp/0*Qd9fjno8SAxBUlsh.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="http://abracadabra.money/">Abracadabra</a> borrow interface</figcaption>
+</figure>
+</div>
+<p>When the user mints MIM the collateral deposited gets locked until the MIM borrowed is paid back</p>
+<ul>
+<li><p>If the user pays back in time then the collateral is unlocked, if it’s a yVault this would mean your yVault tokens get returned with all profits gained while they were locked!</p></li>
+<li><p>If the user doesn’t pay back in time, part of your collateral will be used to pay for the service (liquidated)</p></li>
+</ul>
+<p>Ideally, the interest generated by the vault token deposited will surpass the borrowing fee cost from Abracadabra</p>
+</section>
+<section id="yearn-alchemix" class="level2">
+<h2 class="anchored" data-anchor-id="yearn-alchemix">Yearn + <a href="https://alchemix.fi/">Alchemix</a></h2>
+<p>Alchemix uses DAI (another dollar stablecoin, much like MIM) yVault in order to generate interest from user-deposited DAI and automatically repay loans.</p>
+<ol type="1">
+<li><p>User deposits DAI or ETH into Alchemix</p></li>
+<li><p>Alchemix deposits DAI or ETH into Yearn Vaults to generate yield for the user (and automatically repay the loan taken next step).</p></li>
+<li><p>User can borrow up to 50% of deposited collateral as DAI and up to 25% as ETH as alUSD or alETH (can be converted to DAI or ETH in Alchemix ecosystem) which locks the deposited amount proportionally to how much was borrowed</p></li>
+<li><p>As the deposited amount in step 2 generates yield it pays back for the user loan automatically and the user can then withdraw proportionally to the yield generated</p></li>
+</ol>
+<p>Here is the complete Alchemix ecosystem overview and how it integrates with Yearn:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://miro.medium.com/v2/format:webp/0*ql9_VxulRfgnDeEi.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://alchemix.fi/">Alchemix</a> ecosystem</figcaption>
+</figure>
+</div>
+</section>
+<section id="yvaults-in-b2b" class="level2">
+<h2 class="anchored" data-anchor-id="yvaults-in-b2b">yVaults in B2B</h2>
+<p><em>For business use-cases the Yearn DAO truly makes a difference: it has the infrastructure to provide the best vault security in DeFi at the moment.</em></p>
+<p>Partners earn a share of fees based on the TVL they contribute to the vaults, you can read more about our profit-sharing model in the <a href="https://docs.yearn.finance/partners/introduction">Yearn Partner Documentation</a>. Partner wallet apps and earn sections implement yVaults and serve them to users in different forms:</p>
+<p><strong>Earn Sections:</strong> pages that provide an alternative front for users to deposit their assets into yVaults. A good example of Earn section can be found on <a href="https://shapeshift.com/">ShapeShift</a>, their contract to deposit the assets at Yearn Vaults is <a href="https://github.com/shapeshift/yearn-router">open-source on GitHub</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*GS5yHr22zVWvlExTLWgczA.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://shapeshift.com/">ShapeShift</a> earn section</figcaption>
+</figure>
+</div>
+<p><strong>Wallets:</strong> partners provide Yearn yield generating options inside their ecosystem using yVaults. The <a href="https://www.steakwallet.fi/">SteakWallet</a> is a good example of a wallet service that integrates with Yearn:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://miro.medium.com/v2/format:webp/0*XVZgURI8tKiDKqE1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://www.steakwallet.fi/">SteakWallet</a> interface</figcaption>
+</figure>
+</div>
+</section>
+<section id="resources-to-become-a-partner" class="level2">
+<h2 class="anchored" data-anchor-id="resources-to-become-a-partner">Resources to become a partner</h2>
+<p>If you would like to build on top of our yVaults it’s recommended to:</p>
+<ul>
+<li><p>Read the <a href="https://docs.yearn.finance/partners/introduction">Partnership Program documentation</a> and follow-through the partner form</p></li>
+<li><p>For technical guidelines check the <a href="https://docs.yearn.finance/partners/integration_guide">Yearn Integration Methods documentation</a></p></li>
+</ul>
+<p><em>We would love to hear from you about what you are building on top of $YFI protocols!</em></p>
+<p>Producers: <a href="https://twitter.com/MarcoWorms">Worms</a>, Reviewers: <a href="https://twitter.com/omgcorn">Corn</a>, <a href="https://github.com/DarkGhost7">Dark Ghosty</a></p>
+<section id="made-in-yearn.finance" class="level3">
+<h3 class="anchored" data-anchor-id="made-in-yearn.finance">Made in <a href="https://yearn.finance/">yearn.finance</a></h3>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

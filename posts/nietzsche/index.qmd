@@ -1,0 +1,296 @@
+---
+title: "The Keys to the Nietzschean Castle"
+author: "Marco Guaspari Worms"
+date: "2022-10-28"
+categories: [english, nietzsche]
+---
+
+![All Images were made with [Stable Diffusion](https://medium.com/@marcoworms/conjuring-images-with-stable-diffusion-20f3e000a837)](https://cdn-images-1.medium.com/max/4000/0*u6OlY4h5TkUsy_zM.jpg)
+
+This text is a reduction of 5h audio recordings of 3 classes from [Prof. Clóvis de Barros Filho](https://bv.fapesp.br/en/pesquisador/88753/clovis-de-barros-filho) that serve as an introduction to the Nietzchean thoughts and help you dive into the original books by yourself.
+
+>  Translator Note: Direct quotations to Nietzsche lack source and proper translation, I did what I could with the material I had. If you find any reference to something unreferenced or a better translation to a concept please send it to me so I can improve this text!
+
+>  I did not create any of the ideas and opinions laid here, my objective is to make Prof. Clóvis work more accessible to everyone so anyone can form their own opinions about it. I personally find many parts of Nietzsche’s ideas impressive, but I’ll refrain from giving my opinions and leave the text to speak for itself.
+
+This journey identifies what Nietzsche thinks about morals. To do this one needs to dive into many of his books, because, unlike other authors, Nietzsche did not segment his thoughts into clean separate books or chapters. To facilitate the journey in reading his original work, we will learn about key concepts (which Prof. Clóvis calls “keys of the castle”) to understand this author and some jargon essential to understanding the original work. We will explore the following:
+
+1. Nihilism
+2. The Death of Gods
+3. Amor Fati
+4. Will to Truth
+5. Genealogy
+6. Eternal Recurrence
+
+### Disclaimer: Chaos Ahead
+
+From the formal perspective, it’s tough to interpret Nietzsche because every book is about everything, making it hard to extract a specific idea because they are always tightly coupled. When dig into one, you will quickly learn about ideas from different subjects.
+
+Nietzsche didn’t write texts like the academics taught us to do. His thoughts are transmitted through “aphorisms” which are short phrases, a paragraph, sometimes a page, and they are thrown at you in a way that feels random.
+
+Why does he write like that? This manner of expression is very aligned with the content of his philosophy. He is part of a group of thinkers that believe that whatever comes to mind is a small, insignificant, subproduct of your entire psyche.
+
+He is convinced that our psyche is infinitely larger than the things that pass by our head. These things that come into our head (that we call consciousness) work like a spotlight: imagine a spotlight illuminating a single spot in a vast sea. This spotlight can move, and when it does, it shows a small different part of the surface. When the spotlight moves away from something, it doesn’t mean it has vanished. You are the sea, and what is being shined upon by the spotlight (the ideas coming to your mind right now) is just a part of a much bigger organism (the sea).
+
+But if you are the sea, then who moves the spotlight around, deciding what is coming up in your mind right now? It is not you, because you are the sea, and what you are right now is what the spotlight (that you don’t control) is illuminating. In Nietzsche, what drives the spotlight is called your “Will to Power” or also called “Essence” and in Portuguese “Will to Potency”
+
+So your thoughts are connected with your feelings, and your feelings are connected with your oscillations of potency. It’s not the conscient “me” that controls what “I” think. The conscient “I” is a result of an inconsistent process. This means that you don’t really control what comes into your head, you are not sovereign, or as Freud would put, “The ego is not master in its own house”. This is the basic premise to understand why Nietzsche writes the way he writes, because he writes the exact opposite way we were all taught to write: when we studied in school the teacher taught us to make a draft, organize thoughts, then write a final piece. Nietzsche doesn’t do anything after the “draft” part, because the organizing process strips ideas from their raw and chaotic form to mask them into a logical/rational way of thinking, and he just wrote things as they come to his head.
+
+But, finally, why would he do that? Because he doesn’t have the pretension of writing anything that will be true for everyone, it is just what comes to his head. And every post-modern author after Nietzsche has this similar thought line. The final result is that his work's presentation is aligned with its contents.
+
+### Into the Mainstream & Reading Order
+
+Nietzsche was born 1844 and died in 1900. His work entered the mainstream in the period after 1950s. He has many books, with the most famous one being “Thus Spoke Zarathustra”, but to better absorb the content it is recommended to leave this one for last as it is by far the most deliriant and metaphorical one out of all his books. All books are crazy by usual standards, but if you follow this order you will be able to deal with the less deliriant thoughts first, so it is recommended to follow:
+
+**1:** Twilight of the Idols
+**2:** Beyond Good and Evil
+**3:** Genealogy of the Morals
+**4:** Gay Science
+**5:** […]
+**Last:** Thus Spoke Zarathustra
+
+## Key Concept #1: Nihilism
+
+![](https://cdn-images-1.medium.com/max/4000/0*CfdhBBiMME0xXaOm.jpg)
+
+Nietzsche uses the word “Nihilist” in every book, so it is tough to understand them if you don’t know what it means. And not only is this concept essential, but Nietzsche also uses the word “Nihilism” to suggest the opposite of how common sense thinks of it, *but he won’t tell you that!* It is up to you to find that out, so absorbing this before reading will fast-track your learning and make it less confusing:
+
+### Common Sense meaning of Nihilism
+
+The common sense meaning of Nihilism is conducting life with no set of higher values or morals, a life untied of any principle beyond the raw reality.
+
+Example: Someone invites a very religious person to do group sex, and the religious person denies it because that is against their higher moral values. So in this example, there is an existential criterion that this person applies to their existence. This criterion is more valuable than life occurrences, “no matter what happens the moral value will guide the life's conduct”. In this case, this person did not let life conduct itself, because they pulled the handbrakes so a higher value could triumph.
+
+“Letting your life conduct you without pulling the handbrakes is Nihilist”, common sense would say.
+
+### Nietzsche's meaning of Nihilism
+
+Nietzsche's meaning of Nihilism is conducting life WITH a set of higher values or morals, because doing this stifles your capacity to explore and learn from the real experiences life offers.
+
+Example: A Christian person has principles. Christian principles. And people that have principles do not let life conduct them without pulling the handbrakes. So for Nietzsche, this person is a Nihilist, the exact opposite of the common sense meaning. Another example: A communist is convinced that everything must be about the revolution for the working class. The good life for a communist is a life that leads to the end of social classes and capitalism, and this is his principle, much like the Christian has one. So the Christian is a nihilist, the communist is a nihilist, but so is the liberal, the anarchist, the human rights activist, the democracy, the dictatorship, and anyone that lives a life believing in higher principles.
+
+### So what does Nihilism mean?
+
+The “Ni” in nihilism means “negate”. Nihilism means “to negate life”. In common sense meaning it’s easy to understand what is being negated: the values. If you negate values you are negating life. But in the Nietzchian meaning, the values negate life: By choosing fictional values over life, one negates life.
+
+This concept helps us understand what Nietzsche means when he writes things like In the name of heaven one sins against earth: in the name of higher values one negates the present experiences. For coherence, from now on I will use “nihilism” as Nietzsche does.
+
+Plato is the first great nihilist in Nietzsche's head: Plato talks about “the sensible and the intelligible world”. The intelligible world is built upon absolute truths, values, and inquestionable things. The sensible world is an illusion, and the reality happens in the intelligible world that we as humans can’t access, we can only access the illusion. So in Plato's world’s view, the individual’s life is a meaningless reflection of an intelligible and inaccessible world, thus “he is a nihilist”, and the first big one! The pole-position of nihilists! He negates life and reality as is, to glorify a rational model of living, committing sins against the present earth in the name of an inexistent beyond.
+
+The second greatest nihilist and “present negator” is Aristotle. Because to Aristotle, the great reference for life is the “Cosmos”. But you may think “isn’t the cosmos pretty much the real world” and the answer is no! Because this “Cosmos” is a specific version of the cosmos, more specifically Aristotle’s one, which is just another nihilistic worldview. “You are a piece in the universe machine that must act as the universe expects, and this is how you will be happy” and this view, again, doesn’t ask YOU what you think happiness is in the first place. Again, you are just a piece in an ideological system created by someone else’s head. This is yet another mental model of living that tries to enslave life. While Plato enslaves life through the world of ideas, Aristotle enslaves life through his “cosmos”.
+
+### The Idols and The Hammer
+
+Another example of nihilism is monotheism. God is not here, but commands all life from beyond, in the realm of souls, and the best life is the one that seeks eternal life in the afterlife paradise. And again life was enslaved by a mental model that “spits on earth in the name of heavenly paradise.”
+
+Man invented the ideal to negate the real, classic concept that resumes the Nietzchean interpretation of nihilism.
+
+Some excerpts from Twilight of the Idols to illustrate more examples:
+
+Improving humanity is the last thing I will promise. If Plato, Aristotle, Catholics, and all others are full of bullshit, what should you follow instead of them? Nothing! Don’t expect Nietzche to bring you a new idol to replace an old one, he will not do that for you. He has absolutely no truths to impose himself in the place of the ones you had before, he wants you to rethink your relationship with these truths and not just accept uncritically any idea that might enslave your life. Don’t look for something to put on the pedestal, but restructure your need for a pedestal in the first place.
+
+The idols should know how much it cost them to have feet of clay, in other words, any “almighty and powerful god” has weak spots that you can hammer and it all comes down. This is why Nietzsche uses the concept of the “philosopher's hammer” because once you possess the hammer you can break down any idol. This is the basis for the idea of “Deconstruction”, a popular term that means to show that the references for a specific notion have no fundamentals.
+
+Take down the idols, this is my main activity, The invention of an ideal is the greatest lie, a curse that oppresses reality, Humanity has become false at is deepest roots, even by adoring values opposite of ones that could take us to a brighter future are other examples from Twilight of the Idols.
+
+Another idol that Nietzche will beat down a lot is “equality”, there is an entire book dedicated to this called “Genealogy of the Morals” where he focuses on expliciting that people are not equal, further explored on the following keys.
+
+## Key Concept #2: The Death of Gods
+
+![](https://cdn-images-1.medium.com/max/4000/0*FCEbTBn2PpjEc34I.jpg)
+
+God is Dead is a classic phrase from Nietzsche and there is a lot to unravel from this simple yet profound choice of words:
+
+* If God exists then it can’t die since it’s the most powerful being
+* If God doesn’t exist then it also can’t die since it never existed
+
+So funny enough Nietzsche makes fun of both the believers and non-believers with this phrase, but what did he mean by it then? Nietzsche wants to denounce and kill a way of thinking, specifically, the “religious thinking structure”. This structure defines the line between good and evil. The lines between heaven and hell. The city of men and the city of god. The conviction that there is a realm beyond better than this one, one so much better that you should restructure your current living experience to have a better time there. What is being denounced is this way of thinking, Nietzsche is declaring that we as humans were able to transcend this way of thinking and living and move on to new ways that don’t rely on the “shadows that terrorized Europe for centuries, and are now gone because god is dead” as he would put.
+
+Every moral philosophy that presents us with a dichotomic view that splits between good and evil, is dead, along with god, because it is the idea of god that allows this view to exist in the first place. If you kill god, everything else crumbles. Along with god, all political ideals die: the society free of classes, the poet society, Atlantis, Eldorados, and any other bullshit man has invented to try to cope with the real world.
+
+Another way to see this concept is that Nietzsche will denounce every “metaphysical crutch”, or in other words, ideals that you lean into to lessen your existential pain. People will fabricate an ideal and lie to themselves that when the fabricated idea happens in real life only then something very nice will happen, whether you need to die (like in monotheistic religions) or not (in communism or anarchy) is just a detail. The society with no classes is just like the paradise, an utopia, a romantic distraction that wastes your real-time energy.
+
+We who defend another type of faith, we who think of democracy not only as a degenerate way to organize but also as a decadent form of humanity, reduced to mediocrity, where will we deposit our hopes? This phrase may shock some people because of how it talks about democracy, but let’s comprehend the underlying criticism: Nietzsche argues that democracy stems from a concept that does not exist in reality, that is the concept of equality. The idea that every vote is worth 1 presupposes that everyone is “worth” 1. Trying to put this another way: “To whom it interests a form of political organization where every person is worth 1”? Imagine the best and worst sports players of your favorite sport. Now let’s create an organization to decide for the future of this sport. To who it interests that each vote is worth 1? To the few best or the many worst? According to Nietzsche, and he is coming from a place where he clearly thinks some people are more excellent than others, there are few awesome people and many mediocre ones. So in a system where everyone is worth 1 like in a democracy, he argues this is where the mediocre people thrive
+>  Prof. Clóvis reinforces that this is the Nietzsche view, not Clóvis. Translator’s Note: Everyone is free to disagree with the above or any other idea. And just a reminder, none of these ideas has the intent to improve the world or to impose a new absolute truth, these views are highly conflicting with many modern world views when framed like that
+
+### Will to Power
+
+The question “to whom it interests that I believe in this?” is something Nietzsche would recommend you consider to find out if an idea benefits you.
+
+If Nihilism negates life and is a harmful way of living, what is a way of living that affirms life for Nietzsche then? If we want to kill good and evil, why does Nietzche believe some people are better than others? How is “better” not just a version of “good”?
+
+Nietzsche would say that real-world energy is called “Will to Power” when acting upon living beings. Spinoza would call it “Potency to Act”. Schopenhauer would call it “Will”. And Prof Clóvis would call it “Horniness to Live”. And what characterizes a being with Will to Power to Nietzsche is the constant search for MORE Will to Power. Vital energy wants MORE vital energy. Horniness wants MORE horniness. And it will search for all conditions so that the Will to Power increases more and more.
+
+For example, Prof Clóvis gives a talk to 4.000 people. And everyone stood up and clapped at the end. Well, now the professor wants 8.000 people the next time, and more, and more.
+>  Prof. Clovis said what he actually wanted to do was buy a car and ride to the mountains to live a peaceful life, but then he wouldn’t have money in 6 months. (Translator’s Note: Brazillian professors salaries are bad)
+
+### Activity and Reactivity
+
+We are energy searching for more energy, but that doesn’t mean we are always finding it, at many times we collide with opposite energy forces. These forces, according to Nietzsche come in two types: active and reactive.
+
+* The **active** force exists on its own
+* The **reactive** force exists to oppose a pre-existing active force
+
+Nietzsche would say we are all moved by active and reactive forces, in different moments one type is more prevalent than another, but the “strong” person is driven mostly by active forces while the “weak” person is driven mostly by reactive forces.
+
+The most primal active force, according to Nietzsche, is art, since the artist is moved by active forces and is sovereign. The artist does what their body wants. Art in Nietzsche can be seen as anything moved by a person’s own potency.
+
+An example of reactive activity is bureaucracy. Who makes rules and regulations? Is it the people that live expanding the limits of possibilities? Or is it someone wanting to stifle this first person?
+
+>  The professor jokes that the reactive person is reactive since they are a kid: the kid who tells on the others and makes everyone get grounded
+
+So in this same line of thought, who is more likely to create moral rules? A person moved by active forces or reactive ones? Evidently the reactive one, or as Prof clóvis jokes, the “Lazy Ass Syndicate”. And it works because there is no lack of lazy ass people to fill in the syndicate roles. And it works even more because the fun part of being a lazy ass reactive is that you can just unite with other lazy ass reactives and increase your power. After all, since the objective in common is to screw some active force, the active forces can’t unite because they are mostly unique. How hard is it to make a team by simply combining the best individual players? It’s very hard, much harder than uniting for a common cause to screw a single activity. The weak people can always unite, and the strong people are mostly alone.
+
+>  Again the professor reinforces this is all Nietzche views, not his own
+
+Here a student questions how this fits the democracy rant. Prof Clóvis reinforces that, within Nietzsche's views, democracy is a system controlled by reactive forces, therefore by the “weak” people. This idea is discomforting because we were raised in the paradigm of Christian equality. When Nietzsche attacks the Democracy he is attacking Equality and therefore the “religious structure of thinking”.
+
+## Key Concept #3: Amor Fati
+
+![](https://cdn-images-1.medium.com/max/4000/0*Gg1lEmPkFeg4gnrt.jpg)
+
+“Amor Fati” is the Nietzschean concept of loving the world as it is. It is not about tolerating the world, it’s about loving the world as is. It’s not just loving a specific part, but the whole reality. Because if you decide what part you love and what part you don’t you have succumbed to nihilism.
+
+“Oh but I want the world to be like XYZ” well then you don’t love it as it is now, so that is not “Amor Fati” by Nietzsche's standards. Nietzsche is clearly not like Che Guevara, or any other idealist. Nietzsche is an anti-idealist.
+
+You can roughly split philosophy in 2 groups:
+
+* Group 1 recommends that a good life is a life engaged in the process of transforming the world (IE Marx)
+* Group 2 recommends that you conciliate with reality (IE Stoics, Spinoza, Nietzsche)
+
+Depending on your life context you might lean more into one or another
+
+Nietzsche's view (that is in Group 2) on why we should focus on the present go back to the stoics, especially when they say that there are 2 great evils for man: the past and the future
+
+The past is a time that doesn’t exist in the world, it’s what St. Augustine would call “Soul Time”, it exists only for us. Past is memory. Past is actually present because when you remember things you are doing in the present time. Our memories are from the present and not from the past.
+
+The future is also inexistent and it happens in the present. To think of the future is to create narratives in your head that don’t exist today.
+
+So the world is just the present, and the rest is imagination. But why are past and future “bad”? Because they produce real consequences over life (a form of nihilism).
+
+When you spend time thinking of what happened in **past**:
+
+* If the past is good you are fueling **nostalgia**, which is just a coping mechanism for what’s happening in the present.
+* If the past is bad you are fueling **guilt**. “I should have done XYZ”.
+
+When you spend time thinking of the **future**:
+
+* Suffering in anticipation of a bad future won’t help you in the present. Also known as **fear**.
+* Thinking of a better future fuels one’s **hope**.
+
+Nietzsche is saying that nostalgia, guilt, hope, and fear are all negative places to rest your thoughts. The more you think about them, the more you will be affected in the present by “Soul Times” that don’t exist. Your present life is being fragilized or in other words: unfocused.
+
+A life with no focus leads to no intensity of experiences. So thinking of the past and future removes intensity from the present. The intense life presumes alignment between the present body and the present mind. And not just any sort of alignment, is like a love-relationship alignment. Therefore it’s a search for reconciliation with reality.
+
+Whoever is guided by hope is being guided by a feeling that has 3 characteristics:
+
+* **Ignorance**: when you wait for something you have no assurance that the thing will happen, so you live partly in ignorance. When you are not ignorant about whether something will happen you don’t create hope.
+* **Impotence**: if you could make it happen right now you wouldn’t need hope, so having hope means you are powerless about the outcome.
+* **Chastity**: hope is not joyful. Joyfulness is about presence, hope is a type of desire and desire implies something is missing.
+
+In this line of thought, the Nietzschean view of “wise” is aligned with the stoics. Wise is searching for how to live. This view of wise opposes common sense where a wise person “knows a lot”. The Nietzschean wise may or may not know college-level math, but this doesn’t make them any wiser, what does is the interest in searching and discussing how to live a good life, which means reconciling yourself with the present reality, as is, no changes. Love for presence and present interactions. The opposite of loving an ideal, therefore anti-ideal, since ideals are about what is not in the present.
+
+>  Prof Clóvis makes an analogy of how often it is for someone to love a version of their partner that they wish that existed, and not actually love the real present one. And it is very common that the ideal version doesn’t match the present version. The proof of this is when your partner does something and you get mad at them, because what they did has broken your illusion, and with every new move that breaks more the illusion it gets more clear to you that you might not love them. The solution is to love people as they are and not the ideal version.
+
+>  A joke example the Prof. makes is: imagine you find out your loved one has an affair with another person and you didn’t know. By Nietzsche standards, you should now love the partner MORE, because you know more about who they are in present. This seems crazy by usual standards, but the reflection is, if you get pissed off with your partner it means the object of your love is not the partner, but the ideal version on your head that you think only loves you, and this version of them doesn’t exist. The one that exist might love you, but what brings them joy is another person. Loving your idea of that person, in the extreme limit, doesn’t even require the person to be there present with you.
+
+An excerpt from Buddhist writings: “don’t forget that the moments here and now and the people here and now are the most important of your life, because they are the only real ones”. It’s the same concept of reconciliation with the present world, made in the present world, which Nietzsche called “Amor Fati”.
+
+Connecting all things, what Nietzsche means is that if you don’t deconstruct the idols, you cannot reconcile with the world as it is.
+
+>  Prof. Clóvis jokes that “if you think that your professor must be from Harvard to be good you can’t love the professor that is just a person like you (reality)”. “if you have in your head that it is only cool to live in a specific place then it is impossible to love the place you live”. “if you think the only job that will be good is in a specific place it’s impossible to love the place that you currently are”.
+
+The love for real is the deconstruction of the ideal.
+
+While the idols haven’t been deconstructed, we are victims of an illusion. The illusion that living in New York will be better. That good life is about having a top-model body. Slave of the illusion that the good life presupposes having an expensive white car, slave of the illusion of thinking that to be a good professor you must teach at a “top ranked” university. While the idols haven’t been deconstructed, we are slaves of illusions! What is the chance that the world will be like the one someone idealized? None, because if there were any, it would be the reality and not an ideal. So the person that waits for the real to become the ideal will never love anything.
+
+“Do not expect from the world more than it can give.” (Prof Clóvis says his father used to say that and it is very Nietzschean)
+
+An excerpt from “Ecce Homo”: my formula for expressing what is great in man is amor fati, do not wish for things beyond what they are, neither forwards or backwards and continues not even in centuries and centuries throwing shade at religion, it's not about tolerating the inevitabilities, it's about loving them, and way to love is distancing from idealism
+
+>  The Prof. tells the students to read “Thus Spoke Zarathustra” prologue.
+
+## Key Concept #4: Will to Truth
+
+![](https://cdn-images-1.medium.com/max/4000/0*4zWn_Gipi8Aj7A1u.jpg)
+
+The “Truth” is searched for by philosophy and science. The common conception of truth is the correspondence between “what the world is” and “a speech about it that intends to describe it as it is”. To Nietzsche, the “truth” is the spearhead of nihilism. An idol like any other. If the search for truth is not part of real life, then why do people do it so much? And why do we expect from people to morally abide by it?
+
+“The truth” is a very well-polished metaphysical crutch. The way to emit “a truth” happens through words and speech. So the one that believes in “a truth” believe in some correspondence between discourse and reality. Therefore one believes that words can correspond to reality. This premise for Nietzsche is absurd since reality can’t be translated into words. So you wrote a thesis? *fart sound made with mouth*, *silence*, know that the world will follow one path and your thesis another, and if you call “the truth” any equivalence between your thesis and the world *fart sound again* it’s completely idiotic.
+
+A simple example: “the banana is on the table” might seem like it describes reality, but digging deeper, there is no banana equal to another because nothing is equal to another thing in the world, equality is a mathematical operation and exclusively an intellectual resource, it is not an empirical resource, it can’t be used to associate things in the real world, it can only be used in math. Back to the banana, if no banana is like another, and I intend to describe the world “as is” then the conclusion is that each banana should have an exclusive name, which would make communication impossible. We as humans agree that we can call any banana “banana” so we can communicate. But going even deeper, how much time was the banana left on the table? Is today’s banana the same as tomorrow’s? So we would need exclusive names for each point in time for each instance of *bananicity* for every banana just to try to depict “the truth as it is in the real world”.
+
+>  Prof. Clóvis jokes “I had to give names to each banana and numbers for their position in time so I could precisely say I ate Georgia 8 and Stefania 17 for breakfast”
+
+The point is that when we agree on just “banana” we give up on the premise of making this an accurate description of reality. Words cannot describe life because in life everything ceases to be, while words have the pretension to describe everything as they are. So the words stay and the banana rots. There is a fundamental problem: for words to describe the world as-is, we would need infinite words to describe reality and communication would be impossible. Truth is about finding relations between speech and reality, which is impossible because a millisecond after you describe the world it has already changed. There is a mismatch between reality and what is described by words.
+
+>  Prof Clóvis comments that his name is Clóvis despite being his young dumb version or his adult dumb version, the idea of name is against reality since it implies it is the same when he has transformed, so “Clóvis” doesn’t actually mean nothing, because if it did it would only work for one instance.
+
+People seek the truth. Why? Because the truth stands still, while life goes on. We have a psychological need to pull life’s handbrakes for not tolerating it as is. Because reality is impermanent, and things, in reality, will always cease to be, and what we do is search for a truth, a handbrake to hold on to. Fun fact: every god in existence is “eternal”, the same concept of the handbrake. The world can move on forever, god will be here! And so does math! So who loves these concepts? The people that don’t see that nothing in life can be translated to numbers and that everything is flowing, so the person is desperate and says “NO!” and pull all the handbrakes to create a safe place where in this place we think we have control. Because in the real world nothing is controllable because when you try to catch it, it has already become something else. There is a psychological tendency to transform the world into something that it isn’t because the existing world has no truths.
+
+So the truth is an illusion and everybody plays this game, I say I am something you say you are another thing, nobody is actually something but everyone is playing the same game. The truth game. Because it tranquilizes us. A person that understands this concept and accepts reality is what Nietzsche calls an “Übermensch” or “Beyond the Man”.
+
+This line of thought is powerful and is part of what made Nietzsche become so reverenced, and it is the foundation for post-modernism. The will to truth is our will to pull the handbrakes because we can’t handle the traffic from life. A metaphysical crutch by excellence. A search for eternity in a space of fleetingness. A search for solitude in a space of fluidity. The unsustainable lightness of being. When you stop to look it’s not the same anymore.
+
+What is legitimate knowledge by Nietzsche's standards, if the truth is meaningless? Genealogy.
+
+## Key Concept #5: Genealogy
+
+![](https://cdn-images-1.medium.com/max/4000/0*bGE6quzvjPPdiP_L.jpg)
+
+>  Genealogy means: a line of evolutionary development from earlier forms
+
+What comes to our mind is the smallest and worst part of our psyche. That is the tip of the iceberg. If you think something good came into your head, know that there are parts of your psyche that are even better. You are much ampler than the thought in your head. What you think and don’t come to your mind is called “Unconscious”. Imagine if all your thoughts were on the floor and your consciousness is a spotlight shining on them and moving (much like the sea example in the disclaimer section), your unconsciousness will still retain knowledge and think outside of this process! A quick example: when someone asks you something you know but don’t remember it at that exact time, and then out of nowhere “AHA!!” you remember now! You didn’t unlearn and learn it very fast, but rather your unconscious knew it and eventually the spotlight reached it.
+
+something think inside me. You are not the master of your thoughts. Thinking is a body activity that transcends conscious control.
+
+consciousness is the smallest and worst part of what an individual thinks therefore unconsciousness is essential.
+
+When Nietzsche talks about genealogy, what matter is: “why did you think something?” or “where did this thought come from?”. Genealogy is the forces behind the thought that came into your head — the origin of a thought in you. Imagine you lie on a couch and a psychoanalyst is behind you saying you to tell what is in your head, this is what psychanalysis call “free association of ideas”, this is like trying to understand what is happening in real-time to understand someone’s psyche better. What matters to Nietzsche is who is moving the spotlight? It is not you. At this exact time, your body organs are involuntarily doing things, your brain is exactly like that, you are watching your thoughts as they appear on you. If you said something, was it “you” that said it? Both yes and no are correct answers because it did come from your sum of forces, but there is no “I” articulating this process.
+
+Imagine I (you, but in first person) will be interviewed for TV and someone asks me something. There is no process of I think, then I process, and then I speak. What happens is that something is thinking inside of me while my mouth is enunciating whatever comes to mind. And “I”? There is no “I”! Just like you don’t control internal body organs you don’t control the brain, it just spews things uncontrollably, so there is no “I” that thinks of these things. “There is no I” screws 90% of what we think because most things we think start with “I”. If there is no “I” isn’t Prof. Clóvis at this moment giving a class? No, he is watching himself speak, there is no “I” designing things to say, what exists is forces that produce thoughts just like there are forces that digest food in your body.
+
+Some forces make blood circulate and some forces make thoughts come into your head, and you are watching this process in first person, both what is being thought and what is being said. It’s easier to realize this when you have to produce a powerful speech and you catch yourself speaking non-stop. There is clearly no process behind just “spitting thoughts as words” and you even get impressed by watching whatever you produced in this state, because it doesn’t even look like what “you” would have produced, that is the entirety of your body speaking. It’s your body moved by vital forces spewing symbols. There is no control. These vital forces is what Spinoza called “God”.
+
+“There is no I” is a core concept to grasp and better read this type of thought. Marx: “What comes into your head is ideology and ideology doesn’t come by itself, there is an unconscious collective that is determined by forces and relations of production” Freud: “What comes to your head is the tip of an iceberg that you don’t control and is not conscious about”. But between Nietzsche, Marx, and Freud views there are fundamental differences. When you go to a psychanalytical office and they start to speak:
+
+* A Freudian has the pretension to establish some truth with speech, “the truth of the unconsciousness that emerges in the analysis”. Hence, the analyst builds a grammatic that relates what is being said with what that means, and this grammatic is called “interpretation of dreams”. So psychoanalysis is a form of constructing truths on top of the unconsciousness of the people that submit themselves to this type of analysis.
+
+* Marxism is the conviction that sociology identify truths about what is on people’s head when it comes to ideology
+
+In both cases, the speech is analyzed from the perspective of a scientist. In the position of someone that knows something, the other doesn’t. And they have the advantage to connect the dots and reach “the truth”.
+
+Nietzsche would say that when you analyze the world, or a speech, the interpretation itself is interpretable, and the interpretation of the interpretation is interpretable, repeating infinite times. There will always be a cave behind the cave, interpretations to infinity. Imagine a Freudian psychoanalyst giving their analysis to a patient, it ends there. To Nietzsche, it doesn’t end there, because to Nietzsche what the psychoanalyst says is the result of their vital forces, which can be interpreted by another person moved by another life’s forces, repeated to infinity. This is what Nietzsche calls “our new infinity” found in Twilight of the Idols and Beyond Good and Evil. “Our new infinity” is the fact that when we talk about the world we are simply regurgitating our vital forces, in an infinite process.
+
+The speech from the psychoanalyst is not “more truthful” than the speech from the patient itself. And if a new psychoanalyst analyses the analysis made by the first psychoanalyst it would also be not “more truthful” than any. Each is just what the vital forces of each individual are resulting. Prof Clóvis's classroom is a manifestation of vital forces, students went there thinking they would absorb truths about philosophy when in fact they are learning about what delights the professor, and that’s it. Every word is a mask for an illusion.
+>  Here are my guts in form of words — Prof. Clóvis
+
+A characteristic found in postmodern authors is that they will always say that whatever comes out of their mouths has no pretension of being a truth, it is just what the body produced at that time.
+
+## Key Concept #6: Eternal Recurrence
+
+![](https://cdn-images-1.medium.com/max/4000/0*fpIAN9Nml07Lt4zT.jpg)
+
+An “Übermensch” is a person that accepts life as is without the support of any of the nihilist “metaphysical crutches”. An Übermensch lives a life following the anti-nihilism, which Nietzsche also calls “The Eternal Recurrence” (in Portuguese ”Eternal Return”).
+
+>  Translator Note some recording is lost but remember this was part of the content: A classic story from Nietzsche is a demon that shows up and asks you if you would relive the saddest moments of your life forever. If you answer “yes, I’d love that” then you have reached Übermensch.
+
+Another way to see this is through the Sisyphus myth. Sisyphus is always pushing a boulder to the top of the mountain just so it falls for him to push it again, forever. But what decides if Sisyphus is living a paradise dream or a hellish punishment is whether he enjoys pushing the boulder or not.
+
+Morals and ethics are about thinking of good ways to live, and time is a crucial component of this process because thinking about this takes time. But we are not interested here in reflections about eternal life, because if there is eternal life it would escape any ethics. Ethics is restricted to its temporality, the one that we live in. This certainty that we must consider life in its temporality exists in many older mythologies. For example, Ulysses is taken from his home against his will to go to war, and the book Odyssey is about his return home after the war was won with his plan of the trojan horse. His regression becomes harder because he blinds a cyclops son of Poseidon right at the start. So Poseidon makes Ulysses's journey back home very hard, and one of the obstacles was the passage through the island of Calypso, a wonderful god that offers everything to him. But Ulysses wanted to go home, and after many temptations, her final offer to him is eternity and youthfulness. Ulysses answers that he would rather live a good mortal life than a bad eternal life.
+
+>  Translator Note some recording is lost, but Clóvis read the following aphorism to guide this concept:
+
+>  *It’s on the present earth that we shall decide what deserves to thrive and what deserves to perish. Live a life you want to relive, this is the task. If you want to work then work, if you want to relax then relax, but know very well where your preferences are and don’t ever back down, the eternity of life is at stake.*
+
+The Eternal Recurrence is the most popular concept from Nietzsche and the most influential of them all. There are many interpretations, which is natural and not a problem, since Nietzsche would be the last person to elect a “true” interpretation. “There are no facts, just interpretations”. The attempt to fix one truth is a demonstration of the power of one over other interpretations. The interpretation chosen here will be the one from Professor Luc Ferry.
+
+The Eternal Recurrence is a criterion to evaluate life. The previous criteria evaluate if something is worth living transcend life, they happen outside life, and they are external to the living being, like we saw in the Aristotle's “cosmos” and the Christian god. So older criteria teach us that if we want to evaluate our own life we can’t do it by ourselves but we *must* consider things external to us. For example, the Marxist criterion for a good life is a life engaged in fixing societal injustices, so it depends on you participating in things external to your life to achieve “goodness”. The issue with older criteria is that you have to live your life as someone else wants you to, and in the end, who the f* decided that we should pursue that one view?
+
+There is an infinite number of models that try to say what is good, and the criteria are external to the individuals. There is no lack of people trying to sell you their model as if it was the obvious way to live. And if external criteria control your life it is the same thing as if the criteria (or whoever invented it) were dominating your life. The world of business is a world where all these ideas thrive. There is no lack of conferences with loads of people bringing a new framework that solves something in your life. The term “quality of life” is pernicious, you don’t measure a pizza's “tastefulness”, it just tastes good. We have a quality car, not “quality of car”, we have quality experiences, not “quality of experiences”, this small “of” inverts something that made sense “my life has quality” into a pernicious thought made to try to sell you something “what's the level of quality my life has and how can I increase it?”. There is no standard for quality. Each individual has their own perception of “this is/isn’t a quality life” and this perception may change at any moment, so there is no way to measure it. The person using “quality of life” in a speech intends to sell you their quality criterion.
+
+The fun and peculiar thing about the Eternal Recurrence is that it is a criterion that does not depend on anything external to you. All other models don’t consult you to decide the “best criterion for living”. For example, Prof. Clóvis says he loves his work and to talk about this subject. He doesn’t do this class for the money since a public professor's salary in Brazil is very low, he goes to class because he prefers doing that over anything else. He says that whenever someone says “a better life is one where we reduce labor time” (a very common point in his profession) he says that it would impoverish his life’s quality since he loves being in class and teaching.
+
+The Eternal Recurrence will say you should live a life you want to relive. If you want to relax, then relax. If you want to work, then work. But know your preferences because every decision will echo for eternity. So the criterion it proposes is: “whenever you are going to decide something, decide in favor of what will make your life worth reliving, without regrets”. If what makes you happy is praying, then pray. If what makes you happy is painting, then paint. But know very well what you really have an appetite for and don’t back down, because the world will try to persuade you into thinking you are on the wrong path. One cool thing to notice is that by Nietzsche's standards there is nothing evocative of appetite by itself.
+
+We discussed eternity being opposed to life, so why is Nietzsche talking about eternity? Because what is eternal in this case is the wish that the present moment was eternal. The wish that id doesn’t ever end. The feeling you get when you do what you like the most, and it’s not guided by anything but your own will to do it. This is you telling yourself that what you are doing is worth reliving. It is the Eternal Recurrence of a moment in itself. You should act in ways that your life moments feel eternal. The moments don't have to remain eternal in any future after this exact moment. What is important is that the feeling of wanting to be in this moment is eternal. This is a symptom of a well-lived life by Nietzschean standards.

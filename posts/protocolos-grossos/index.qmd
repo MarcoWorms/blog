@@ -1,0 +1,49 @@
+---
+title: "Protocolos Grossos"
+author: "Marco Guaspari Worms"
+date: "2021-12-16"
+categories: [portuguese, translation]
+---
+
+>  Tradução do artigo: [https://www.usv.com/writing/2016/08/fat-protocols/](https://www.usv.com/writing/2016/08/fat-protocols/)
+Originalmente publicado por [Joel Monegro](https://www.usv.com/people/joel-monegro/) em 8 de Agosto de 2016
+
+Aqui vai uma forma de pensar sobre as diferenças entre Internet e Blockchain. A geração passada de protocolos compartilhados (TCP/IP, HTTP, SMTP, etc.) produziu uma quantia imensurável de valor, mas a maior parte desse valor é capturado e re-agregado no topo na camada de aplicações, grande parte em forma de dados (pense Google, Facebook, e afins). A pilha de camadas da internet, no termo de como o valor é *distribuído*, é composta de protocolos “finos” e aplicações “grossas”. Conforme o mercado se desenvolveu, nós aprendemos que investir em aplicações produz bastante retorno enquanto investir diretamente em tecnologias de protocolo geralmente produzem baixo retorno.
+
+![Camada de protocolos na internet é fina](https://cdn-images-1.medium.com/max/2000/1*ZtZBLb1xHPrboQWIJqWA6Q.png)
+
+Essa relação entre protocolos e aplicações é invertida na camada de aplicações de uma blockchain. O valor se concentra na camada compartilhada do protocolo e apenas uma fração desse valor é distribuído para camada de aplicações.
+
+Nós vemos isso claramente nas 2 blockchains predominantes, Bitcoin e Ethereum. A rede Bitcoin tem cerca de 1 trilhão de dólares de capitalização total *(tinha 10 bi quando o artigo foi escrito em 2016) *e mesmo assim a maioria das empresas construídas em cima dele valem no máximo algumas centenas de milhões, muitas delas infladas quando analisadas pelos padrões comuns de negócio. Similarmente a rede Ethereum tem cerca de meio trilhão de dólares de capitalização *(tinha 1 bi quando o artigo foi escrito em 2016 e mal tinha aplicação para rede ainda na época)*
+
+![Camada de protocolos na blockchain é grossa](https://cdn-images-1.medium.com/max/2000/1*BBP21D6hoZyNRN_0NmGDWw.png)
+
+Existem duas coisas sobre a maioria dos protocolos baseados em blockchain que fazem essa inversão acontecer: a primeira é a camada de dados compartilhados, e a segunda é a introdução de uma tecnologia criptográfica de token de acesso com algum valor especulativo
+
+[Foi feito um artigo do mesmo autor desse texto sobre essa camada de dados compartilhada](http://joel.mn/post/104755282493/the-shared-data-layer-of-the-blockchain) cerca de 1 anos antes desse artigo ser escrito, apesar de empoeirado os pontos principais permanecem válidos: ao replicar e manter os dados de usuários através de uma rede aberta e descentralizada que quebra silos de informação, ao invés de aplicações individuais controlarem isso, nós reduzimos a barreira de entrada para novas pessoas criarem um ecossistema mais vibrante de serviços e produtos que competem de forma saudável em cima do protocolo.
+
+Como um exemplo concreto, veja como é fácil migrar de serviços quando eles lidam com criptomoedas, em grande parte isso é possível pois todos têm o mesmo acesso aos mesmos dados de carteiras e transações de forma gratuita. Esses serviços não necessariamente cooperam uns com os outros, mas mesmo assim mantém interoperabilidade um com o outro devido a ambos serem construídos em cima dos mesmos protocolos abertos. Isso força o mercado a inovar os produtos em camadas que agregam mais para todos, e muitas vezes criarem produtos radicalmente inovadores.
+
+Mas uma rede aberta e uma camada compartilhada de dados não são o suficiente para promover adesão. O segundo componente que preenche esse papel é o token do protocolo, que é usado pra acessar os serviços fornecidos pela rede (transações no caso do Bitcoin, poder de computação no caso do Ethereum, armazenamento de arquivos no caso do Filecoin)
+
+[Um outro autor focou em analisar o token de protocolo do ponto de vista de como eles servem para manter o incentivo a inovação dos protocolos abertos](https://continuations.com/post/148098927445/crypto-tokens-and-the-age-of-protocol-innovation), aqui nós vamos focar em como os tokens ajudam o protocolo a conseguir adesão pública e como isso afeta a distribuição de valor através do que vamos chamar de “ciclo de incentivos do token”
+
+![ciclo de incentivos do token](https://cdn-images-1.medium.com/max/2000/1*ZEh5XcJxIdRFDaQkidZXHg.png)
+
+ 1. Quando um token obtém valor ele atrai a atenção de pessoas diferentes, sejam especuladoras, desenvolvedoras, ou empreendedoras. Essas pessoas se tornam uma parte altamente interessada no sucesso do protocolo além de estarem financeiramente investidas nele.
+
+ 2. A partir disso algumas dessas pessoas constroem produtos e serviços ao redor do protocolo, reconhecendo que o sucesso dessas iniciativas agregaria valor ao token do protocolo.
+
+ 3. As iniciativas que têm sucesso atraem mais pessoas e até investidores para o protocolo, que constroem mais aplicações e o ciclo se repete.
+
+Existem dois aspectos a se notar nesse “ciclo de incentivos do token”. O primeiro aspecto é o quanto do crescimento inicial é movido por especulação. A maioria dos tokens são programados pra serem escassos, e conforme o interesse no protocolo cresce o preço do token também cresce e isso aumenta a capitalização total da rede. Às vezes o interesse cresce muito mais rápido que a emissão dos tokens, levando a uma valorização no estilo de bolha.
+
+Com a exceção de esquemas deliberadamente fraudulentos, isso é algo bom. Especulação é comumente o motor da adoção tecnológica *(referências dadas pelo autor para essa frase: [ref1](https://www.goodreads.com/book/show/91360.Devil_Take_the_Hindmost) [ref2](https://en.m.wikipedia.org/wiki/Technological_Revolutions_and_Financial_Capital))*. Ambos os aspectos da especulação irracional — a explosão e a queda — podem ser muito benéficos para a inovação tecnológica. A explosão atrai capital e permite os que entraram antes lucrarem, e parte desse lucro é reinvestido em inovação (quantos investidores Ethereum estavam reinvestindo o lucro deles do Bitcoin?), e a queda pode ajudar a adoção a longo prazo da nova tecnologia pois com preços mais baixos mais pessoas conseguem entrar (é só ver quantas empresas foram feitas após a grande queda do bitcoin de 2013)
+
+O segundo aspecto a se notar do “ciclo de incentivos do token” é o que acontece no fim do ciclo. Quando aplicações existem e mostram sinais iniciais de sucesso, seja medido por atenção ou capital, duas coisas acontecem no mercado do token do protocolo: novas pessoas entram, aumentando a demanda por tokens, e os investidores existentes seguram seus tokens antecipando preços maiores no futuro, que faz a demanda ser mais escassa ainda. A soma dessas forças fazem o preço a subir bastante portanto a capitalização total do mercado sobre, e o novo patamar de capitalização total alcançado pelo protocolo gera o efeito que volta o ciclo pro ponto 1
+
+O que é significante sobre esse efeito dinâmico é como o valor é distribuído através da pilha de camadas que temos. **A capitalização do mercado do protocolo sempre cresce mais rápido do que o valor combinado das aplicações construídas em cima dele, já que o sucesso da camada de aplicações implica em mais especulação na camada do protocolo. **E de novo, aumentar o valor do protocolo ncentiva a competição saudável na camada de aplicação. Junto com a camada de dados compartilhada, que drasticamente diminui a barreira de entrada, o resultado final é um ecossistema vibrante e competitivo de aplicações e o grosso do valor gerado é distribuído para todos que possuem tokens do protocolo. É assim que a camada dos protocolos tokenizados fica grossa e a das aplicações ficam finas.
+
+Isso é uma mudança grande. A combinação de dados abertos com o sistema de incentivos previne os mercados do estilo “vencedor ganha tudo” pras aplicações e cria uma nova categoria de empresas com modelos de negócio fundamentalmente diferentes da camada de protocolo. Muitas dos modelos atuais de como construir negócios e investir não se aplicam nesse novo modelo, e temos mais perguntas do que respostas. Portfólio da [USV](https://www.usv.com/) traz muito conhecimento prático pro autor do artigo e mais conhecimento será dividido conforme for se consolidando.
+
+A tradução desse artigo foi feita livremente por mim (@MarcoWorms) e você pode encontrar mais conteúdo traduzido sobre blockchain e web3 no nosso repositório do web3brasil: [https://github.com/web3brasil/web3brasil](https://github.com/web3brasil/web3brasil)

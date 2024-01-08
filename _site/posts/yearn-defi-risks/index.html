@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Marco Guaspari Worms">
+<meta name="dcterms.date" content="2022-10-14">
+
+<title>Worms Blog - Measuring risk for DeFi yield strategies</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Worms Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/MarcoWorms" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/MarcoWorms" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Measuring risk for DeFi yield strategies</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">english</div>
+                <div class="quarto-category">yearn</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Marco Guaspari Worms </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 14, 2022</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p><img src="https://cdn-images-1.medium.com/max/5110/0*Y2Nj5A2-gC7hAlpM.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p><em>If you struggle with the lingo for this article check our <a href="https://docs.yearn.finance/getting-started/guides/how-to-understand-strategies-descriptions">Strategy Descriptions Glossary</a> which has most of the terms used here explained.</em></p>
+</blockquote>
+<p>DeFi investments are like the wild west: <em>Learn how to use your gun and ride your horse. Otherwise, you are dead!</em> As yield-generation options across the ecosystem mature, some places are explicitly more dangerous than others. However, as veterans trailed and survived, they left tools for newer adventurers to explore DeFi with and avoid known dangers.</p>
+<p>Yearn assess DeFi strategy risks by examining each investment strategy for key dimensions. In this article we will break down how retail investors can use some of the same tools that the pros use to measure DeFi risks, showcasing the <a href="https://docs.yearn.finance/resources/risks/risk-score">Yearn DeFi Strategy Risk Score Framework</a>.</p>
+<section id="risk-dimensions" class="level3">
+<h3 class="anchored" data-anchor-id="risk-dimensions">Risk Dimensions</h3>
+<ul>
+<li><strong>Complexity</strong> — How complex it is to enter and exit this strategy investment position fully.</li>
+<li><strong>Protocol Safety</strong> — Overall best practices of the protocol, including devs, audits, security procedures, timelock, etc.</li>
+<li><strong>TVL Impact</strong> — How much is our entire investment portfolio impacted if this strategy fails?</li>
+<li><strong>Team Knowledge</strong> — A measurement of how many folks in Yearn know about the code and can react in an emergency.</li>
+<li><strong>Longevity</strong> — How long has the strategy been live without an issue since deployment?</li>
+<li><strong>Testing Score</strong> — How covered by automated tests are the strategy contracts?</li>
+<li><strong>Code Review</strong> — Quantity and frequency of code reviews done for this strategy’s automation.</li>
+<li><strong>Audit</strong> — Quantity and frequency of audits for yearn strategy contracts involved.</li>
+</ul>
+<p>We will go into how to assess some of the above by ourselves, but before, we must know <strong>there are always risks involved</strong> in DeFi operations, such as:</p>
+<ul>
+<li><strong>Governance</strong> — Admin keyholders may change contract parameters in unexpected ways.</li>
+<li><strong>Technological</strong> — Smart contract bugs or exploits.</li>
+<li><strong>Market</strong> — Low trading volume can be fatal for yields.</li>
+<li><strong>Oracles</strong> — Dependency on centralized price feeds.</li>
+<li><strong>Operational Risk</strong> — Manual position management can lead to bad timing or typos.</li>
+</ul>
+<p>With that in mind, let’s dive into each dimension and how to analyze them for a strategy:</p>
+<p><img src="https://cdn-images-1.medium.com/max/5200/0*pqlY7SiUqDSh7v-q.jpg" class="img-fluid"></p>
+<p>Let’s break down a strategy called “GenLevCompV3” (the strategy is on version 3, but it uses Compound v2). It currently holds about $30m in the Yearn DAI vault (and $37m in other stablecoin vaults running the same strategy), so it is a real example for us to learn from.</p>
+<ul>
+<li><a href="https://yearn.watch/vault/0xdA816459F1AB5631232FE5e97a05BBBb94970c95/0x1676055fE954EE6fc388F9096210E5EbE0A9070c">Link to this strategy details and address on yearn.watch</a></li>
+</ul>
+<p>Briefly, if we were to try to replicate this strategy manually it does the following:</p>
+<ol type="1">
+<li>Supply DAI at Compound</li>
+<li>Borrow DAI from Compound</li>
+<li>Loop between steps 1 and 2 until the desired leverage ratio is met</li>
+<li>Continuously sell any COMP rewards for more DAI to reinvest in step 1</li>
+</ol>
+<p>But Yearn does an optimization so the strategy doesn’t need to do many loop operations and still meets the desired leverage:</p>
+<ol type="1">
+<li>Flashmint DAI at MakerDAO</li>
+<li>Supply deposited DAI + flashminted DAI to Compound</li>
+<li>Borrow DAI from Compound so we acheive the desired leverage ratio</li>
+<li>Repay the mint from step 1 (everything happens in the same transaction, so it’s a flashmint combined with a flashloan to repay the mint)</li>
+<li>Continuously sell any COMP rewards for more DAI to reinvest in step 1</li>
+</ol>
+<p>Both achieve the same result. You can start with an amount of DAI and leverage a position up a desired loan-to-value ratio. Be mindful that the more you lever up, the more exposed you are to the risk of being liquidated (losing locked assets). There is some math to be done to know how much you want to lever up, depending on the net APR and the protocol emission rewards, levering too much may end up in a negative APR.</p>
+<p>At <a href="https://yearn.watch/risk">yearn.watch/risk</a> we can see the exact scores yearn strategists gave for this operation:</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*n3X-B2LgWw5AO4Jn.png" class="img-fluid"></p>
+<p>Breaking down the score for each dimension:</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*MuXDspjcxEt63Qcn.png" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p><em>1 = lower risk, 5 = higher risk. This score is more tangible when compared to another strategy score, it doesn’t really mean much by itself but it gives us a quantitative ground to measure against others.</em></p>
+</blockquote>
+<p>Now that we have a grasp of how this strategy works, let’s analyze its risks using the risk framework dimensions:</p>
+</section>
+<section id="what-contracts-are-used-in-this-operation" class="level3">
+<h3 class="anchored" data-anchor-id="what-contracts-are-used-in-this-operation">What contracts are used in this operation?</h3>
+<p>Since we will scavenge for audits, we must first know what contracts we should be looking for. The easiest way to discover the contracts involved is by doing the operation once and analyzing what happened on-chain so we can see exactly which smart contracts are triggered. You could also just inspect your wallet transaction before executing it, but I’ll perform all for this example to see them happen in practice:</p>
+<ul>
+<li>Supply 10 DAI:</li>
+</ul>
+<p><img src="https://cdn-images-1.medium.com/max/2118/0*-exsYXqPiMpRkNGY.png" class="img-fluid"></p>
+<ul>
+<li>Borrow DAI at max limit:</li>
+</ul>
+<p><img src="https://cdn-images-1.medium.com/max/2198/0*Xc7wAR4qAYYSbm77.png" class="img-fluid"></p>
+<ul>
+<li>Repay DAI borrow (triggers claiming COMP rewards):</li>
+</ul>
+<p><img src="https://cdn-images-1.medium.com/max/2258/0*ZeErCbvdim4m0PiT.png" class="img-fluid"></p>
+<ul>
+<li>Withdraw supplied DAI (exit position and/or collect supply yield + claim COMP rewards):</li>
+</ul>
+<p><img src="https://cdn-images-1.medium.com/max/2214/0*g-vujDZIux11BISL.png" class="img-fluid"></p>
+<ul>
+<li>Only claim COMP rewards (claim COMP rewards):</li>
+</ul>
+<p><img src="https://cdn-images-1.medium.com/max/2190/0*VsRQjWM-FW_AkSkE.png" class="img-fluid"></p>
+<p>By doing this 5 actions, we interacted with at least two contracts:</p>
+<ul>
+<li><p>cDAI Token contract: <a href="https://etherscan.io/token/0x5d3a536e4d6dbd6114cc1ead35777bab948e3643">0x5d3a536e4d6dbd6114cc1ead35777bab948e3643</a></p></li>
+<li><p>Comptroller contract: <a href="https://etherscan.io/address/0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b">0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b</a></p></li>
+</ul>
+<p>So I headed to <a href="https://github.com/compound-finance/compound-protocol">Compound Github repo</a> and searched for the contracts I interacted with. I found some that seem to be the version deployed in a branch for compound version 2.2:</p>
+<ul>
+<li><p>CToken: <a href="https://github.com/compound-finance/compound-protocol/blob/compound/2.2-prerelease/contracts/CToken.sol">https://github.com/compound-finance/compound-protocol/blob/compound/2.2-prerelease/contracts/CToken.sol</a></p></li>
+<li><p>Comptroller: <a href="https://github.com/compound-finance/compound-protocol/blob/compound/2.2-prerelease/contracts/Comptroller.sol">https://github.com/compound-finance/compound-protocol/blob/compound/2.2-prerelease/contracts/Comptroller.sol</a></p></li>
+</ul>
+<p><img src="https://cdn-images-1.medium.com/max/5200/0*z66nGO8ouswofKDl.jpg" class="img-fluid"></p>
+<p><strong>Complexity Score: 5</strong></p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*8F1oR54PS2xT_2Zs.png" class="img-fluid"></p>
+<p>For complexity, I would assess how many steps we have to take to enter or exit (unwind) this strategy and, for each step, how cost-effective and available it is:</p>
+<ul>
+<li><strong>Cost-effective</strong>: What are the fees to execute one step</li>
+<li><strong>Availability:</strong> Can you execute this step at any give time? What are the constraints?</li>
+</ul>
+<p>Another interesting point is the <strong>Health Check</strong>: At Yearn strategies are made to be as automated as possible via <a href="https://keep3r.network/">Keep3r Network</a> and there is tooling to measure how healthy the current state of the strategy is. Since we are making a manual investment, our health check would be something like setting up <a href="https://tenderly.co/">Tenderly</a> alerts so you can manually unwind when you notice a specific on-chain event.</p>
+<p>For this strategy, let’s say we loop 5 times, doing it manually without Yearn’s optimization:</p>
+<ul>
+<li>Supply DAI (<strong>6 times to enter</strong>, initial supply + 5 loops)</li>
+<li>Borrow DAI at max limit (<strong>5 times to enter</strong>)</li>
+<li>Withdraw supplied DAI (exit position + claim supply rewards + claim COMP rewards) <strong>(6 times when we want to exit)</strong></li>
+<li>Repay DAI borrow (also claim COMP rewards) <strong>(6 times when we want to exit)</strong></li>
+<li>Claim COMP rewards (claim COMP rewards) <strong>(periodically for autocompounding)</strong></li>
+<li>Sell COMP in the market for DAI to resupply <strong>(periodically for autocompounding)</strong></li>
+</ul>
+<p>Entering the strategy like this would take about 10 transactions, and exiting would take 10. This operation is cumbersome to do manually and might be very expensive on Ethereum, especially if the capital used is small, which is why Yearn does the flashmint + flashlend optimization. Comparing this to a simple “buy and hold ETH” strategy, for example, makes it clear that it requires many more steps and states to monitor.</p>
+<p><img src="https://cdn-images-1.medium.com/max/5200/0*fbGLs8hfSED60Ald.jpg" class="img-fluid"></p>
+<p><strong>Protocol Safety Score: 1</strong></p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*Fpnrn_J9nIfXT0xM.png" class="img-fluid"></p>
+<p>Compound code readme said to read this page for security concerns:</p>
+<ul>
+<li><a href="https://docs.compound.finance/v2/security/">https://docs.compound.finance/v2/security/</a></li>
+</ul>
+<p>The Compound protocol has been reviewed &amp; audited by <a href="https://www.trailofbits.com/">Trail of Bits</a> and <a href="https://www.openzeppelin.com/">OpenZeppelin</a> and it is one of the most reputable protocols in DeFi for lending, existing since Sep 2018, so a score 1 makes sense in this context.</p>
+<p><img src="https://cdn-images-1.medium.com/max/5200/0*CkITuMwvJBfJzJgD.jpg" class="img-fluid"></p>
+<p>It’s harder to dive into other scores as a retail investor but I think there are things to learn from and consider for every investment strategy you execute:</p>
+<ul>
+<li>How much does the money invested matter to you compared to your entire available capital? How will this affect you if the strategy explodes and you lose part of the money?</li>
+<li>How long have other people used this strategy, and how well has it performed historically?</li>
+<li>How much knowledge do you <em>really</em> have about all the nuances in every entry and exit step?</li>
+</ul>
+<p>All of these should be taken into consideration when assessing the risk of entering a strategy, for example:</p>
+<ul>
+<li>If the strategy is super risky and unknown, but you are allocating an amount of capital you are willing to see vanish, it might be worth considering.</li>
+<li>If the strategy has low risk and is very well known, but you are allocating an amount of capital that matters to you if lost, you will be super careful about the risks and use tools to manage it like a “stop-loss” (automatically sells an asset when a price is met).</li>
+</ul>
+</section>
+<section id="yearn-and-risk" class="level2">
+<h2 class="anchored" data-anchor-id="yearn-and-risk">Yearn and Risk</h2>
+<p>The <a href="https://yearn.watch/risk">yearn.watch/risk</a> page is a very nice way to see all available strategies and their risks. There is also an extra dimension of likelihood, so the final assessment takes into account both risk score and the chance that those risks are exploited:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*nXUnyCHRPMwPNV8M.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><em>horizontal axis is likelihood, vertical axis is risk score</em></figcaption>
+</figure>
+</div>
+<p>I hope this case study has elucidated the whys and hows Yearn views risk. The modern wild west is out there, and you can go as far as you are well-equipped and informed! Have fun and travel safely!</p>
+<p><img src="https://cdn-images-1.medium.com/max/5120/0*HJrFFeQGGyvmdPhj.jpg" class="img-fluid"></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

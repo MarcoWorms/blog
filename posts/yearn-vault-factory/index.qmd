@@ -1,0 +1,71 @@
+---
+title: "Permissionless Yearn Vaults"
+author: "Marco Guaspari Worms"
+date: "2023-03-16"
+categories: [english, yearn]
+---
+
+![](https://cdn-images-1.medium.com/max/2400/1*9JAvhEJo8h7l0CenZxk4Dw.png)
+
+{{< tweet wavey0x 1612517046754877440 >}}
+
+Yearn’s [Vault Factory](https://yearn.finance/vaults/factory) is a new way for anyone to create and register yield-generating yVaults through one simple interface quickly. It automates the deployment processes, making it easier for users to access ready-made yield strategies that can be applied to specific DeFi protocols.
+
+The factory allows users to deploy Yearn Vaults rapidly and set up [risk-adjusted](https://medium.com/iearn/measuring-risk-for-defi-yield-strategies-b53f62b83b92) yield strategies with just a few clicks, plus the deployment process does not require any human involvement! We also refer to these vaults as “permissionless” or “automated” vaults.
+
+* **User Interface:** [https://yearn.finance/vaults/factory](https://yearn.finance/vaults/factory)
+* **Ethereum Contract:** [0x21b1FC8A52f179757bf555346130bF27c0C2A17A](https://etherscan.io/address/0x21b1FC8A52f179757bf555346130bF27c0C2A17A)
+* **Documentation:** [https://docs.yearn.finance/getting-started/products/yvaults/vault-factory](https://docs.yearn.finance/getting-started/products/yvaults/vault-factory)
+
+## How Does the Vault Factory Work?
+
+{{< tweet adamscochran 1615834420820443136 >}}
+
+To deploy a Yearn Vault for a token that doesn’t have one yet, go to the [interface](https://yearn.finance/vaults/factory) and select the token name. Once an asset is chosen and the transaction submitted, the Vault Factory [contract](https://etherscan.io/address/0x21b1FC8A52f179757bf555346130bF27c0C2A17A) will automatically deploy a Yearn Vault with a predefined set of yield strategies for that token type.
+
+Here is an example of the factory UI:
+
+![](https://cdn-images-1.medium.com/max/4884/0*tEhhGORfP8lTEgr0.png)
+
+**Currently, only strategies for liquidity pool tokens from Curve are supported**, but we will expand with more token types as the factory is updated. Permissionless vaults created for Curve LP tokens come with a set of strategies that are optimized to maximize and automatically compound the yield earned for depositors:
+
+* **StrategyCurveBoostedFactory** uses Yearn’s veCRV balance (currently 51.4m)* to give users the maximum 2.5x boost on their CRV rewards.
+* **StrategyConvexFactory** supplies any additional Curve LP tokens (beyond which would receive the maximum 2.5x boost via the Curve strategy) to Convex Finance to earn CRV rewards (boosted by Convex’s veCRV balance) and CVX rewards.
+* **StrategyConvexFraxFactory** will only be added to the vault if the Curve LP token of the vault can be staked in Convex for Frax. This ConvexFrax strategy will be used instead of the standard Convex strategy to earn additional FXS rewards (on top of the standard CRV and CVX rewards).
+
+![*Yearn veCRV balance over 2 years. Can be explored [here](https://yearn.vision/?orgId=1&refresh=5m&viewPanel=23&from=now-2y&to=now)*](https://cdn-images-1.medium.com/max/5200/0*lNWH4DbBD9At8Fk0.jpg)
+
+The Yearn Vault manages rewards' harvesting, claiming, and compounding, so users can relax and watch as their newly created vault automatically maximizes their yields without taking further action.
+
+{{< tweet MarcoWorms 1615919144180002818 >}}
+
+
+## Long Live DeFi
+
+As Yearn gets more permissionless, we are also lowering our vault fees:
+
+**Before**, Yearn charged:
+
+  * 2% management fee, yearly flat-rate charged from vault’s funds
+  * 20% performance fee, charged on every harvesting profit
+
+**Now**, Yearn charges:
+
+  * 0% management fees
+  * 10% performance fees
+
+The fees for each vault can be seen in the new [**yearn.finance](https://yearn.finance/)** website:
+
+![checking fees for a vault](https://cdn-images-1.medium.com/max/4872/0*h62Uqi8jcbG4TT1x.png)
+
+You can also see the total allocated for each strategy:
+
+![checking vault allocations](https://cdn-images-1.medium.com/max/4896/0*3ry8KBZTaZwdLxRH.png)
+
+And like any other yVaults, you can also use [yearn.watch](https://yearn.watch/) and [yearn.vision](https://yearn.vision/) to monitor the vault's real-time metrics.
+
+![](https://cdn-images-1.medium.com/max/3216/1*1OSA6rpFsf1HBq-8_yARzg.png)
+
+* **Yearn Website:** [yearn.finance](https://yearn.finance/vaults)
+* **Yearn Twitter:** [twitter.com/iearnfinance](https://twitter.com/iearnfinance)
+* **Yearn Docs:** [docs.yearn.finance](https://docs.yearn.finance/)
