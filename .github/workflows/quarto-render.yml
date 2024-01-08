@@ -1,0 +1,31 @@
+name: Render Quarto Website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Quarto
+        run: |
+          curl -LO https://github.com/quarto-dev/quarto-cli/releases/download/v1.1.149/quarto-1.1.149-linux-amd64.deb
+          sudo dpkg -i quarto-1.1.149-linux-amd64.deb
+
+      - name: Install Quarto extension
+        run: quarto install extension sellorm/quarto-social-embeds
+
+      - name: Render website
+        run: quarto render
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
