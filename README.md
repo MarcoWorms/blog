@@ -1,9 +1,5 @@
 made with https://quarto.org/
 
-requires `quarto install extension sellorm/quarto-social-embeds`
-
-to build _site use `quarto render`
-
 social embeds support:
 - `{{< gist USERNAME GIST_ID >}}`
 - `{{< youtube VIDEO_ID >}}`
