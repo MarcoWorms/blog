@@ -20,7 +20,7 @@ jobs:
 
       - name: Install Quarto extension
         run: |
-          printf 'Yes\nYes\n' | quarto install extension sellorm/quarto-social-embeds
+          yes | quarto install extension sellorm/quarto-social-embeds
 
       - name: Render website
         run: quarto render
