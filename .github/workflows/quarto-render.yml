@@ -13,16 +13,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Quarto
+      - name: Install Quarto
         run: |
           curl -LO https://github.com/quarto-dev/quarto-cli/releases/download/v1.1.149/quarto-1.1.149-linux-amd64.deb
           sudo dpkg -i quarto-1.1.149-linux-amd64.deb
 
-      - name: Install Quarto extension
-        run: |
-          yes | quarto install extension sellorm/quarto-social-embeds
+      - name: Install Extension sellorm/quarto-social-embeds
+        env:
+          QUARTO_EXTENSION_YES: "true"
+        run: quarto install extension sellorm/quarto-social-embeds
 
-      - name: Render website
+      - name: Render website into _site
         run: quarto render
 
       - name: Deploy to GitHub Pages
