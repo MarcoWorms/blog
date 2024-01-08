@@ -10,4 +10,4 @@ social embeds support:
 - `{{< vimeo VIDEO_ID >}}`
 - `{{< loom VIDEO_ID >}}`
 - `{{< tweet USERNAME TWEET_ID >}}`
-- `{{< mastodon STATUS_URL>}}`
+- `{{< mastodon STATUS_URL >}}`
