@@ -30,7 +30,7 @@ jobs:
           interact
           '
 
-      - name: Render website into _site
+      - name: Render website 
         run: quarto render
 
       - name: Create .nojekyll file
@@ -40,5 +40,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
           publish_branch: gh-pages
           keep_files: false
