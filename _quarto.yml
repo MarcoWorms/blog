@@ -5,6 +5,7 @@ project:
 website:
   title: "Worms Blog"
   site-url: https://marcoworms.github.io/blog/
+  site-path: /blog/
   navbar:
     right:
       - icon: twitter
