@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Marco Guaspari Worms">
+<meta name="dcterms.date" content="2024-01-05">
+
+<title>Worms Blog - Etherscan is awesome but is also a critical point of failure for Ethereum</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Worms Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/MarcoWorms" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/MarcoWorms" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Etherscan is awesome but is also a critical point of failure for Ethereum</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">english</div>
+                <div class="quarto-category">yearn</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Marco Guaspari Worms </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 5, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<blockquote class="blockquote">
+<p>That we can try to fix with open source and better incentives like we did with the other parts of crypto!</p>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/2912/1*QkmLO7vbmhxnYSkrjIY5Bg.png" class="img-fluid"></p>
+<p>Almost a decade ago, the Ethereum community set out to kill all the weak links in providing financial services that are globally accessible. We have succeeded in many ways, and our progress relies on our capability to do self-reflection on points of failure and deploy fixes for them that are open source and open to audit.</p>
+<p>This article reflects my thoughts on our reliance on Etherscan today, an incredibly convenient service for any Ethereum user or developer, a service that I use a lot and am thankful for the people who deployed it. Today, <a href="https://etherscan.io/">Etherscan</a> is the biggest provider for exploring transactions in Ethereum. It is a very convenient website that allows you to:</p>
+<ul>
+<li>Track any transaction in Ethereum.</li>
+<li>Track any contract interaction and its events.</li>
+<li>See a contract source code being used in production.</li>
+<li>Interact with contracts read and write functions.</li>
+</ul>
+<p>One of the powers of Etherscan is that it suits both novice and advanced users:</p>
+<ul>
+<li>If you are a novice you can easily see your own wallet transactions and navigate your interactions with smart contracts</li>
+<li>If you know what you are doing you can do almost anything in Ethereum by using Etherscan and avoiding any other existing website</li>
+</ul>
+<p>Such fantastic power has brought so much convenience to users that it has become righteously one of the most used websites in the crypto ecosystem. Here is a quick comparison of the usage of Etherscan website and other popular DeFi websites in the last 3 months:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*ec1QPc-gbPmItERW6V9w9w.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Side Note: Solscan was just <a href="https://cointelegraph.com/news/etherscan-acquires-solana-blockchain-solscan">acquired</a> by Etherscan, which further concentrates their power over explorers and shows this is not an issue limited to Ethereum. All other chains have to deal with this too.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2706/1*BGPvPPu4LzccURFN6KAFkw.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Etherscan has less organic search access and still has incredibly higher usage.</figcaption>
+</figure>
+</div>
+<p><em>Data from <a href="https://www.similarweb.com/">https://www.similarweb.com/</a></em></p>
+<section id="how-does-etherscans-dominance-put-the-ethereum-community-at-risk" class="level2">
+<h2 class="anchored" data-anchor-id="how-does-etherscans-dominance-put-the-ethereum-community-at-risk">How does Etherscan’s dominance put the Ethereum community at risk?</h2>
+<p>The biggest risk associated with Etherscan today is that the source code is closed and therefore not reproducible by other users, which removes the “availability resilience by redundancy of servers” factor that we have in Ethereum and introduces “security by obscurity” controlled by a single entity.</p>
+<p>The availability and resilience of Ethereum services come from the decentralized network of nodes that can execute a transaction even if many of them are offline. Today, this is only achievable by providing people with open-source code that has financial incentives to be set up and maintained.</p>
+<p>If the users of Ethereum are constantly recurring to the same centralized entity for a service that most people use, we are walking on a path that compromises decentralization, the opposite of <a href="https://vitalik.eth.limo/general/2023/12/28/cypherpunk.html">making Ethereum cypherpunk</a>.</p>
+<blockquote class="blockquote">
+<p>Side Note: Advanced users will skip interacting with Etherscan and use things like <a href="https://www.apeworx.io/">ApeWorx</a> or <a href="https://getfoundry.sh/">Foundry</a> to do their on-chain interactions, which are open source and skips the above risk. But a large number of people will not learn how to use any open source CLI tools and they will rely on Etherscan website for reading information and sometimes even writing.</p>
+</blockquote>
+<p>Here is a doomsday scenario involving Etherscan: their DNS is hijacked and the website redirects to a malicious wallet drainer (which <a href="https://cointelegraph.com/news/curve-finance-exploit-experts-dissect-what-went-wrong">happens</a> a <a href="https://crypto.news/hackers-hijack-frax-finance-dns-domain/">lot</a> in <a href="https://cointelegraph.com/news/balancer-social-engineering-attack-dns-provider-frontend-hijack">crypto</a>, even to the teams with the best security measures). This could happen to any protocol website, <em>which is why I think <a href="https://medium.com/iearn/self-hosting-web3-services-299306b706ee">learning how to self-host</a> is an important skill.</em></p>
+<p><strong>The more people rely on Etherscan and have no good alternatives, the more incentive exists for a malicious actor to use it as an attack vector on the Ethereum community.</strong></p>
+<p>I’m not here to bash Etherscan. I believe their team is doing its best running its own business, my background in indie game development taught me that there are segments of the market that are very hard to profit without recurring to some default market strategies (ads, microtransactions), and it would be naive to expect them to open the source with nothing in return. So let’s talk about some alternatives!</p>
+</section>
+<section id="open-source-transaction-explorers" class="level2">
+<h2 class="anchored" data-anchor-id="open-source-transaction-explorers">Open Source Transaction Explorers</h2>
+<section id="beaconchain" class="level3">
+<h3 class="anchored" data-anchor-id="beaconchain">Beaconchain</h3>
+<ul>
+<li>Ethereum Preview: <a href="https://beaconcha.in/">https://beaconcha.in/</a></li>
+<li>Source: <a href="https://github.com/gobitfly/eth2-beaconchain-explorer">https://github.com/gobitfly/eth2-beaconchain-explorer</a></li>
+</ul>
+</section>
+<section id="blockscout" class="level3">
+<h3 class="anchored" data-anchor-id="blockscout"><strong>Blockscout</strong>:</h3>
+<ul>
+<li>Ethereum Preview: <a href="https://eth.blockscout.com/">https://eth.blockscout.com/</a></li>
+<li>Source: <a href="https://github.com/blockscout/blockscout">https://github.com/blockscout/blockscout</a></li>
+</ul>
+</section>
+<section id="otterscan" class="level3">
+<h3 class="anchored" data-anchor-id="otterscan"><strong>Otterscan</strong></h3>
+<ul>
+<li>Optimism Preview: <a href="https://otterscan.mainnet.testinprod.io/">https://otterscan.mainnet.testinprod.io/</a></li>
+<li>Source: <a href="https://github.com/otterscan/otterscan">https://github.com/otterscan/otterscan</a></li>
+</ul>
+<blockquote class="blockquote">
+<p>A hard problem for open-source scanners today is that contract verification is centralized on Etherscan. How to deliver this feature with the same quality as an alternative if everyone is verifying contracts with Etherscan today? The “open auditability” value of Ethereum is compromised if we depend on a single closed-source entity to validate and audit what’s in production.</p>
+</blockquote>
+<p>All of the above are alternatives to Etherscan, if you try them out next time you want to use a scan you are already participating in decentralizing this part of the chain, and even better if you self-host them! But we can’t rely on altruism to maintain this, we have seen scans <a href="https://www.investing.com/news/cryptocurrency-news/avax-blockchain-explorer-to-shut-down-as-etherscan-fees-draw-controversy-3214279">close</a> due to monetization issues, which I believe is one of the core aspects of our entire conundrum and why Etherscan is closed source to begin with!</p>
+</section>
+</section>
+<section id="incentives-for-explorers" class="level2">
+<h2 class="anchored" data-anchor-id="incentives-for-explorers">Incentives for Explorers</h2>
+<p>It’s visible that transaction explorers suffer from an incentive problem, let’s take a look at Etherscan website:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2726/1*69QzIPAe6Sfl7nnZ4xjWMg.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">hummmm this ad looks legit!</figcaption>
+</figure>
+</div>
+<p>Is there any other piece of Ethereum infrastructure that you use that shows you a suspicious ad like that? No! Because the incentives for the other parts are much better developed than having to be an ad seller to survive. Why do the websites of Ethereum Foundation, AAVE, Yearn, Maker, Uniswap, centralized exchanges, and other big Ethereum apps will not show you any ads? Because those app’s monetary incentives are aligned, and showing ads is a net-negative thing to do since ads introduce another layer of risk to the end user, who is just trying to use a good finance product.</p>
+<p>I am not big brain enough to suggest an actual system design that fixes the scan situation right now, but I do believe that Ethereum could think of better incentives for people to run decentralized nodes that serve as an Etherscan alternative before we rely completely on it as a community, which would start by incentivizing somehow the open source alternatives and also incentivizing making them available to the public.</p>
+<blockquote class="blockquote">
+<p>Ethereum RPC nodes might have a similar centralization issue, but it’s easier to decentralize RPCs right now than scans since the best RPC clients are open source and <a href="https://ethereum.org/en/developers/docs/nodes-and-clients/run-a-node/">easy to reproduce</a>.</p>
+</blockquote>
+<p>I invite anyone to participate in this discussion and come up with something we can test!</p>
+</section>
+<section id="straight-from-the-otterscan" class="level2">
+<h2 class="anchored" data-anchor-id="straight-from-the-otterscan">Straight from the Otterscan</h2>
+<p>To bring more perspectives to the conversation, here are the thoughts of the Otterscan creator <a href="https://twitter.com/wmitsuda">Willian Mitsuda</a> when I asked some questions and showed him this article:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*_x2PYUibqpJqgCxS2q5TxA.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Now speaking: Willian!</figcaption>
+</figure>
+</div>
+<section id="q-what-motivated-you-to-create-otterscan-and-how-does-it-differ-from-etherscan-in-architecture-and-functionality" class="level3">
+<h3 class="anchored" data-anchor-id="q-what-motivated-you-to-create-otterscan-and-how-does-it-differ-from-etherscan-in-architecture-and-functionality"><strong>Q: What motivated you to create Otterscan, and how does it differ from Etherscan in architecture and functionality?</strong></h3>
+<p>Etherscan is already a great tool. I wanted to create something to fill in the gaps and reach an audience that Etherscan doesn’t: <strong>be able to run your own explorer at your home, using your own node, running on consumer hardware, not expensive cloud machines.</strong></p>
+<p>Everything is open source, so users can hack and modify it. We use open databases like Sourcify for contract verification, so something as critical doesn’t vanish if the company behind it disappears.</p>
+<p>Etherscan is a closed-source SaaS, so we can’t do a fair comparison at an architectural level. But regarding Otterscan, our endgame is to reach feature parity with Etherscan (we still haven’t, but we will) while testing the limits of what can be done with a regular Ethereum node.</p>
+<p>To do that, <a href="https://github.com/ledgerwatch/erigon">Erigon</a> (and all the technology they invented) was fundamental. Otterscan couldn’t exist before 3 years ago when Erigon made archive nodes possible in ~2TB (mainnet) and a few days of sync.</p>
+<p><strong>Otterscan V1 was only possible because Erigon enabled archive nodes in consumer hardware</strong> and it was easy to expose data that existed inside your node, but not available through the standard JSON-RPC APIs.</p>
+<p><strong>Otterscan V2 (in alpha at this moment) will be only possible because Erigon kept evolving</strong> and the new architecture of tx-based indexes in Erigon 3 (as opposed to block-based indexes) will allow us to build and augment standard node capabilities by deriving new data from it efficiently.</p>
+<p>That’ll bring us very close to producing most of the data Etherscan gives users, but without requiring anything other than your node and some (affordable) extra disk space.</p>
+</section>
+<section id="q-what-are-your-thoughts-on-the-existing-incentives-for-using-and-serving-an-open-source-explorer-any-thoughts-on-decentralized-funding-for-explorers" class="level3">
+<h3 class="anchored" data-anchor-id="q-what-are-your-thoughts-on-the-existing-incentives-for-using-and-serving-an-open-source-explorer-any-thoughts-on-decentralized-funding-for-explorers"><strong>Q: What are your thoughts on the existing incentives for using and serving an open-source explorer? Any thoughts on decentralized funding for explorers?</strong></h3>
+<p>I think finding a business model for explorers is as challenging as it is for other web3 products. We are gladly sponsored by Erigon, which allowed us to keep working on it so far as an open-source public good without any VC funding.</p>
+<p>New grant programs such as <a href="https://app.optimism.io/retropgf">Optimism’s Retroactive Public Goods Funding</a> can potentially allow long-term survival for similar products.</p>
+</section>
+<section id="q-how-can-the-community-contribute-to-the-development-and-improvement-of-otterscan-and-what-kind-of-contributions-are-you-looking-for" class="level3">
+<h3 class="anchored" data-anchor-id="q-how-can-the-community-contribute-to-the-development-and-improvement-of-otterscan-and-what-kind-of-contributions-are-you-looking-for"><strong>Q: How can the community contribute to the development and improvement of Otterscan, and what kind of contributions are you looking for?</strong></h3>
+<p>Otterscan is composed of 2 parts:</p>
+<ul>
+<li>The UI is a React application.</li>
+<li>And an API implementation that is embedded inside Erigon.</li>
+</ul>
+<p>So people interested in contributing can improve the UI itself, program new APIs and indexers inside Erigon (that could be a good entry point for anyone interested in adventuring into ETH client internals), or make use of Otterscan APIs to do something completely new, like a specialized UI.</p>
+<p>Another interesting idea is implementing Otterscan APIs in other clients. There is already an independent community initiative to port it to Reth, and another community member implemented it inside Anvil, so you can point the Otterscan UI to it and browse your devnet.</p>
+<p>Here is an example community-made PR to add support for Otterscan JSON-RPC API extensions on Reth: <a href="https://github.com/paradigmxyz/reth/issues/3726"><strong>Add support for Otterscan JSON-RPC API extensions · Issue #3726 · paradigmxyz/reth</strong></a></p>
+<p>And another community member added it inside Anvil:</p>
+<p></p><div id="tweet-19853"></div><script>tweet={"url":"https:\/\/twitter.com\/otterscan\/status\/1689190104613462016","author_name":"Otterscan \uD83E\uDDA6\uD83D\uDD0E\uD83E\uDEA8","author_url":"https:\/\/twitter.com\/otterscan","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EAmazing work from \u003Ca href=\"https:\/\/twitter.com\/naps62?ref_src=twsrc%5Etfw\"\u003E@naps62\u003C\/a\u003E !\u003Cbr\u003E\u003Cbr\u003EHe implemented Otterscan API in anvil, so users can simply point it to an anvil node and have the same UX during development!\u003Cbr\u003E\u003Cbr\u003EExample screenshot from the original PR: \u003Ca href=\"https:\/\/t.co\/rts4uLvNHn\"\u003Ehttps:\/\/t.co\/rts4uLvNHn\u003C\/a\u003E \u003Ca href=\"https:\/\/t.co\/ofwkoV2KF3\"\u003Epic.twitter.com\/ofwkoV2KF3\u003C\/a\u003E\u003C\/p\u003E&mdash; Otterscan \uD83E\uDDA6\uD83D\uDD0E\uD83E\uDEA8 (@otterscan) \u003Ca href=\"https:\/\/twitter.com\/otterscan\/status\/1689190104613462016?ref_src=twsrc%5Etfw\"\u003EAugust 9, 2023\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-19853").innerHTML = tweet["html"];</script><p></p>
+</section>
+<section id="q-what-advice-would-you-give-developers-interested-in-building-their-open-source-projects-for-the-ethereum-ecosystem" class="level3">
+<h3 class="anchored" data-anchor-id="q-what-advice-would-you-give-developers-interested-in-building-their-open-source-projects-for-the-ethereum-ecosystem">Q: What advice would you give developers interested in building their open-source projects for the Ethereum ecosystem?</h3>
+<p>Just build it. If you are technically skilled, there are lots of opportunities out there, and if you make something that solves other people’s problems, you will surely be recognized.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+<script src="https://platform.twitter.com/widgets.js"></script>
+</body></html>
