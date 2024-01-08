@@ -3,6 +3,7 @@ project:
 
 website:
   title: "Worms Blog"
+  site-url: "https://marcoworms.github.io/blog/"
   navbar:
     right:
       - icon: twitter
