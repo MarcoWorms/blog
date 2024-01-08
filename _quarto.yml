@@ -3,6 +3,7 @@ project:
 
 website:
   title: "Worms Blog"
+  base-url: /blog/
   navbar:
     right:
       - icon: twitter
