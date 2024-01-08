@@ -19,9 +19,16 @@ jobs:
           sudo dpkg -i quarto-1.1.149-linux-amd64.deb
 
       - name: Install Extension sellorm/quarto-social-embeds
-        env:
-          QUARTO_EXTENSION_YES: "true"
-        run: quarto install extension sellorm/quarto-social-embeds
+        run: |
+          sudo apt-get install -y expect
+          expect -c '
+          spawn quarto install extension sellorm/quarto-social-embeds
+          expect "Do you trust the authors of this extension (Y/n)"
+          send "Yes\r"
+          expect "Would you like to continue (Y/n)"
+          send "Yes\r"
+          interact
+          '
 
       - name: Render website into _site
         run: quarto render
