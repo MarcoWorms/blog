@@ -1,0 +1,75 @@
+---
+title: "Easily create your own blog for free with open source tools"
+author: "Marco Guaspari Worms"
+date: "2022-01-09"
+categories: [english, blogging]
+---
+
+> #### Hello World! Welcome to my new blog infrastructure, I made it to move away from Medium and I hope this helps other people have their own independent blog!
+
+# How to clone this blog
+
+1. Go to https://github.com/MarcoWorms/blog and create a github account if you don't have one
+   
+2. Click "Use this template" -> "Create new repository"
+![](https://i.imgur.com/gvup8cX.png)
+
+3. Enter a repository name like `blog`. Also select "include all branches".
+![](https://i.imgur.com/klRnXyM.png)
+
+4. Go to "Settings" in your repository and enable write permission for actions (they will fail on creation because they don't have this permission):
+![](https://i.imgur.com/EC0dP2f.png)
+
+5. Go to "Actions" in your repository, select the failed action, click "Re-Run jobs":
+![](https://i.imgur.com/CqgxYma.png)
+
+6. Done! When all actions are done running your blog is now up and deploying every change in the `main` github branch at `https://your_github_username.github.io/your_repo_name`
+
+7. (optional) I've added all themes commented in the quarto config file so you can easily switch themes and try them out! Check this file: https://github.com/MarcoWorms/blog/blob/main/_quarto.yml
+
+# How to preview site/post locally
+
+To preview posts and the blog locally install quarto and the [VSCode](https://code.visualstudio.com/) extension:
+
+- Quarto: https://quarto.org/docs/get-started/
+- VSCode Extension: https://marketplace.visualstudio.com/items?itemName=quarto.quarto
+
+You don't need to do this step, but it's much easier to preview your posts and themes! You can split screen markdown and the post preview like this:
+
+![](https://i.imgur.com/kXBvbBF.png)
+
+# How to write new posts
+
+1. Delete all posts from `/posts` folder, maybe leave one as template
+2. Create a folder (which will be used in the post url) and add a `index.qmd` file 
+3. Add author, title, date, and categories in the first lines of `index.qmd`:
+```
+---
+title: "Easily create your own blog for free with open source tools"
+author: "Marco Guaspari Worms"
+date: "2022-01-09"
+categories: [english, blogging]
+---
+```
+1. Use Markdown to write your post, if you need help with markdown check https://quarto.org/docs/authoring/markdown-basics.html
+2. Commit changes in `/posts` to your repository `main` branch and wait for actions to deploy!
+
+Quarto supports Jupyter Notebooks, you can check how to do this here: https://quarto.org/docs/authoring/notebook-embed.html
+
+# How to use social mentions
+
+You can use mentions from gits, youtube, vimeo, loom, twitter, and mastodon, just add them like this in your post:
+
+
+- `{{<\ gist USERNAME GIST_ID >}}`
+- `{{<\ youtube VIDEO_ID >}}`
+- `{{<\ vimeo VIDEO_ID >}}`
+- `{{<\ loom VIDEO_ID >}}`
+- `{{<\ tweet USERNAME TWEET_ID >}}`
+- `{{<\ mastodon STATUS_URL >}}`
+
+{{< tweet MarcoWorms 1744028564842803227 >}}
+
+# What is missing?
+
+I still have to figure out the mechanic for people to add their email to a list that receives notifications for new posts, I don't miss much this feature but it would make the structure more professional.
