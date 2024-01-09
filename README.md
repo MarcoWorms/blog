@@ -9,3 +9,5 @@ social embeds support:
 - `{{< loom VIDEO_ID >}}`
 - `{{< tweet USERNAME TWEET_ID >}}`
 - `{{< mastodon STATUS_URL >}}`
+
+setup repository secret `GA_ID` with your google analytics ID to enable analytics
