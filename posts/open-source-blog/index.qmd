@@ -3,6 +3,8 @@ title: "How to create your own blog for free with open-source tools"
 author: "Marco Guaspari Worms"
 date: "2024-01-09"
 categories: [english, blogging]
+twitter-card:
+  image: "https://i.imgur.com/o91PcP8.png"
 ---
 
 ![](https://i.imgur.com/o91PcP8.png)
