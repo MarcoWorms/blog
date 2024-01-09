@@ -13,6 +13,8 @@ website:
         href: https://twitter.com/MarcoWorms
       - icon: github
         href: https://github.com/MarcoWorms
+      - icon: rss
+        href: index.xml
 format:
   html:
     # theme: default
