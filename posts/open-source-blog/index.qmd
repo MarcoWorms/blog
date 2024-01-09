@@ -1,11 +1,13 @@
 ---
 title: "Easily create your own blog for free with open source tools"
 author: "Marco Guaspari Worms"
-date: "2022-01-09"
+date: "2023-01-09"
 categories: [english, blogging]
 ---
 
-> #### Hello World! Welcome to my new blog infrastructure, I made it to move away from Medium and I hope this helps other people have their own independent blog!
+![](https://i.imgur.com/o91PcP8.png)
+
+> #### Hello World! Welcome to my new blog infrastructure. I made it to move away from Medium, and I hope this post helps other people have their own independent blogs!
 
 # How to clone this blog
 
@@ -14,7 +16,7 @@ categories: [english, blogging]
 2. Click "Use this template" -> "Create new repository"
 ![](https://i.imgur.com/gvup8cX.png)
 
-3. Enter a repository name like `blog`. Also select "include all branches".
+3. Enter a repository name like `blog`. Also, select "Include all branches".
 ![](https://i.imgur.com/klRnXyM.png)
 
 4. Go to "Settings" in your repository and enable write permission for actions (they will fail on creation because they don't have this permission):
@@ -29,12 +31,13 @@ categories: [english, blogging]
 
 # How to preview site/post locally
 
-To preview posts and the blog locally install quarto and the [VSCode](https://code.visualstudio.com/) extension:
+To preview posts and the blog locally, install Quarto and the VSCode extension:
 
 - Quarto: https://quarto.org/docs/get-started/
-- VSCode Extension: https://marketplace.visualstudio.com/items?itemName=quarto.quarto
+- Quarto VSCode Extension: https://marketplace.visualstudio.com/items?itemName=quarto.quarto
+- VSCode: https://code.visualstudio.com/
 
-You don't need to do this step, but it's much easier to preview your posts and themes! You can split screen markdown and the post preview like this:
+You don't need to do this step, but previewing your posts and themes is much easier! You can split screen markdown and the post preview like this:
 
 ![](https://i.imgur.com/kXBvbBF.png)
 
