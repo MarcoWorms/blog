@@ -30,6 +30,12 @@ jobs:
           interact
           '
 
+      - name: Inject Google Analytics ID if available
+        run: |
+          if [ ! -z "${{ secrets.GA_ID }}" ]; then
+            sed -i '/website:/a \ \ google-analytics: \"${{ secrets.GA_ID }}\"' _quarto.yml
+          fi
+
       - name: Render website 
         run: quarto render
 
