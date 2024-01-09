@@ -3,11 +3,9 @@ title: "How to create your own blog for free with open-source tools"
 author: "Marco Guaspari Worms"
 date: "2024-01-09"
 categories: [english, blogging]
-twitter-card:
-  image: "https://i.imgur.com/o91PcP8.png"
 ---
 
-![](https://i.imgur.com/o91PcP8.png)
+![](./cover.png)
 
 > #### Hello World! Welcome to my new blog infrastructure. I made it to move away from Medium, and I hope this post helps other people have their own independent blogs!
 
