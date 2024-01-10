@@ -11,7 +11,7 @@ categories: [english, blogging]
 
 # How to clone this blog
 
-1. Go to https://github.com/MarcoWorms/blog and create a github account if you don't have one
+1. Go to [https://github.com/MarcoWorms/blog](https://github.com/MarcoWorms/blog) and create a github account if you don't have one
    
 2. Click "Use this template" -> "Create new repository"
 ![](https://i.imgur.com/gvup8cX.png)
@@ -33,9 +33,9 @@ categories: [english, blogging]
 
 To preview posts and the blog locally, install Quarto and the VSCode extension:
 
-- Quarto: https://quarto.org/docs/get-started/
-- Quarto VSCode Extension: https://marketplace.visualstudio.com/items?itemName=quarto.quarto
-- VSCode: https://code.visualstudio.com/
+- Quarto: [https://quarto.org/docs/get-started/](https://quarto.org/docs/get-started/)
+- Quarto VSCode Extension: [https://marketplace.visualstudio.com/items?itemName=quarto.quarto](https://marketplace.visualstudio.com/items?itemName=quarto.quarto)
+- VSCode: [https://code.visualstudio.com/](https://code.visualstudio.com/)
 
 You don't need to do this step, but previewing your posts and themes is much easier! You can split screen markdown and the post preview like this:
 
